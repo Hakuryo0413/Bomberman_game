@@ -59,5 +59,9 @@ public class GameScreen implements Screen {
         } else {
             velX = 200;
         }
+        if(Input.getInput().contains("ESCAPE"))
+        {
+            ScreenManager.switchScreen(ScreenType.HOME_SCREEN);
+        }
     }
 }

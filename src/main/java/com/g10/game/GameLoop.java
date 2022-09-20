@@ -5,8 +5,6 @@ import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.util.Duration;
 
-import javax.sound.midi.Soundbank;
-
 public class GameLoop {
     static long deltaTime = System.nanoTime();
     public static void start() {

@@ -15,23 +15,17 @@ public class Input {
 
     public static void attachEventHandle(Scene scene) {
         scene.setOnKeyPressed(
-                new EventHandler<KeyEvent>() {
-                    @Override
-                    public void handle(KeyEvent keyEvent) {
-                        String code = keyEvent.getCode().toString();
-                        if (!input.contains(code)) {
-                            input.add(code);
-                        }
+                keyEvent -> {
+                    String code = keyEvent.getCode().toString();
+                    if (!input.contains(code)) {
+                        input.add(code);
                     }
                 }
         );
         scene.setOnKeyReleased(
-                new EventHandler<KeyEvent>() {
-                    @Override
-                    public void handle(KeyEvent keyEvent) {
-                        String code = keyEvent.getCode().toString();
-                        input.remove(code);
-                    }
+                keyEvent -> {
+                    String code = keyEvent.getCode().toString();
+                    input.remove(code);
                 }
         );
     }
