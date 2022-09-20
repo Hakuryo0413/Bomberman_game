@@ -13,14 +13,13 @@ public class Input {
         return input;
     }
 
-    public static void attachEventHandle(Scene scene)
-    {
+    public static void attachEventHandle(Scene scene) {
         scene.setOnKeyPressed(
                 new EventHandler<KeyEvent>() {
                     @Override
                     public void handle(KeyEvent keyEvent) {
                         String code = keyEvent.getCode().toString();
-                        if(!input.contains(code)) {
+                        if (!input.contains(code)) {
                             input.add(code);
                         }
                     }

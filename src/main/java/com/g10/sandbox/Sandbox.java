@@ -15,8 +15,8 @@ public class Sandbox {
     private static Group root;
     private static Canvas canvas;
     private static GraphicsContext gc;
-    public static void init()
-    {
+
+    public static void init() {
         root = new Group();
         canvas = new Canvas(GlobalConstant.SCREEN_WIDTH, GlobalConstant.SCREEN_HEIGHT);
         root.getChildren().add(canvas);
@@ -30,7 +30,8 @@ public class Sandbox {
     public static Scene getScene() {
         return scene;
     }
-    public static GraphicsContext getGc(){
+
+    public static GraphicsContext getGc() {
         return gc;
     }
 }

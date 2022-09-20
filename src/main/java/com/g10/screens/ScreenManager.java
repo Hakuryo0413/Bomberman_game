@@ -7,8 +7,7 @@ public class ScreenManager {
         return currentScreen;
     }
 
-    public static void switchScreen(ScreenType screenType)
-    {
+    public static void switchScreen(ScreenType screenType) {
         switch (screenType) {
             case HOME_SCREEN -> {
                 currentScreen = new HomeScreen();

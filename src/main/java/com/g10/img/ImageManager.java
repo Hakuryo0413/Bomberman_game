@@ -20,8 +20,8 @@ public class ImageManager {
 
     private static Image loadImage(String path) {
         File file = new File(path);
-                String imagePath = file.getAbsolutePath();
-               if (File.separatorChar == '\\') {
+        String imagePath = file.getAbsolutePath();
+        if (File.separatorChar == '\\') {
             // From Windows to Linux/Mac
             imagePath = imagePath.replace('/', File.separatorChar);
             imagePath = imagePath.replace("\\", "\\\\");

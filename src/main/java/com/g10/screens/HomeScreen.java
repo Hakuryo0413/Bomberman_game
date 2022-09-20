@@ -8,7 +8,7 @@ import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 
-public class HomeScreen implements Screen{
+public class HomeScreen implements Screen {
 
     @Override
     public void render() {
@@ -19,18 +19,17 @@ public class HomeScreen implements Screen{
         Font font = Font.font("Arial", 30);
         gc.setFont(font);
         Text text = new Text("Press Enter to start game ");
-        gc.fillText("Press Enter to start the game",150, 350);
+        gc.fillText("Press Enter to start the game", 150, 350);
     }
 
     @Override
-    public void update() {
+    public void update(float deltaTime) {
 
     }
 
     @Override
     public void handleEvent() {
-        if(Input.getInput().contains("ENTER"))
-        {
+        if (Input.getInput().contains("ENTER")) {
             ScreenManager.switchScreen(ScreenType.GAME_SCREEN);
         }
     }
