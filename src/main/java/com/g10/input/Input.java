@@ -1,8 +1,6 @@
 package com.g10.input;
 
-import javafx.event.EventHandler;
 import javafx.scene.Scene;
-import javafx.scene.input.KeyEvent;
 
 import java.util.ArrayList;
 
