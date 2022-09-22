@@ -47,12 +47,33 @@ public class Bomberman extends Entities{
             if(getX() + velX*deltaTime < i* GlobalConstant.TILE_SIZE)
             {
                 setX(getX() + velX*deltaTime);
-                setY(j*GlobalConstant.TILE_SIZE);
+                //setY(j*GlobalConstant.TILE_SIZE);
+                if(Math.abs(getY() - j*GlobalConstant.TILE_SIZE) < 100 * deltaTime) {
+                    setY(j*GlobalConstant.TILE_SIZE);
+                }
+                else if(getY() > j*GlobalConstant.TILE_SIZE) {
+                    setY(getY() - 100 * deltaTime);
+                }
+                else if(getY() < j * GlobalConstant.TILE_SIZE)
+                {
+                    setY(getY() + 100 * deltaTime);
+                }
             }
             else if(getX() + velX*deltaTime > i * GlobalConstant.TILE_SIZE && map[j][i+1] == 0)
             {
+
                 setX(getX() + velX*deltaTime);
-                setY(j*GlobalConstant.TILE_SIZE);
+                //setY(j*GlobalConstant.TILE_SIZE);
+                if(Math.abs(getY() - j*GlobalConstant.TILE_SIZE) < 100 * deltaTime) {
+                    setY(j*GlobalConstant.TILE_SIZE);
+                }
+                else if(getY() > j*GlobalConstant.TILE_SIZE) {
+                    setY(getY() - 100 * deltaTime);
+                }
+                else if(getY() < j * GlobalConstant.TILE_SIZE)
+                {
+                    setY(getY() + 100 * deltaTime);
+                }
             }
         }
         if(velX < 0)
@@ -60,12 +81,32 @@ public class Bomberman extends Entities{
             if(getX() + velX*deltaTime > i* GlobalConstant.TILE_SIZE)
             {
                 setX(getX() + velX*deltaTime);
-                setY(j*GlobalConstant.TILE_SIZE);
+//                setY(j*GlobalConstant.TILE_SIZE);
+                if(Math.abs(getY() - j*GlobalConstant.TILE_SIZE) < 100 * deltaTime) {
+                    setY(j*GlobalConstant.TILE_SIZE);
+                }
+                else if(getY() > j*GlobalConstant.TILE_SIZE) {
+                    setY(getY() - 100 * deltaTime);
+                }
+                else if(getY() < j * GlobalConstant.TILE_SIZE)
+                {
+                    setY(getY() + 100 * deltaTime);
+                }
             }
             else if(getX() + velX*deltaTime < i * GlobalConstant.TILE_SIZE && map[j][i-1] == 0)
             {
                 setX(getX() + velX*deltaTime);
-                setY(j*GlobalConstant.TILE_SIZE);
+//                setY(j*GlobalConstant.TILE_SIZE);
+                if(Math.abs(getY() - j*GlobalConstant.TILE_SIZE) < 100 * deltaTime) {
+                    setY(j*GlobalConstant.TILE_SIZE);
+                }
+                else if(getY() > j*GlobalConstant.TILE_SIZE) {
+                    setY(getY() - 100 * deltaTime);
+                }
+                else if(getY() < j * GlobalConstant.TILE_SIZE)
+                {
+                    setY(getY() + 100 * deltaTime);
+                }
             }
         }
         if(velY > 0)
@@ -73,12 +114,32 @@ public class Bomberman extends Entities{
             if(getY() + velY*deltaTime < j* GlobalConstant.TILE_SIZE )
             {
                 setY(getY() + velY*deltaTime);
-                setX(i*GlobalConstant.TILE_SIZE);
+//                setX(i*GlobalConstant.TILE_SIZE);
+                if(Math.abs(getX() - i*GlobalConstant.TILE_SIZE) < 100 * deltaTime) {
+                    setX(i*GlobalConstant.TILE_SIZE);
+                }
+                else if(getX() > i*GlobalConstant.TILE_SIZE) {
+                    setX(getX() - 100 * deltaTime);
+                }
+                else if(getX() < i * GlobalConstant.TILE_SIZE)
+                {
+                    setX(getX() + 100 * deltaTime);
+                }
             }
             else if(getY() + velY*deltaTime > j * GlobalConstant.TILE_SIZE  && map[j + 1][i] == 0)
             {
                 setY(getY() + velY*deltaTime);
-                setX(i *GlobalConstant.TILE_SIZE);
+                //setX(i *GlobalConstant.TILE_SIZE);
+                if(Math.abs(getX() - i*GlobalConstant.TILE_SIZE) < 100 * deltaTime) {
+                    setX(i*GlobalConstant.TILE_SIZE);
+                }
+                else if(getX() > i*GlobalConstant.TILE_SIZE) {
+                    setX(getX() - 100 * deltaTime);
+                }
+                else if(getX() < i * GlobalConstant.TILE_SIZE)
+                {
+                    setX(getX() + 100 * deltaTime);
+                }
             }
         }
         if(velY < 0)
@@ -86,12 +147,32 @@ public class Bomberman extends Entities{
             if(getY() + velY*deltaTime > j* GlobalConstant.TILE_SIZE )
             {
                 setY(getY() + velY*deltaTime);
-                setX(i*GlobalConstant.TILE_SIZE);
+                //setX(i*GlobalConstant.TILE_SIZE);
+                if(Math.abs(getX() - i*GlobalConstant.TILE_SIZE) < 100 * deltaTime) {
+                    setX(i*GlobalConstant.TILE_SIZE);
+                }
+                else if(getX() > i*GlobalConstant.TILE_SIZE) {
+                    setX(getX() - 100 * deltaTime);
+                }
+                else if(getX() < i * GlobalConstant.TILE_SIZE)
+                {
+                    setX(getX() + 100 * deltaTime);
+                }
             }
             else if(getY() + velY*deltaTime < j * GlobalConstant.TILE_SIZE  && map[j - 1][i] == 0)
             {
                 setY(getY() + velY*deltaTime);
-                setX(i *GlobalConstant.TILE_SIZE);
+                //setX(i *GlobalConstant.TILE_SIZE);
+                if(Math.abs(getX() - i*GlobalConstant.TILE_SIZE) < 100 * deltaTime) {
+                    setX(i*GlobalConstant.TILE_SIZE);
+                }
+                else if(getX() > i*GlobalConstant.TILE_SIZE) {
+                    setX(getX() - 100 * deltaTime);
+                }
+                else if(getX() < i * GlobalConstant.TILE_SIZE)
+                {
+                    setX(getX() + 100 * deltaTime);
+                }
             }
         }
 //        setX(getX() + velX * deltaTime);
@@ -118,7 +199,7 @@ public class Bomberman extends Entities{
         int i = (int)(getX() + getWidth() / 2) / GlobalConstant.TILE_SIZE;
         int j = (int)(getY() + getHeight() / 2) / GlobalConstant.TILE_SIZE;
         Sandbox.getGc().setFill(Color.BLUE);
-        Sandbox.getGc().fillRect(i * GlobalConstant.TILE_SIZE, j * GlobalConstant.TILE_SIZE, getWidth(), getHeight());
+        //Sandbox.getGc().fillRect(i * GlobalConstant.TILE_SIZE, j * GlobalConstant.TILE_SIZE, getWidth(), getHeight());
         Sandbox.getGc().setStroke(Color.BLACK);
         Sandbox.getGc().strokeRect(getX(), getY(), getWidth(), getHeight());
     }
