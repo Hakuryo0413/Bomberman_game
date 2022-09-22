@@ -18,7 +18,6 @@ public class HomeScreen implements Screen {
         gc.setFill(Color.WHITE);
         Font font = Font.font("Arial", 30);
         gc.setFont(font);
-        Text text = new Text("Press Enter to start game ");
         gc.fillText("Press Enter to start the game", 150, 350);
     }
 

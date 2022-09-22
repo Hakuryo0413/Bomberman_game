@@ -1,26 +1,44 @@
 package com.g10.entities;
 
 public class Entities {
-    private int x;
-    private int y;
+    private float x;
+    private float y;
     private String path;
+    private int width;
+    private int height;
+
+    public void setWidth(int width) {
+        this.width = width;
+    }
+
+    public int getWidth() {
+        return width;
+    }
+
+    public void setHeight(int height) {
+        this.height = height;
+    }
+
+    public int getHeight() {
+        return height;
+    }
 
     public Entities() {
     }
 
-    public int getXEntities() {
+    public float getX() {
         return x;
     }
 
-    public int getYEntities() {
+    public float getY() {
         return y;
     }
 
-    public void setX(int x) {
+    public void setX(float x) {
         this.x = x;
     }
 
-    public void setY(int y) {
+    public void setY(float y) {
         this.y = y;
     }
 

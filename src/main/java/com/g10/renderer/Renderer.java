@@ -8,6 +8,6 @@ import javafx.scene.image.Image;
 public class Renderer {
     public static void renderImage(Entities entity) {
         Image img = ImageManager.getImage(entity.getPathToImage());
-        Sandbox.getGc().drawImage(img, entity.getXEntities(), entity.getYEntities());
+        Sandbox.getGc().drawImage(img, entity.getX(), entity.getY(), entity.getWidth(), entity.getHeight());
     }
 }
