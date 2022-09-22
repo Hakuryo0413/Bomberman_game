@@ -29,22 +29,21 @@ public class GameScreen implements Screen {
             {1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1},
             {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1}
     };
+
     public GameScreen() {
         entitiesList = new ArrayList<Entities>();
-        for(int i = 0; i < 13; i++)
-        {
-            for (int j = 0; j < 17; j++)
-            {
-                if(map[i][j] == 0) {
+        for (int i = 0; i < 13; i++) {
+            for (int j = 0; j < 17; j++) {
+                if (map[i][j] == 0) {
                     entitiesList.add(new Grass(j * GlobalConstant.TILE_SIZE, i * GlobalConstant.TILE_SIZE));
-                }
-                else {
+                } else {
                     entitiesList.add(new Wall(j * GlobalConstant.TILE_SIZE, i * GlobalConstant.TILE_SIZE));
                 }
             }
         }
         bomberman = new Bomberman();
     }
+
     @Override
     public void render() {
         entitiesList.forEach(Renderer::renderImage);

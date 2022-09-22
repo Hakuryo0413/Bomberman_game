@@ -1,14 +1,11 @@
 package com.g10.entities;
 
 import com.g10.constants.GlobalConstant;
-import com.g10.game.GameLoop;
 import com.g10.input.Input;
 import com.g10.sandbox.Sandbox;
 import javafx.scene.paint.Color;
 
-import java.awt.image.TileObserver;
-
-public class Bomberman extends Entities{
+public class Bomberman extends Entities {
     private float velX;
     private float velY;
 
@@ -28,8 +25,7 @@ public class Bomberman extends Entities{
         return velY;
     }
 
-    public Bomberman()
-    {
+    public Bomberman() {
         setVelX(0);
         setVelY(0);
         setX(GlobalConstant.TILE_SIZE);
@@ -38,140 +34,100 @@ public class Bomberman extends Entities{
         setWidth(GlobalConstant.TILE_SIZE);
         setHeight(GlobalConstant.TILE_SIZE);
     }
-    public void update(float deltaTime, int[][] map)
-    {
-        int i = (int)(getX() + getWidth() / 2) / GlobalConstant.TILE_SIZE;
-        int j = (int)(getY() + getHeight() / 2) / GlobalConstant.TILE_SIZE;
-        if(velX > 0)
-        {
-            if(getX() + velX*deltaTime < i* GlobalConstant.TILE_SIZE)
-            {
-                setX(getX() + velX*deltaTime);
-                //setY(j*GlobalConstant.TILE_SIZE);
-                if(Math.abs(getY() - j*GlobalConstant.TILE_SIZE) < 100 * deltaTime) {
-                    setY(j*GlobalConstant.TILE_SIZE);
-                }
-                else if(getY() > j*GlobalConstant.TILE_SIZE) {
-                    setY(getY() - 100 * deltaTime);
-                }
-                else if(getY() < j * GlobalConstant.TILE_SIZE)
-                {
-                    setY(getY() + 100 * deltaTime);
-                }
-            }
-            else if(getX() + velX*deltaTime > i * GlobalConstant.TILE_SIZE && map[j][i+1] == 0)
-            {
 
-                setX(getX() + velX*deltaTime);
+    public void update(float deltaTime, int[][] map) {
+        int i = (int) (getX() + getWidth() / 2) / GlobalConstant.TILE_SIZE;
+        int j = (int) (getY() + getHeight() / 2) / GlobalConstant.TILE_SIZE;
+        if (velX > 0) {
+            if (getX() + velX * deltaTime < i * GlobalConstant.TILE_SIZE) {
+                setX(getX() + velX * deltaTime);
                 //setY(j*GlobalConstant.TILE_SIZE);
-                if(Math.abs(getY() - j*GlobalConstant.TILE_SIZE) < 100 * deltaTime) {
-                    setY(j*GlobalConstant.TILE_SIZE);
+                if (Math.abs(getY() - j * GlobalConstant.TILE_SIZE) < 150 * deltaTime) {
+                    setY(j * GlobalConstant.TILE_SIZE);
+                } else if (getY() > j * GlobalConstant.TILE_SIZE) {
+                    setY(getY() - 150 * deltaTime);
+                } else if (getY() < j * GlobalConstant.TILE_SIZE) {
+                    setY(getY() + 150 * deltaTime);
                 }
-                else if(getY() > j*GlobalConstant.TILE_SIZE) {
-                    setY(getY() - 100 * deltaTime);
-                }
-                else if(getY() < j * GlobalConstant.TILE_SIZE)
-                {
-                    setY(getY() + 100 * deltaTime);
-                }
-            }
-        }
-        if(velX < 0)
-        {
-            if(getX() + velX*deltaTime > i* GlobalConstant.TILE_SIZE)
-            {
-                setX(getX() + velX*deltaTime);
-//                setY(j*GlobalConstant.TILE_SIZE);
-                if(Math.abs(getY() - j*GlobalConstant.TILE_SIZE) < 100 * deltaTime) {
-                    setY(j*GlobalConstant.TILE_SIZE);
-                }
-                else if(getY() > j*GlobalConstant.TILE_SIZE) {
-                    setY(getY() - 100 * deltaTime);
-                }
-                else if(getY() < j * GlobalConstant.TILE_SIZE)
-                {
-                    setY(getY() + 100 * deltaTime);
-                }
-            }
-            else if(getX() + velX*deltaTime < i * GlobalConstant.TILE_SIZE && map[j][i-1] == 0)
-            {
-                setX(getX() + velX*deltaTime);
-//                setY(j*GlobalConstant.TILE_SIZE);
-                if(Math.abs(getY() - j*GlobalConstant.TILE_SIZE) < 100 * deltaTime) {
-                    setY(j*GlobalConstant.TILE_SIZE);
-                }
-                else if(getY() > j*GlobalConstant.TILE_SIZE) {
-                    setY(getY() - 100 * deltaTime);
-                }
-                else if(getY() < j * GlobalConstant.TILE_SIZE)
-                {
-                    setY(getY() + 100 * deltaTime);
+            } else if (getX() + velX * deltaTime > i * GlobalConstant.TILE_SIZE && map[j][i + 1] == 0) {
+
+                setX(getX() + velX * deltaTime);
+                //setY(j*GlobalConstant.TILE_SIZE);
+                if (Math.abs(getY() - j * GlobalConstant.TILE_SIZE) < 150 * deltaTime) {
+                    setY(j * GlobalConstant.TILE_SIZE);
+                } else if (getY() > j * GlobalConstant.TILE_SIZE) {
+                    setY(getY() - 150 * deltaTime);
+                } else if (getY() < j * GlobalConstant.TILE_SIZE) {
+                    setY(getY() + 150 * deltaTime);
                 }
             }
         }
-        if(velY > 0)
-        {
-            if(getY() + velY*deltaTime < j* GlobalConstant.TILE_SIZE )
-            {
-                setY(getY() + velY*deltaTime);
+        if (velX < 0) {
+            if (getX() + velX * deltaTime > i * GlobalConstant.TILE_SIZE) {
+                setX(getX() + velX * deltaTime);
+//                setY(j*GlobalConstant.TILE_SIZE);
+                if (Math.abs(getY() - j * GlobalConstant.TILE_SIZE) < 150 * deltaTime) {
+                    setY(j * GlobalConstant.TILE_SIZE);
+                } else if (getY() > j * GlobalConstant.TILE_SIZE) {
+                    setY(getY() - 150 * deltaTime);
+                } else if (getY() < j * GlobalConstant.TILE_SIZE) {
+                    setY(getY() + 150 * deltaTime);
+                }
+            } else if (getX() + velX * deltaTime < i * GlobalConstant.TILE_SIZE && map[j][i - 1] == 0) {
+                setX(getX() + velX * deltaTime);
+//                setY(j*GlobalConstant.TILE_SIZE);
+                if (Math.abs(getY() - j * GlobalConstant.TILE_SIZE) < 150 * deltaTime) {
+                    setY(j * GlobalConstant.TILE_SIZE);
+                } else if (getY() > j * GlobalConstant.TILE_SIZE) {
+                    setY(getY() - 150 * deltaTime);
+                } else if (getY() < j * GlobalConstant.TILE_SIZE) {
+                    setY(getY() + 150 * deltaTime);
+                }
+            }
+        }
+        if (velY > 0) {
+            if (getY() + velY * deltaTime < j * GlobalConstant.TILE_SIZE) {
+                setY(getY() + velY * deltaTime);
 //                setX(i*GlobalConstant.TILE_SIZE);
-                if(Math.abs(getX() - i*GlobalConstant.TILE_SIZE) < 100 * deltaTime) {
-                    setX(i*GlobalConstant.TILE_SIZE);
+                if (Math.abs(getX() - i * GlobalConstant.TILE_SIZE) < 150 * deltaTime) {
+                    setX(i * GlobalConstant.TILE_SIZE);
+                } else if (getX() > i * GlobalConstant.TILE_SIZE) {
+                    setX(getX() - 150 * deltaTime);
+                } else if (getX() < i * GlobalConstant.TILE_SIZE) {
+                    setX(getX() + 150 * deltaTime);
                 }
-                else if(getX() > i*GlobalConstant.TILE_SIZE) {
-                    setX(getX() - 100 * deltaTime);
-                }
-                else if(getX() < i * GlobalConstant.TILE_SIZE)
-                {
-                    setX(getX() + 100 * deltaTime);
-                }
-            }
-            else if(getY() + velY*deltaTime > j * GlobalConstant.TILE_SIZE  && map[j + 1][i] == 0)
-            {
-                setY(getY() + velY*deltaTime);
+            } else if (getY() + velY * deltaTime > j * GlobalConstant.TILE_SIZE && map[j + 1][i] == 0) {
+                setY(getY() + velY * deltaTime);
                 //setX(i *GlobalConstant.TILE_SIZE);
-                if(Math.abs(getX() - i*GlobalConstant.TILE_SIZE) < 100 * deltaTime) {
-                    setX(i*GlobalConstant.TILE_SIZE);
-                }
-                else if(getX() > i*GlobalConstant.TILE_SIZE) {
-                    setX(getX() - 100 * deltaTime);
-                }
-                else if(getX() < i * GlobalConstant.TILE_SIZE)
-                {
-                    setX(getX() + 100 * deltaTime);
+                if (Math.abs(getX() - i * GlobalConstant.TILE_SIZE) < 150 * deltaTime) {
+                    setX(i * GlobalConstant.TILE_SIZE);
+                } else if (getX() > i * GlobalConstant.TILE_SIZE) {
+                    setX(getX() - 150 * deltaTime);
+                } else if (getX() < i * GlobalConstant.TILE_SIZE) {
+                    setX(getX() + 150 * deltaTime);
                 }
             }
         }
-        if(velY < 0)
-        {
-            if(getY() + velY*deltaTime > j* GlobalConstant.TILE_SIZE )
-            {
-                setY(getY() + velY*deltaTime);
+        if (velY < 0) {
+            if (getY() + velY * deltaTime > j * GlobalConstant.TILE_SIZE) {
+                setY(getY() + velY * deltaTime);
                 //setX(i*GlobalConstant.TILE_SIZE);
-                if(Math.abs(getX() - i*GlobalConstant.TILE_SIZE) < 100 * deltaTime) {
-                    setX(i*GlobalConstant.TILE_SIZE);
+                if (Math.abs(getX() - i * GlobalConstant.TILE_SIZE) < 150 * deltaTime) {
+                    setX(i * GlobalConstant.TILE_SIZE);
+                } else if (getX() > i * GlobalConstant.TILE_SIZE) {
+                    setX(getX() - 150 * deltaTime);
+                } else if (getX() < i * GlobalConstant.TILE_SIZE) {
+                    setX(getX() + 150 * deltaTime);
                 }
-                else if(getX() > i*GlobalConstant.TILE_SIZE) {
-                    setX(getX() - 100 * deltaTime);
-                }
-                else if(getX() < i * GlobalConstant.TILE_SIZE)
-                {
-                    setX(getX() + 100 * deltaTime);
-                }
-            }
-            else if(getY() + velY*deltaTime < j * GlobalConstant.TILE_SIZE  && map[j - 1][i] == 0)
-            {
-                setY(getY() + velY*deltaTime);
+            } else if (getY() + velY * deltaTime < j * GlobalConstant.TILE_SIZE && map[j - 1][i] == 0) {
+                setY(getY() + velY * deltaTime);
                 //setX(i *GlobalConstant.TILE_SIZE);
-                if(Math.abs(getX() - i*GlobalConstant.TILE_SIZE) < 100 * deltaTime) {
-                    setX(i*GlobalConstant.TILE_SIZE);
-                }
-                else if(getX() > i*GlobalConstant.TILE_SIZE) {
-                    setX(getX() - 100 * deltaTime);
-                }
-                else if(getX() < i * GlobalConstant.TILE_SIZE)
-                {
-                    setX(getX() + 100 * deltaTime);
+                if (Math.abs(getX() - i * GlobalConstant.TILE_SIZE) < 150 * deltaTime) {
+                    setX(i * GlobalConstant.TILE_SIZE);
+                } else if (getX() > i * GlobalConstant.TILE_SIZE) {
+                    setX(getX() - 150 * deltaTime);
+                } else if (getX() < i * GlobalConstant.TILE_SIZE) {
+                    setX(getX() + 150 * deltaTime);
                 }
             }
         }
@@ -194,36 +150,30 @@ public class Bomberman extends Entities{
 //            setX(i * GlobalConstant.TILE_SIZE);
 //        }
     }
-    public void render()
-    {
-        int i = (int)(getX() + getWidth() / 2) / GlobalConstant.TILE_SIZE;
-        int j = (int)(getY() + getHeight() / 2) / GlobalConstant.TILE_SIZE;
+
+    public void render() {
+        int i = (int) (getX() + getWidth() / 2) / GlobalConstant.TILE_SIZE;
+        int j = (int) (getY() + getHeight() / 2) / GlobalConstant.TILE_SIZE;
         Sandbox.getGc().setFill(Color.BLUE);
         //Sandbox.getGc().fillRect(i * GlobalConstant.TILE_SIZE, j * GlobalConstant.TILE_SIZE, getWidth(), getHeight());
         Sandbox.getGc().setStroke(Color.BLACK);
         Sandbox.getGc().strokeRect(getX(), getY(), getWidth(), getHeight());
     }
-    public void handleEvent()
-    {
-        if((Input.getInput().contains("W") && Input.getInput().contains("S")) || (!Input.getInput().contains("W") && !Input.getInput().contains("S")))
-        {
+
+    public void handleEvent() {
+        if ((Input.getInput().contains("W") && Input.getInput().contains("S")) || (!Input.getInput().contains("W") && !Input.getInput().contains("S"))) {
             velY = 0;
+        } else if (Input.getInput().contains("W")) {
+            velY = -150;
+        } else {
+            velY = 150;
         }
-        else if(Input.getInput().contains("W")) {
-            velY = -100;
-        }
-        else {
-            velY = 100;
-        }
-        if((Input.getInput().contains("A") && Input.getInput().contains("D")) || (!Input.getInput().contains("A") && !Input.getInput().contains("D")))
-        {
+        if ((Input.getInput().contains("A") && Input.getInput().contains("D")) || (!Input.getInput().contains("A") && !Input.getInput().contains("D"))) {
             velX = 0;
-        }
-        else if(Input.getInput().contains("A")) {
-            velX = -100;
-        }
-        else {
-            velX = 100;
+        } else if (Input.getInput().contains("A")) {
+            velX = -150;
+        } else {
+            velX = 150;
         }
     }
 }

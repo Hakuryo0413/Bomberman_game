@@ -7,6 +7,7 @@ import javafx.util.Duration;
 
 public class GameLoop {
     static long deltaTime = System.nanoTime();
+
     public static void start() {
         Timeline timeline = new Timeline(new KeyFrame(Duration.millis(10), actionEvent -> {
             ScreenManager.getCurrentScreen().handleEvent();

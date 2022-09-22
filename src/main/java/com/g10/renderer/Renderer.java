@@ -1,7 +1,7 @@
 package com.g10.renderer;
 
-import com.g10.img.ImageManager;
 import com.g10.entities.Entities;
+import com.g10.img.ImageManager;
 import com.g10.sandbox.Sandbox;
 import javafx.scene.image.Image;
 

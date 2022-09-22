@@ -2,7 +2,7 @@ package com.g10.entities;
 
 import com.g10.constants.GlobalConstant;
 
-public class Wall extends Entities{
+public class Wall extends Entities {
     public Wall(int x, int y) {
         setX(x);
         setY(y);
