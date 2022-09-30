@@ -192,7 +192,15 @@ public class Bomberman extends BaseObject {
                 }
             }
         }
-        if (Input.getInput().contains("SPACE") && gameScreen.getBomList().size() <= 2) {
+
+        boolean canPlantBom = true;
+        for(int t = 0; t < gameScreen.getBomList().size(); t++) {
+            Bom bom = gameScreen.getBomList().get(t);
+            if(bom.getX() / GlobalConstant.TILE_SIZE == i && bom.getY() / GlobalConstant.TILE_SIZE == j) {
+                canPlantBom = false;
+            }
+        }
+        if (Input.getInput().contains("SPACE") && gameScreen.getBomList().size() < 1 && canPlantBom) {
             Input.getInput().remove("SPACE");
             gameScreen.getBomList().add(new Bom(i * GlobalConstant.TILE_SIZE, j * GlobalConstant.TILE_SIZE, 3, gameScreen));
         }
