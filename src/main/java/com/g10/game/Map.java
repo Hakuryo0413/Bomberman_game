@@ -9,23 +9,23 @@ public class Map {
     private int height;
     private int[][] a;
 
-    private int getHeight() {
+    public int getHeight() {
         return height;
     }
 
-    private void setHeight(int height) {
+    public void setHeight(int height) {
         this.height = height;
     }
 
-    private int getWidth() {
+    public int getWidth() {
         return width;
     }
 
-    private void setWidth(int width) {
+    public void setWidth(int width) {
         this.width = width;
     }
 
-    private void setArray(int[][] a) {
+    public void setArray(int[][] a) {
         this.a = a;
     }
 
