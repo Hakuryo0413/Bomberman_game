@@ -22,11 +22,6 @@ public class HomeScreen implements Screen {
 
     @Override
     public void update(float deltaTime) {
-
-    }
-
-    @Override
-    public void handleEvent() {
         if (Input.getInput().contains("ENTER")) {
             ScreenManager.switchScreen(ScreenType.GAME_SCREEN);
         }

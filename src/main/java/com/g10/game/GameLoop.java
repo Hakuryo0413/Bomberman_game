@@ -10,7 +10,6 @@ public class GameLoop {
 
     public static void start() {
         Timeline timeline = new Timeline(new KeyFrame(Duration.millis(10), actionEvent -> {
-            ScreenManager.getCurrentScreen().handleEvent();
             ScreenManager.getCurrentScreen().update((float) ((System.nanoTime() - deltaTime) / 1000000000.0));
             deltaTime = System.nanoTime();
             ScreenManager.getCurrentScreen().render();

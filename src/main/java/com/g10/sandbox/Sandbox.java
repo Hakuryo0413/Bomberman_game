@@ -22,7 +22,7 @@ public class Sandbox {
         root.getChildren().add(canvas);
         scene = new Scene(root);
         gc = canvas.getGraphicsContext2D();
-        ScreenManager.switchScreen(ScreenType.GAME_SCREEN);
+        ScreenManager.switchScreen(ScreenType.HOME_SCREEN);
         Input.attachEventHandle(scene);
         GameLoop.start();
     }
