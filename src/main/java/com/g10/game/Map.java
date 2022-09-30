@@ -9,7 +9,23 @@ import java.util.Scanner;
 public class Map {
     private int width;
     private int height;
-    private int[][] arr = new int[width][height];
+    private final int[][] arr = new int[width][height];
+
+    private int getHeight() {
+        return height;
+    }
+
+    private void setHeight(int height) {
+        this.height = height;
+    }
+
+    private int getWidth() {
+        return width;
+    }
+
+    private void setWidth(int width) {
+        this.width = width;
+    }
 
     public int[][] LoadMap(String file) {
         try {
