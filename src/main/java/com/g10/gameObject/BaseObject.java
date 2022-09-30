@@ -82,10 +82,10 @@ public abstract class BaseObject {
 
     public void render(Camera camera) {
         GraphicsContext gc = Sandbox.getGc();
-        gc.drawImage(this.image, this.x - camera.getX(), this.y-camera.getY(), this.width, this.height);
+        gc.drawImage(this.image, this.x - camera.getX(), this.y - camera.getY(), this.width, this.height);
     }
 
     public void update(float deltaTime) {
-        
+
     }
 }

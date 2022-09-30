@@ -2,13 +2,12 @@ package com.g10.gameObject;
 
 import com.g10.animation.Animation;
 import com.g10.constants.GlobalConstant;
-import com.g10.img.ImageManager;
 import com.g10.screens.GameScreen;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.util.Duration;
 
-public class Fire extends BaseObject{
+public class Fire extends BaseObject {
     public enum FireType {
         TOP,
         BOTTOM,

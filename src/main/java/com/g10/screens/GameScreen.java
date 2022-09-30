@@ -51,12 +51,11 @@ public class GameScreen implements Screen {
         wallList = new ArrayList<>();
         bomList = new ArrayList<>();
         fireList = new ArrayList<>();
-        for(int i = 0; i < 13; i++) {
-            for(int j = 0; j < 17; j++) {
-                if(map[i][j] == 0) {
+        for (int i = 0; i < 13; i++) {
+            for (int j = 0; j < 17; j++) {
+                if (map[i][j] == 0) {
                     grassList.add(new Grass(j * GlobalConstant.TILE_SIZE, i * GlobalConstant.TILE_SIZE));
-                }
-                else {
+                } else {
                     wallList.add(new Wall(map[i][j], j * GlobalConstant.TILE_SIZE, i * GlobalConstant.TILE_SIZE));
                 }
             }

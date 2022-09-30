@@ -2,9 +2,8 @@ package com.g10.gameObject;
 
 import com.g10.constants.GlobalConstant;
 import com.g10.img.ImageManager;
-import com.g10.sandbox.Sandbox;
 
-public class Wall extends BaseObject{
+public class Wall extends BaseObject {
     public Wall(int type, int x, int y) {
         this.x = x;
         this.y = y;

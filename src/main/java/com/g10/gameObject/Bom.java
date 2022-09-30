@@ -7,12 +7,11 @@ import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.util.Duration;
 
-import java.awt.event.ActionEvent;
-
-public class Bom extends BaseObject{
+public class Bom extends BaseObject {
     Animation animation;
     int length;
-    public Bom(float x, float y, int length, GameScreen gameScreen){
+
+    public Bom(float x, float y, int length, GameScreen gameScreen) {
         this.x = x;
         this.y = y;
         this.width = GlobalConstant.TILE_SIZE;
@@ -21,11 +20,15 @@ public class Bom extends BaseObject{
         animation.play();
         Timeline tl = new Timeline(new KeyFrame(Duration.seconds(2), actionEvent -> {
             gameScreen.getBomList().remove(this);
-            gameScreen.getFireList().add(new Fire(Fire.FireType.CENTER, (int) this.x, (int) this. y, gameScreen));
-            gameScreen.getFireList().add(new Fire(Fire.FireType.TOP, (int) this.x, (int) this. y - GlobalConstant.TILE_SIZE, gameScreen));
-            gameScreen.getFireList().add(new Fire(Fire.FireType.BOTTOM, (int) this.x, (int) this. y + GlobalConstant.TILE_SIZE, gameScreen));
-            gameScreen.getFireList().add(new Fire(Fire.FireType.LEFT, (int) this.x - GlobalConstant.TILE_SIZE, (int) this. y, gameScreen));
-            gameScreen.getFireList().add(new Fire(Fire.FireType.RIGHT, (int) this.x + GlobalConstant.TILE_SIZE, (int) this. y, gameScreen));
+            gameScreen.getFireList().add(new Fire(Fire.FireType.CENTER, (int) this.x, (int) this.y, gameScreen));
+            gameScreen.getFireList().add(new Fire(Fire.FireType.VERTICAL, (int) this.x, (int) this.y - GlobalConstant.TILE_SIZE, gameScreen));
+            gameScreen.getFireList().add(new Fire(Fire.FireType.TOP, (int) this.x, (int) this.y - 2 * GlobalConstant.TILE_SIZE, gameScreen));
+            gameScreen.getFireList().add(new Fire(Fire.FireType.VERTICAL, (int) this.x, (int) this.y + GlobalConstant.TILE_SIZE, gameScreen));
+            gameScreen.getFireList().add(new Fire(Fire.FireType.BOTTOM, (int) this.x, (int) this.y + 2 * GlobalConstant.TILE_SIZE, gameScreen));
+            gameScreen.getFireList().add(new Fire(Fire.FireType.HORIZON, (int) this.x - GlobalConstant.TILE_SIZE, (int) this.y, gameScreen));
+            gameScreen.getFireList().add(new Fire(Fire.FireType.LEFT, (int) this.x - 2 * GlobalConstant.TILE_SIZE, (int) this.y, gameScreen));
+            gameScreen.getFireList().add(new Fire(Fire.FireType.HORIZON, (int) this.x + GlobalConstant.TILE_SIZE, (int) this.y, gameScreen));
+            gameScreen.getFireList().add(new Fire(Fire.FireType.RIGHT, (int) this.x + 2 * GlobalConstant.TILE_SIZE, (int) this.y, gameScreen));
         }));
         tl.setCycleCount(1);
         tl.play();

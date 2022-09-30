@@ -4,21 +4,17 @@ import com.g10.animation.Animation;
 import com.g10.constants.GlobalConstant;
 import com.g10.img.ImageManager;
 import com.g10.input.Input;
-import com.g10.sandbox.Sandbox;
 import com.g10.screens.GameScreen;
-import com.g10.screens.Screen;
 import javafx.util.Duration;
 
-import java.util.ArrayList;
-import java.util.List;
-
-public class Bomberman extends BaseObject{
+public class Bomberman extends BaseObject {
 
     Animation animation;
 
     float velX;
     float velY;
     float vel;
+
     public Bomberman() {
         super(ImageManager.getImage("src/main/res/com/g10/assets/bomberman_down2.png"));
         setHitBoxX(GlobalConstant.TILE_SIZE);
@@ -66,41 +62,38 @@ public class Bomberman extends BaseObject{
 
     public void update(float deltaTime, GameScreen gameScreen) {
         boolean move = false;
-        if(!Input.getInput().contains("UP") && !Input.getInput().contains("DOWN") ||Input.getInput().contains("UP") && Input.getInput().contains("DOWN"))
-        {
+        if (!Input.getInput().contains("UP") && !Input.getInput().contains("DOWN") || Input.getInput().contains("UP") && Input.getInput().contains("DOWN")) {
             velY = 0;
         } else {
-            if(Input.getInput().contains("UP")) {
+            if (Input.getInput().contains("UP")) {
                 animation.setStr("src/main/res/com/g10/assets/bomberman_top");
                 move = true;
                 velY = -vel;
             }
-            if(Input.getInput().contains("DOWN")) {
+            if (Input.getInput().contains("DOWN")) {
                 animation.setStr("src/main/res/com/g10/assets/bomberman_down");
                 move = true;
                 velY = vel;
             }
         }
-        if(!Input.getInput().contains("LEFT") && !Input.getInput().contains("RIGHT") ||Input.getInput().contains("LEFT") && Input.getInput().contains("RIGHT"))
-        {
+        if (!Input.getInput().contains("LEFT") && !Input.getInput().contains("RIGHT") || Input.getInput().contains("LEFT") && Input.getInput().contains("RIGHT")) {
             velX = 0;
         } else {
-            if(Input.getInput().contains("LEFT")) {
+            if (Input.getInput().contains("LEFT")) {
                 animation.setStr("src/main/res/com/g10/assets/bomberman_left");
                 move = true;
                 velX = -vel;
             }
-            if(Input.getInput().contains("RIGHT")) {
+            if (Input.getInput().contains("RIGHT")) {
                 animation.setStr("src/main/res/com/g10/assets/bomberman_right");
                 move = true;
                 velX = vel;
             }
         }
-        if(move) {
+        if (move) {
             animation.play();
             image = animation.getCurrentImage();
-        }
-        else {
+        } else {
             animation.pause();
         }
         int[][] map = gameScreen.getMap();
@@ -199,7 +192,7 @@ public class Bomberman extends BaseObject{
                 }
             }
         }
-        if(Input.getInput().contains("SPACE") && gameScreen.getBomList().size() <= 2) {
+        if (Input.getInput().contains("SPACE") && gameScreen.getBomList().size() <= 2) {
             Input.getInput().remove("SPACE");
             gameScreen.getBomList().add(new Bom(i * GlobalConstant.TILE_SIZE, j * GlobalConstant.TILE_SIZE, 1, gameScreen));
         }
