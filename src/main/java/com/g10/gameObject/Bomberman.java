@@ -5,6 +5,10 @@ import com.g10.constants.GlobalConstant;
 import com.g10.img.ImageManager;
 import com.g10.input.Input;
 import com.g10.screens.GameScreen;
+import com.g10.screens.ScreenManager;
+import com.g10.screens.ScreenType;
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
 import javafx.util.Duration;
 
 public class Bomberman extends BaseObject {
@@ -211,12 +215,17 @@ public class Bomberman extends BaseObject {
             for (int t = 0; t < gameScreen.getFireList().size(); t++) {
                 Fire fire = gameScreen.getFireList().get(t);
                 if (fire.getX() / GlobalConstant.TILE_SIZE == i && fire.getY() / GlobalConstant.TILE_SIZE == j) {
-                    animation = new Animation(Duration.millis(2000));
+                    animation = new Animation(Duration.millis(1200));
                     animation.setStr("src/main/res/com/g10/assets/bomberman_death");
                     animation.setCount(6);
                     animation.setCycleCount(1);
                     animation.play();
                     isAlive = false;
+                    Timeline tl = new Timeline(new KeyFrame(Duration.millis(3000), actionEvent -> {
+                        ScreenManager.switchScreen(ScreenType.HOME_SCREEN);
+                    }));
+                    tl.setCycleCount(1);
+                    tl.play();
                 }
             }
         }
