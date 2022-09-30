@@ -107,23 +107,23 @@ public class Bomberman extends BaseObject{
             if (getHitBoxX() + velX * deltaTime < i * GlobalConstant.TILE_SIZE) {
                 setHitBoxX(getHitBoxX() + velX * deltaTime);
                 //setY(j*GlobalConstant.TILE_SIZE);
-                if (Math.abs(getHitBoxY() - j * GlobalConstant.TILE_SIZE) < 150 * deltaTime) {
+                if (Math.abs(getHitBoxY() - j * GlobalConstant.TILE_SIZE) < vel * deltaTime) {
                     setHitBoxY(j * GlobalConstant.TILE_SIZE);
                 } else if (getHitBoxY() > j * GlobalConstant.TILE_SIZE) {
-                    setHitBoxY(getHitBoxY() - 150 * deltaTime);
+                    setHitBoxY(getHitBoxY() - vel * deltaTime);
                 } else if (getHitBoxY() < j * GlobalConstant.TILE_SIZE) {
-                    setHitBoxY(getHitBoxY() + 150 * deltaTime);
+                    setHitBoxY(getHitBoxY() + vel * deltaTime);
                 }
             } else if (getHitBoxX() + velX * deltaTime > i * GlobalConstant.TILE_SIZE && map[j][i + 1] == 0) {
 
                 setHitBoxX(getHitBoxX() + velX * deltaTime);
                 //setY(j*GlobalConstant.TILE_SIZE);
-                if (Math.abs(getHitBoxY() - j * GlobalConstant.TILE_SIZE) < 150 * deltaTime) {
+                if (Math.abs(getHitBoxY() - j * GlobalConstant.TILE_SIZE) < vel * deltaTime) {
                     setHitBoxY(j * GlobalConstant.TILE_SIZE);
                 } else if (getHitBoxY() > j * GlobalConstant.TILE_SIZE) {
-                    setHitBoxY(getHitBoxY() - 150 * deltaTime);
+                    setHitBoxY(getHitBoxY() - vel * deltaTime);
                 } else if (getHitBoxY() < j * GlobalConstant.TILE_SIZE) {
-                    setHitBoxY(getHitBoxY() + 150 * deltaTime);
+                    setHitBoxY(getHitBoxY() + vel * deltaTime);
                 }
             }
         }
@@ -131,22 +131,22 @@ public class Bomberman extends BaseObject{
             if (getHitBoxX() + velX * deltaTime > i * GlobalConstant.TILE_SIZE) {
                 setHitBoxX(getHitBoxX() + velX * deltaTime);
 //                setY(j*GlobalConstant.TILE_SIZE);
-                if (Math.abs(getHitBoxY() - j * GlobalConstant.TILE_SIZE) < 150 * deltaTime) {
+                if (Math.abs(getHitBoxY() - j * GlobalConstant.TILE_SIZE) < vel * deltaTime) {
                     setHitBoxY(j * GlobalConstant.TILE_SIZE);
                 } else if (getHitBoxY() > j * GlobalConstant.TILE_SIZE) {
-                    setHitBoxY(getHitBoxY() - 150 * deltaTime);
+                    setHitBoxY(getHitBoxY() - vel * deltaTime);
                 } else if (getHitBoxY() < j * GlobalConstant.TILE_SIZE) {
-                    setHitBoxY(getHitBoxY() + 150 * deltaTime);
+                    setHitBoxY(getHitBoxY() + vel * deltaTime);
                 }
             } else if (getHitBoxX() + velX * deltaTime < i * GlobalConstant.TILE_SIZE && map[j][i - 1] == 0) {
                 setHitBoxX(getHitBoxX() + velX * deltaTime);
 //                setY(j*GlobalConstant.TILE_SIZE);
-                if (Math.abs(getHitBoxY() - j * GlobalConstant.TILE_SIZE) < 150 * deltaTime) {
+                if (Math.abs(getHitBoxY() - j * GlobalConstant.TILE_SIZE) < vel * deltaTime) {
                     setHitBoxY(j * GlobalConstant.TILE_SIZE);
                 } else if (getHitBoxY() > j * GlobalConstant.TILE_SIZE) {
-                    setHitBoxY(getHitBoxY() - 150 * deltaTime);
+                    setHitBoxY(getHitBoxY() - vel * deltaTime);
                 } else if (getHitBoxY() < j * GlobalConstant.TILE_SIZE) {
-                    setHitBoxY(getHitBoxY() + 150 * deltaTime);
+                    setHitBoxY(getHitBoxY() + vel * deltaTime);
                 }
             }
         }
@@ -154,22 +154,22 @@ public class Bomberman extends BaseObject{
             if (getHitBoxY() + velY * deltaTime < j * GlobalConstant.TILE_SIZE) {
                 setHitBoxY(getHitBoxY() + velY * deltaTime);
 //                setX(i*GlobalConstant.TILE_SIZE);
-                if (Math.abs(getHitBoxX() - i * GlobalConstant.TILE_SIZE) < 150 * deltaTime) {
+                if (Math.abs(getHitBoxX() - i * GlobalConstant.TILE_SIZE) < vel * deltaTime) {
                     setHitBoxX(i * GlobalConstant.TILE_SIZE);
                 } else if (getHitBoxX() > i * GlobalConstant.TILE_SIZE) {
-                    setHitBoxX(getHitBoxX() - 150 * deltaTime);
+                    setHitBoxX(getHitBoxX() - vel * deltaTime);
                 } else if (getHitBoxX() < i * GlobalConstant.TILE_SIZE) {
-                    setHitBoxX(getHitBoxX() + 150 * deltaTime);
+                    setHitBoxX(getHitBoxX() + vel * deltaTime);
                 }
             } else if (getHitBoxY() + velY * deltaTime > j * GlobalConstant.TILE_SIZE && map[j + 1][i] == 0) {
                 setHitBoxY(getHitBoxY() + velY * deltaTime);
                 //setX(i *GlobalConstant.TILE_SIZE);
-                if (Math.abs(getHitBoxX() - i * GlobalConstant.TILE_SIZE) < 150 * deltaTime) {
+                if (Math.abs(getHitBoxX() - i * GlobalConstant.TILE_SIZE) < vel * deltaTime) {
                     setHitBoxX(i * GlobalConstant.TILE_SIZE);
                 } else if (getHitBoxX() > i * GlobalConstant.TILE_SIZE) {
-                    setHitBoxX(getHitBoxX() - 150 * deltaTime);
+                    setHitBoxX(getHitBoxX() - vel * deltaTime);
                 } else if (getHitBoxX() < i * GlobalConstant.TILE_SIZE) {
-                    setHitBoxX(getHitBoxX() + 150 * deltaTime);
+                    setHitBoxX(getHitBoxX() + vel * deltaTime);
                 }
             }
         }
@@ -177,22 +177,22 @@ public class Bomberman extends BaseObject{
             if (getHitBoxY() + velY * deltaTime > j * GlobalConstant.TILE_SIZE) {
                 setHitBoxY(getHitBoxY() + velY * deltaTime);
                 //setX(i*GlobalConstant.TILE_SIZE);
-                if (Math.abs(getHitBoxX() - i * GlobalConstant.TILE_SIZE) < 150 * deltaTime) {
+                if (Math.abs(getHitBoxX() - i * GlobalConstant.TILE_SIZE) < vel * deltaTime) {
                     setHitBoxX(i * GlobalConstant.TILE_SIZE);
                 } else if (getHitBoxX() > i * GlobalConstant.TILE_SIZE) {
-                    setHitBoxY(getHitBoxX() - 150 * deltaTime);
+                    setHitBoxY(getHitBoxX() - vel * deltaTime);
                 } else if (getHitBoxX() < i * GlobalConstant.TILE_SIZE) {
-                    setHitBoxX(getHitBoxX() + 150 * deltaTime);
+                    setHitBoxX(getHitBoxX() + vel * deltaTime);
                 }
             } else if (getHitBoxY() + velY * deltaTime < j * GlobalConstant.TILE_SIZE && map[j - 1][i] == 0) {
                 setHitBoxY(getHitBoxY() + velY * deltaTime);
                 //setX(i *GlobalConstant.TILE_SIZE);
-                if (Math.abs(getHitBoxX() - i * GlobalConstant.TILE_SIZE) < 150 * deltaTime) {
+                if (Math.abs(getHitBoxX() - i * GlobalConstant.TILE_SIZE) < vel * deltaTime) {
                     setHitBoxX(i * GlobalConstant.TILE_SIZE);
                 } else if (getHitBoxX() > i * GlobalConstant.TILE_SIZE) {
-                    setHitBoxX(getHitBoxX() - 150 * deltaTime);
+                    setHitBoxX(getHitBoxX() - vel * deltaTime);
                 } else if (getHitBoxX() < i * GlobalConstant.TILE_SIZE) {
-                    setHitBoxX(getHitBoxX() + 150 * deltaTime);
+                    setHitBoxX(getHitBoxX() + vel * deltaTime);
                 }
             }
         }
