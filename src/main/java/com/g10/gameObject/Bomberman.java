@@ -10,6 +10,7 @@ import com.g10.screens.Screen;
 import javafx.util.Duration;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class Bomberman extends BaseObject{
 
@@ -19,12 +20,14 @@ public class Bomberman extends BaseObject{
     float velY;
     float vel;
     public Bomberman() {
-        super(ImageManager.getImage("src/main/res/com/g10/assets/bomberman_left1.png"));
-        this.x = 100;
-        this.y = 100;
+        super(ImageManager.getImage("src/main/res/com/g10/assets/bomberman_down2.png"));
+        setHitBoxX(GlobalConstant.TILE_SIZE);
+        setHitBoxY(0);
         this.width *= GlobalConstant.SCALE;
         this.height *= GlobalConstant.SCALE;
         animation = new Animation(Duration.millis(400));
+        setHitBoxX(2 * GlobalConstant.TILE_SIZE);
+        setHitBoxY(GlobalConstant.TILE_SIZE);
         animation.setCount(3);
         vel = 200;
     }
@@ -195,6 +198,10 @@ public class Bomberman extends BaseObject{
                     setHitBoxX(getHitBoxX() + vel * deltaTime);
                 }
             }
+        }
+        if(Input.getInput().contains("SPACE") && gameScreen.getBomList().size() <= 2) {
+            Input.getInput().remove("SPACE");
+            gameScreen.getBomList().add(new Bom(i * GlobalConstant.TILE_SIZE, j * GlobalConstant.TILE_SIZE, 1, gameScreen));
         }
     }
 }

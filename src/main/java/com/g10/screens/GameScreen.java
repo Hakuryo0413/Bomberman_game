@@ -1,6 +1,7 @@
 package com.g10.screens;
 
 import com.g10.constants.GlobalConstant;
+import com.g10.gameObject.Bom;
 import com.g10.gameObject.Bomberman;
 import com.g10.gameObject.Grass;
 import com.g10.gameObject.Wall;
@@ -14,10 +15,10 @@ public class GameScreen implements Screen {
 
     int map[][] = new int[][]{
             {11, 12, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 16, 17},
-            {5, 6, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 13, 15},
-            {5, 7, 0, 1, 22, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 14, 15},
-            {5, 7, 0, 22, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 14, 15},
-            {5, 7, 0, 1, 0, 1, 22, 1, 0, 1, 0, 1, 0, 1, 0, 14, 15},
+            {05, 06, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 13, 15},
+            {05, 07, 00, 01, 22, 01, 00, 01, 00, 01, 00, 01, 00, 01, 00, 14, 15},
+            {05, 07, 00, 22, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 14, 15},
+            {05, 07, 00, 01, 00, 01, 22, 01, 00, 01, 00, 01, 00, 01, 00, 14, 15},
             {5, 7, 0, 22, 0, 0, 0, 0, 22, 22, 0, 22, 0, 0, 0, 14, 15},
             {5, 7, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 22, 1, 0, 14, 15},
             {5, 7, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 14, 15},
@@ -32,6 +33,12 @@ public class GameScreen implements Screen {
         return map;
     }
 
+    List<Bom> bomList;
+
+    public List<Bom> getBomList() {
+        return bomList;
+    }
+
     List<Grass> grassList;
     List<Wall> wallList;
 
@@ -39,6 +46,7 @@ public class GameScreen implements Screen {
         bomberman = new Bomberman();
         grassList = new ArrayList<>();
         wallList = new ArrayList<>();
+        bomList = new ArrayList<>();
         for(int i = 0; i < 13; i++) {
             for(int j = 0; j < 17; j++) {
                 if(map[i][j] == 0) {
@@ -61,11 +69,17 @@ public class GameScreen implements Screen {
         wallList.forEach(wall -> {
             wall.render();
         });
+        bomList.forEach(bom -> {
+            bom.render();
+        });
         bomberman.render();
     }
 
     @Override
     public void update(float deltaTime) {
         bomberman.update(deltaTime, this);
+        bomList.forEach(bom -> {
+            bom.update(deltaTime);
+        });
     }
 }
