@@ -180,7 +180,7 @@ public class Bomberman extends BaseObject{
                 if (Math.abs(getHitBoxX() - i * GlobalConstant.TILE_SIZE) < vel * deltaTime) {
                     setHitBoxX(i * GlobalConstant.TILE_SIZE);
                 } else if (getHitBoxX() > i * GlobalConstant.TILE_SIZE) {
-                    setHitBoxY(getHitBoxX() - vel * deltaTime);
+                    setHitBoxX(getHitBoxX() - vel * deltaTime);
                 } else if (getHitBoxX() < i * GlobalConstant.TILE_SIZE) {
                     setHitBoxX(getHitBoxX() + vel * deltaTime);
                 }
