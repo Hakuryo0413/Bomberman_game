@@ -20,15 +20,54 @@ public class Bom extends BaseObject {
         animation.play();
         Timeline tl = new Timeline(new KeyFrame(Duration.seconds(2), actionEvent -> {
             gameScreen.getBomList().remove(this);
+            int i = (int)this.x / GlobalConstant.TILE_SIZE;
+            int j = (int)this.y / GlobalConstant.TILE_SIZE;
+            int map[][] = gameScreen.getMap();
             gameScreen.getFireList().add(new Fire(Fire.FireType.CENTER, (int) this.x, (int) this.y, gameScreen));
-            gameScreen.getFireList().add(new Fire(Fire.FireType.VERTICAL, (int) this.x, (int) this.y - GlobalConstant.TILE_SIZE, gameScreen));
-            gameScreen.getFireList().add(new Fire(Fire.FireType.TOP, (int) this.x, (int) this.y - 2 * GlobalConstant.TILE_SIZE, gameScreen));
-            gameScreen.getFireList().add(new Fire(Fire.FireType.VERTICAL, (int) this.x, (int) this.y + GlobalConstant.TILE_SIZE, gameScreen));
-            gameScreen.getFireList().add(new Fire(Fire.FireType.BOTTOM, (int) this.x, (int) this.y + 2 * GlobalConstant.TILE_SIZE, gameScreen));
-            gameScreen.getFireList().add(new Fire(Fire.FireType.HORIZON, (int) this.x - GlobalConstant.TILE_SIZE, (int) this.y, gameScreen));
-            gameScreen.getFireList().add(new Fire(Fire.FireType.LEFT, (int) this.x - 2 * GlobalConstant.TILE_SIZE, (int) this.y, gameScreen));
-            gameScreen.getFireList().add(new Fire(Fire.FireType.HORIZON, (int) this.x + GlobalConstant.TILE_SIZE, (int) this.y, gameScreen));
-            gameScreen.getFireList().add(new Fire(Fire.FireType.RIGHT, (int) this.x + 2 * GlobalConstant.TILE_SIZE, (int) this.y, gameScreen));
+            boolean maxLength = true;
+            for(int t = 1; t < length; t++) {
+                if(map[j - t][i] ==  0) {
+                    gameScreen.getFireList().add(new Fire(Fire.FireType.VERTICAL, (int) this.x, (int) this.y - t * GlobalConstant.TILE_SIZE, gameScreen ));
+                }
+                else {maxLength = false;
+                    break;
+
+                }
+            }
+            if(maxLength && map[j - length][i] == 0) gameScreen.getFireList().add(new Fire(Fire.FireType.TOP, (int) this.x, (int) this.y - length * GlobalConstant.TILE_SIZE, gameScreen ));
+            maxLength = true;
+            for(int t = 1; t < length; t++) {
+                if(map[j + t][i] ==  0) {
+                    gameScreen.getFireList().add(new Fire(Fire.FireType.VERTICAL, (int) this.x, (int) this.y + t * GlobalConstant.TILE_SIZE, gameScreen ));
+                }
+                else {maxLength = false;
+                    break;
+
+                }
+            }
+            if(maxLength && map[j + length][i] == 0) gameScreen.getFireList().add(new Fire(Fire.FireType.BOTTOM, (int) this.x, (int) this.y + length * GlobalConstant.TILE_SIZE, gameScreen ));
+            maxLength = true;
+            for(int t = 1; t < length; t++) {
+                if(map[j][i - t] ==  0) {
+                    gameScreen.getFireList().add(new Fire(Fire.FireType.HORIZON, (int) this.x -  t * GlobalConstant.TILE_SIZE, (int) this.y , gameScreen ));
+                }
+                else {maxLength = false;
+                    break;
+
+                }
+            }
+            if(maxLength && map[j][i - length] == 0) gameScreen.getFireList().add(new Fire(Fire.FireType.LEFT, (int) this.x - length* GlobalConstant.TILE_SIZE, (int) this.y, gameScreen ));
+            maxLength = true;
+            for(int t = 1; t < length; t++) {
+                if(map[j][i + t] ==  0) {
+                    gameScreen.getFireList().add(new Fire(Fire.FireType.HORIZON, (int) this.x +  t * GlobalConstant.TILE_SIZE, (int) this.y , gameScreen ));
+                }
+                else {maxLength = false;
+                    break;
+
+                }
+            }
+            if(maxLength && map[j][i + length] == 0) gameScreen.getFireList().add(new Fire(Fire.FireType.RIGHT, (int) this.x + length* GlobalConstant.TILE_SIZE, (int) this.y, gameScreen ));
         }));
         tl.setCycleCount(1);
         tl.play();

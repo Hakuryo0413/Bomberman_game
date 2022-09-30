@@ -194,7 +194,7 @@ public class Bomberman extends BaseObject {
         }
         if (Input.getInput().contains("SPACE") && gameScreen.getBomList().size() <= 2) {
             Input.getInput().remove("SPACE");
-            gameScreen.getBomList().add(new Bom(i * GlobalConstant.TILE_SIZE, j * GlobalConstant.TILE_SIZE, 1, gameScreen));
+            gameScreen.getBomList().add(new Bom(i * GlobalConstant.TILE_SIZE, j * GlobalConstant.TILE_SIZE, 3, gameScreen));
         }
     }
 }
