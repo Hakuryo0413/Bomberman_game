@@ -21,6 +21,11 @@ public class Bom extends BaseObject{
         animation.play();
         Timeline tl = new Timeline(new KeyFrame(Duration.seconds(2), actionEvent -> {
             gameScreen.getBomList().remove(this);
+            gameScreen.getFireList().add(new Fire(Fire.FireType.CENTER, (int) this.x, (int) this. y, gameScreen));
+            gameScreen.getFireList().add(new Fire(Fire.FireType.TOP, (int) this.x, (int) this. y - GlobalConstant.TILE_SIZE, gameScreen));
+            gameScreen.getFireList().add(new Fire(Fire.FireType.BOTTOM, (int) this.x, (int) this. y + GlobalConstant.TILE_SIZE, gameScreen));
+            gameScreen.getFireList().add(new Fire(Fire.FireType.LEFT, (int) this.x - GlobalConstant.TILE_SIZE, (int) this. y, gameScreen));
+            gameScreen.getFireList().add(new Fire(Fire.FireType.RIGHT, (int) this.x + GlobalConstant.TILE_SIZE, (int) this. y, gameScreen));
         }));
         tl.setCycleCount(1);
         tl.play();

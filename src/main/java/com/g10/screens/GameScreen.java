@@ -1,10 +1,7 @@
 package com.g10.screens;
 
 import com.g10.constants.GlobalConstant;
-import com.g10.gameObject.Bom;
-import com.g10.gameObject.Bomberman;
-import com.g10.gameObject.Grass;
-import com.g10.gameObject.Wall;
+import com.g10.gameObject.*;
 import com.g10.sandbox.Sandbox;
 
 import java.util.ArrayList;
@@ -42,11 +39,18 @@ public class GameScreen implements Screen {
     List<Grass> grassList;
     List<Wall> wallList;
 
+    List<Fire> fireList;
+
+    public List<Fire> getFireList() {
+        return fireList;
+    }
+
     public GameScreen() {
         bomberman = new Bomberman();
         grassList = new ArrayList<>();
         wallList = new ArrayList<>();
         bomList = new ArrayList<>();
+        fireList = new ArrayList<>();
         for(int i = 0; i < 13; i++) {
             for(int j = 0; j < 17; j++) {
                 if(map[i][j] == 0) {
@@ -72,6 +76,9 @@ public class GameScreen implements Screen {
         bomList.forEach(bom -> {
             bom.render();
         });
+        fireList.forEach(fire -> {
+            fire.render();
+        });
         bomberman.render();
     }
 
@@ -80,6 +87,9 @@ public class GameScreen implements Screen {
         bomberman.update(deltaTime, this);
         bomList.forEach(bom -> {
             bom.update(deltaTime);
+        });
+        fireList.forEach(fire -> {
+            fire.update(deltaTime);
         });
     }
 }
