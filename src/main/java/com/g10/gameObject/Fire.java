@@ -28,13 +28,13 @@ public class Fire extends BaseObject {
         animation = new Animation(Duration.millis(600));
         animation.setCount(5);
         switch (fireType) {
-            case TOP -> animation.setStr("src/main/res/com/g10/assets/fire_top");
-            case BOTTOM -> animation.setStr("src/main/res/com/g10/assets/fire_bottom");
-            case LEFT -> animation.setStr("src/main/res/com/g10/assets/fire_left");
-            case RIGHT -> animation.setStr("src/main/res/com/g10/assets/fire_right");
-            case HORIZON -> animation.setStr("src/main/res/com/g10/assets/fire_horizon");
-            case VERTICAL -> animation.setStr("src/main/res/com/g10/assets/fire_vertical");
-            case CENTER -> animation.setStr("src/main/res/com/g10/assets/fire_center");
+            case TOP -> animation.setStr("assets/fire_top");
+            case BOTTOM -> animation.setStr("assets/fire_bottom");
+            case LEFT -> animation.setStr("assets/fire_left");
+            case RIGHT -> animation.setStr("assets/fire_right");
+            case HORIZON -> animation.setStr("assets/fire_horizon");
+            case VERTICAL -> animation.setStr("assets/fire_vertical");
+            case CENTER -> animation.setStr("assets/fire_center");
         }
         animation.play();
         Timeline tl = new Timeline(new KeyFrame(Duration.millis(600), actionEvent -> {

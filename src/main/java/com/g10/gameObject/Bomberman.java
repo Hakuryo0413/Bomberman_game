@@ -23,7 +23,7 @@ public class Bomberman extends BaseObject {
     boolean isAlive;
 
     public Bomberman() {
-        super(ImageManager.getImage("src/main/res/com/g10/assets/bomberman_down2.png"));
+        super(ImageManager.getImage("assets/bomberman_down2.png"));
         setHitBoxX(GlobalConstant.TILE_SIZE);
         setHitBoxY(0);
         this.width *= GlobalConstant.SCALE;
@@ -73,18 +73,18 @@ public class Bomberman extends BaseObject {
     }
 
     public void update(float deltaTime, GameScreen gameScreen) {
-        if(isAlive) {
+        if (isAlive) {
             boolean move = false;
             if (!Input.getInput().contains("UP") && !Input.getInput().contains("DOWN") || Input.getInput().contains("UP") && Input.getInput().contains("DOWN")) {
                 velY = 0;
             } else {
                 if (Input.getInput().contains("UP")) {
-                    animation.setStr("src/main/res/com/g10/assets/bomberman_top");
+                    animation.setStr("assets/bomberman_top");
                     move = true;
                     velY = -vel;
                 }
                 if (Input.getInput().contains("DOWN")) {
-                    animation.setStr("src/main/res/com/g10/assets/bomberman_down");
+                    animation.setStr("assets/bomberman_down");
                     move = true;
                     velY = vel;
                 }
@@ -93,12 +93,12 @@ public class Bomberman extends BaseObject {
                 velX = 0;
             } else {
                 if (Input.getInput().contains("LEFT")) {
-                    animation.setStr("src/main/res/com/g10/assets/bomberman_left");
+                    animation.setStr("assets/bomberman_left");
                     move = true;
                     velX = -vel;
                 }
                 if (Input.getInput().contains("RIGHT")) {
-                    animation.setStr("src/main/res/com/g10/assets/bomberman_right");
+                    animation.setStr("assets/bomberman_right");
                     move = true;
                     velX = vel;
                 }
@@ -221,7 +221,7 @@ public class Bomberman extends BaseObject {
                 Fire fire = gameScreen.getFireList().get(t);
                 if (fire.getX() / GlobalConstant.TILE_SIZE == i && fire.getY() / GlobalConstant.TILE_SIZE == j) {
                     animation = new Animation(Duration.millis(1200));
-                    animation.setStr("src/main/res/com/g10/assets/bomberman_death");
+                    animation.setStr("assets/bomberman_death");
                     animation.setCount(6);
                     animation.setCycleCount(1);
                     animation.play();
@@ -234,7 +234,7 @@ public class Bomberman extends BaseObject {
                 }
             }
         }
-        if(animation.getCurrentImage() != null) {
+        if (animation.getCurrentImage() != null) {
             image = animation.getCurrentImage();
         }
     }

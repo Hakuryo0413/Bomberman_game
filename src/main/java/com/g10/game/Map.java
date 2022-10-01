@@ -26,6 +26,7 @@ public class Map {
     public Map(Image image) {
         this.image = image;
     }
+
     public Map(String path, Image image) {
         loadMap(path);
         this.image = image;
@@ -92,7 +93,7 @@ public class Map {
 
     public void update() {
         map = new int[height][width];
-        for(int i = 0; i < height; i++) {
+        for (int i = 0; i < height; i++) {
             for (int j = 0; j < width; j++) {
                 map[i][j] = matrix[i][j];
             }
