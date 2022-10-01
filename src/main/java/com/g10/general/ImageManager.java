@@ -1,4 +1,4 @@
-package com.g10.img;
+package com.g10.general;
 
 import javafx.scene.image.Image;
 

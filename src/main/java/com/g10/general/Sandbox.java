@@ -1,8 +1,7 @@
-package com.g10.sandbox;
+package com.g10.general;
 
 import com.g10.constants.GlobalConstant;
 import com.g10.game.GameLoop;
-import com.g10.input.Input;
 import com.g10.screens.ScreenManager;
 import com.g10.screens.ScreenType;
 import javafx.scene.Group;

@@ -1,6 +1,6 @@
 package com.g10;
 
-import com.g10.sandbox.Sandbox;
+import com.g10.general.Sandbox;
 import javafx.application.Application;
 import javafx.stage.Stage;
 

@@ -1,6 +1,6 @@
-package com.g10.animation;
+package com.g10.game;
 
-import com.g10.img.ImageManager;
+import com.g10.general.ImageManager;
 import javafx.animation.Interpolator;
 import javafx.animation.Transition;
 import javafx.scene.image.Image;

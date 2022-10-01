@@ -1,4 +1,4 @@
-package com.g10.input;
+package com.g10.general;
 
 import javafx.scene.Scene;
 

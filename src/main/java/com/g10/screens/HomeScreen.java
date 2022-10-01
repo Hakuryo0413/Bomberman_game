@@ -1,8 +1,8 @@
 package com.g10.screens;
 
 import com.g10.constants.GlobalConstant;
-import com.g10.input.Input;
-import com.g10.sandbox.Sandbox;
+import com.g10.general.Input;
+import com.g10.general.Sandbox;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
