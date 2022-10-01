@@ -1,8 +1,11 @@
 package com.g10.gameObject;
 
-public class Fire extends UpdatableObject implements CanEvaporate{
+import java.util.List;
+
+public class Fire extends UpdatableObject implements CanEvaporate<Fire> {
+
     @Override
-    public void evaporate() {
+    public void evaporate(List<Fire> list) {
 
     }
 }
