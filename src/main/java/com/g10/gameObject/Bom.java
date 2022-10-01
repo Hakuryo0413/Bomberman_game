@@ -22,7 +22,7 @@ public class Bom extends BaseObject {
             gameScreen.getBomList().remove(this);
             int i = (int)this.x / GlobalConstant.TILE_SIZE;
             int j = (int)this.y / GlobalConstant.TILE_SIZE;
-            int map[][] = gameScreen.getMap();
+            int map[][] = gameScreen.getMap().getMap();
             gameScreen.getFireList().add(new Fire(Fire.FireType.CENTER, (int) this.x, (int) this.y, gameScreen));
             boolean maxLength = true;
             for(int t = 1; t < length; t++) {

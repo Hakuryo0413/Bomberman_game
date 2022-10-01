@@ -1,6 +1,5 @@
 package com.g10.gameObject;
 
-import com.g10.game.Camera;
 import com.g10.sandbox.Sandbox;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
@@ -78,11 +77,6 @@ public abstract class BaseObject {
     public void render() {
         GraphicsContext gc = Sandbox.getGc();
         gc.drawImage(this.image, this.x, this.y, this.width, this.height);
-    }
-
-    public void render(Camera camera) {
-        GraphicsContext gc = Sandbox.getGc();
-        gc.drawImage(this.image, this.x - camera.getX(), this.y - camera.getY(), this.width, this.height);
     }
 
     public void update(float deltaTime) {

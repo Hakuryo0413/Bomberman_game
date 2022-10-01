@@ -4,6 +4,7 @@ import com.g10.animation.Animation;
 import com.g10.constants.GlobalConstant;
 import com.g10.img.ImageManager;
 import com.g10.input.Input;
+import com.g10.sandbox.Sandbox;
 import com.g10.screens.GameScreen;
 import com.g10.screens.ScreenManager;
 import com.g10.screens.ScreenType;
@@ -62,8 +63,12 @@ public class Bomberman extends BaseObject {
     @Override
     public void render() {
         super.render();
-//        var gc = Sandbox.getGc();
+        var gc = Sandbox.getGc();
 //        gc.strokeRect(getHitBoxX(), getHitBoxY(), getHitBoxWidth(), getHitBoxHeight());
+//        gc.strokeRect((int)((getHitBoxX() + GlobalConstant.TILE_SIZE / 2) / GlobalConstant.TILE_SIZE) * GlobalConstant.TILE_SIZE,
+//                (int)((getHitBoxY() + GlobalConstant.TILE_SIZE / 2) / GlobalConstant.TILE_SIZE) * GlobalConstant.TILE_SIZE,
+//                GlobalConstant.TILE_SIZE,
+//                GlobalConstant.TILE_SIZE);
 
     }
 
@@ -103,7 +108,7 @@ public class Bomberman extends BaseObject {
             } else {
                 animation.pause();
             }
-            int[][] map = gameScreen.getMap();
+            int[][] map = gameScreen.getMap().getMap();
             int i = (int) (getHitBoxX() + getHitBoxWidth() / 2) / GlobalConstant.TILE_SIZE;
             int j = (int) (getHitBoxY() + getHitBoxHeight() / 2) / GlobalConstant.TILE_SIZE;
             if (velX > 0) {

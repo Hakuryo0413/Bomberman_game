@@ -1,38 +1,35 @@
 package com.g10.game;
 
-import java.awt.*;
-import java.awt.image.ImageObserver;
+import com.g10.constants.GlobalConstant;
+import com.g10.sandbox.Sandbox;
+import javafx.scene.canvas.GraphicsContext;
+import javafx.scene.image.Image;
+
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.Scanner;
-import java.awt.Image;
-import com.g10.constants.GlobalConstant;
-//import javafx.scene.image.Image;
-import java.awt.Graphics;
-import java.awt.image.BufferedImage;
-
 
 
 public class Map {
     private int width;
     private int height;
     private Image image;
-    private int[][] a;
+    private int[][] matrix;
 
-    public void render() {
+    private int[][] map;
 
-    }
-    public void render(String path, Image image){
-
-    }
-    public void render(String path,Image image,Graphics g){
-        Toolkit t=Toolkit.getDefaultToolkit();
-        image = t.getImage(path);
-        g.drawImage(image,0,0, width *GlobalConstant.TILE_SIZE,height *GlobalConstant.TILE_SIZE,null);
+    public void render(int x, int y) {
+        GraphicsContext gc = Sandbox.getGc();
+        gc.drawImage(this.image, x, y, width * GlobalConstant.TILE_SIZE, height * GlobalConstant.TILE_SIZE);
     }
 
-
-
+    public Map(Image image) {
+        this.image = image;
+    }
+    public Map(String path, Image image) {
+        loadMap(path);
+        this.image = image;
+    }
 
 
     public int getHeight() {
@@ -50,32 +47,55 @@ public class Map {
     public void setWidth(int width) {
         this.width = width;
     }
-    public void setImage(Image image){
-        this.image=image;
+
+    public void setImage(Image image) {
+        this.image = image;
     }
-    public Image getImage(){
+
+    public Image getImage() {
         return image;
     }
 
-    public void setArray(int[][] a) {
-        this.a = a;
+    public void setMatrix(int[][] matrix) {
+        this.matrix = matrix;
     }
 
-    public void LoadMap(String file) {
+    public int[][] getMatix() {
+        return matrix;
+    }
+
+    public int[][] getMap() {
+        return map;
+    }
+
+    public void setMap(int[][] map) {
+        this.map = map;
+    }
+
+    public void loadMap(String file) {
         try {
             File f = new File(file);
-            Scanner s1 = new Scanner(f);
-            width = s1.nextInt();
-            height = s1.nextInt();
-            a = new int[width][height];
-            for (int i = 0; i < width; i++) {
-                for (int j = 0; j < height; j++) {
-                    a[i][j] = s1.nextInt();
+            Scanner scanner = new Scanner(f);
+            height = scanner.nextInt();
+            width = scanner.nextInt();
+            matrix = new int[height][width];
+            for (int i = 0; i < height; i++) {
+                for (int j = 0; j < width; j++) {
+                    matrix[i][j] = scanner.nextInt();
                 }
             }
-            s1.close();
+            scanner.close();
         } catch (FileNotFoundException e) {
             throw new RuntimeException(e);
+        }
+    }
+
+    public void update() {
+        map = new int[height][width];
+        for(int i = 0; i < height; i++) {
+            for (int j = 0; j < width; j++) {
+                map[i][j] = matrix[i][j];
+            }
         }
     }
 }
