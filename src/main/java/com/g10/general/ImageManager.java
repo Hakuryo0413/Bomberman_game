@@ -7,7 +7,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class ImageManager {
-    private static Map<String, Image> map = new HashMap<String, Image>();
+    private static final Map<String, Image> map = new HashMap<String, Image>();
 
     public static Image getImage(String path) {
         if (map.get(path) != null) {

@@ -1,7 +1,7 @@
 package com.g10.screens;
 
 public interface Screen {
-    public void render();
+    void render();
 
-    public void update(float deltaTime);
+    void update(float deltaTime);
 }

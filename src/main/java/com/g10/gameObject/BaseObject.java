@@ -9,8 +9,8 @@ public class BaseObject {
     protected int height;
 
     public BaseObject(float x, float y) {
-        this.x=x;
-        this.y=y;
+        this.x = x;
+        this.y = y;
         this.width = GlobalConstant.TILE_SIZE; // man rang de push nhieu
         this.height = GlobalConstant.TILE_SIZE;
     }

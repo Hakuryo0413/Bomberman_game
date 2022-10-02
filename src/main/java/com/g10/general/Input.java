@@ -5,7 +5,7 @@ import javafx.scene.Scene;
 import java.util.ArrayList;
 
 public class Input {
-    private static ArrayList<String> input = new ArrayList<>();
+    private static final ArrayList<String> input = new ArrayList<>();
 
     public static ArrayList<String> getInput() {
         return input;

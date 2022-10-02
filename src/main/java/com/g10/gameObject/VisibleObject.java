@@ -10,7 +10,7 @@ public class VisibleObject extends BaseObject {
 
     public VisibleObject(Image image, float x, float y) {
         super(x, y, (int) image.getWidth(), (int) image.getHeight());
-        this.image=image;
+        this.image = image;
     }
 
     public VisibleObject(Image image, float x, float y, int width, int height) {
