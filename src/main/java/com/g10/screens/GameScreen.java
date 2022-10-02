@@ -1,27 +1,37 @@
 package com.g10.screens;
 
 import com.g10.constants.GlobalConstant;
-import com.g10.gameObject.Bomber;
+import com.g10.gameObject.*;
+import com.g10.general.ImageManager;
 import com.g10.general.Sandbox;
 import javafx.scene.canvas.GraphicsContext;
+
+import java.util.List;
 
 public class GameScreen implements Screen {
 
     Bomber bomber = new Bomber();
+    List<Wall> wallList;
+
+    List<Root> rootList;
+
+    List<Bom> bomList;
+    Portal portal;
+    Map map;
 
     public GameScreen() {
-
+        map = new Map("src/main/res/com/g10/asset/map/stage1.txt", ImageManager.getImage("asset/map/stage1.png"), wallList, rootList, portal);
     }
 
     @Override
     public void render() {
-        GraphicsContext gc = Sandbox.getGc();
-        gc.clearRect(0, 0, GlobalConstant.SCREEN_WIDTH, GlobalConstant.SCREEN_HEIGHT);
+        map.render();
         bomber.render();
     }
 
     @Override
     public void update(float deltaTime) {
-        bomber.update(deltaTime);
+        List<BaseObject> baseObjectList = null;
+        bomber.update(deltaTime, wallList, rootList, bomList);
     }
 }
