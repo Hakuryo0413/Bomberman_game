@@ -11,15 +11,15 @@ public class Item extends VisibleObject {
 
         switch (type) {
             case BOM_UP -> {
-                image = ImageManager.getImage("");
+                image = ImageManager.getImage("asset/bom_up.png");
                 break;
             }
             case FIRE_UP -> {
-                image = ImageManager.getImage("");
+                image = ImageManager.getImage("asset/fire_up.png");
                 break;
             }
             case SPEED_UP -> {
-                image = ImageManager.getImage("");
+                image = ImageManager.getImage("asset/speed_up.png");
                 break;
             }
         }
