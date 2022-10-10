@@ -4,7 +4,7 @@ import com.g10.game.Animation;
 import javafx.scene.image.Image;
 
 public class UpdatableObject extends VisibleObject {
-    protected Animation animation;
+    protected Animation animation = new Animation();
 
     public UpdatableObject(Image image, float x, float y) {
         super(image, x, y);
@@ -15,7 +15,7 @@ public class UpdatableObject extends VisibleObject {
     }
 
     public void update() {
-        if(animation.getCurrentImage() != null) {
+        if (animation.getCurrentImage() != null) {
             image = animation.getCurrentImage();
         }
 

@@ -1,7 +1,6 @@
 package com.g10.gameObject;
 
 import com.g10.constants.GlobalConstant;
-import com.g10.game.Animation;
 import com.g10.general.ImageManager;
 import com.g10.general.Input;
 import com.g10.general.Sandbox;
@@ -12,10 +11,27 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Bomber extends MovingObject {
+
+    private static final int MOVEMENT_COUNT = 3;
+    private static final int DURATION_MOVEMENT_ANIMATION = 400;
+    private static final int DEATH_COUNT = 6;
+    private static final int DURATION_DEATH_ANIMATION = 600;
+    private static final int DEFAULT_VEL = 200;
+
+    private boolean alive;
+
+    public boolean isAlive() {
+        return alive;
+    }
+
+    public void setAlive(boolean alive) {
+        this.alive = alive;
+    }
+
     public Bomber() {
         super(ImageManager.getImage("asset/bomber/bomberman_down2.png"), 2 * GlobalConstant.TILE_SIZE, GlobalConstant.TILE_SIZE, GlobalConstant.TILE_SIZE, GlobalConstant.TILE_SIZE);
-        animation = new Animation(Duration.millis(500));
-        vel = 200;
+        vel = DEFAULT_VEL;
+        alive = true;
     }
 
     @Override
@@ -25,51 +41,70 @@ public class Bomber extends MovingObject {
     }
 
     /**
-     * Update phần di chuyển
-     * @param deltaTime
-     * @param wallList
-     * @param rootList
-     * @param bomList
+     * Update phần di chuyển.
      */
     public void update(float deltaTime, List<Wall> wallList, List<Root> rootList, List<Bom> bomList) {
-        if(Input.getInput().contains("LEFT") && Input.getInput().contains("RIGHT") || !Input.getInput().contains("LEFT") && !Input.getInput().contains("RIGHT"))
-        {
+        if (Input.getInput().contains("LEFT") && Input.getInput().contains("RIGHT") || !Input.getInput().contains("LEFT") && !Input.getInput().contains("RIGHT")) {
             velX = 0;
-        }
-        else if(Input.getInput().contains("LEFT")) {
+        } else if (Input.getInput().contains("LEFT")) {
             velX = -vel;
             animation.setStr("asset/bomber/bomberman_left");
-            animation.setCount(3);
+            animation.setDuration(Duration.millis(DURATION_MOVEMENT_ANIMATION));
+            animation.setCount(MOVEMENT_COUNT);
             animation.play();
-        }
-        else {
+        } else {
             velX = vel;
             animation.setStr("asset/bomber/bomberman_right");
-            animation.setCount(3);
+            animation.setDuration(Duration.millis(DURATION_MOVEMENT_ANIMATION));
+            animation.setCount(MOVEMENT_COUNT);
             animation.play();
         }
-        if(Input.getInput().contains("UP") && Input.getInput().contains("DOWN") || !Input.getInput().contains("UP") && !Input.getInput().contains("DOWN"))
-        {
+        if (Input.getInput().contains("UP") && Input.getInput().contains("DOWN") || !Input.getInput().contains("UP") && !Input.getInput().contains("DOWN")) {
             velY = 0;
-        }
-        else if(Input.getInput().contains("UP")) {
+        } else if (Input.getInput().contains("UP")) {
             velY = -vel;
             animation.setStr("asset/bomber/bomberman_top");
-            animation.setCount(3);
+            animation.setDuration(Duration.millis(DURATION_MOVEMENT_ANIMATION));
+            animation.setCount(MOVEMENT_COUNT);
             animation.play();
-        }
-        else {
+        } else {
             velY = vel;
             animation.setStr("asset/bomber/bomberman_down");
-            animation.setCount(3);
+            animation.setDuration(Duration.millis(DURATION_MOVEMENT_ANIMATION));
+            animation.setCount(MOVEMENT_COUNT);
             animation.play();
         }
-        if(velX == 0 && velY == 0) {
+        if (velX == 0 && velY == 0) {
             animation.pause();
         }
         List<BaseObject> obstructingObjectList = new ArrayList<>();
 
 
         super.update(deltaTime, obstructingObjectList);
+    }
+
+    /**
+     * Update phần đặt bom.
+     */
+    public void update(List<Bom> bomList, List<Fire> fireList, List<DestructionZone> destructionZoneList, List<Wall> wallList, List<Root> rootList) {
+        boolean canPlaceBomb = true;
+        //TODO: check đặt bom
+        int[][] map = null;
+        if (canPlaceBomb) {
+            bomList.add(new Bom(x, y, null, bomList, fireList, destructionZoneList));
+        }
+    }
+
+    /**
+     * Update phần chết.
+     */
+    public void update(List<Fire> fireList, List<Enemy> enemies) {
+        if (false) {
+            alive = false;
+            animation.setDuration(Duration.millis(DURATION_DEATH_ANIMATION));
+            animation.setCount(DEATH_COUNT);
+            animation.setStr("asset/bomber/bomberman_death");
+            animation.play();
+        }
     }
 }

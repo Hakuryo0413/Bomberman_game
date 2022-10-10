@@ -1,10 +1,7 @@
 package com.g10.screens;
 
-import com.g10.constants.GlobalConstant;
 import com.g10.gameObject.*;
 import com.g10.general.ImageManager;
-import com.g10.general.Sandbox;
-import javafx.scene.canvas.GraphicsContext;
 
 import java.util.List;
 
@@ -31,7 +28,12 @@ public class GameScreen implements Screen {
 
     @Override
     public void update(float deltaTime) {
-        List<BaseObject> baseObjectList = null;
-        bomber.update(deltaTime, wallList, rootList, bomList);
+        if (bomber.isAlive()) {
+            bomber.update(deltaTime, wallList, rootList, bomList); //update movement
+            //update plant bomb
+            //update death
+        } else {
+            bomber.update();
+        }
     }
 }

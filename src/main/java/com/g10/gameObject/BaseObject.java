@@ -11,7 +11,7 @@ public class BaseObject {
     public BaseObject(float x, float y) {
         this.x = x;
         this.y = y;
-        this.width = GlobalConstant.TILE_SIZE; // man rang de push nhieu
+        this.width = GlobalConstant.TILE_SIZE;
         this.height = GlobalConstant.TILE_SIZE;
     }
 
