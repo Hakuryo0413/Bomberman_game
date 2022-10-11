@@ -43,22 +43,11 @@ public class MovingObject extends UpdatableObject {
                 {1, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 1},
                 {1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1},
                 {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1}
-        };//TODO:này phải truyền vào
-        if (velX > 0) {
-            if (x + velX * deltaTime < i * GlobalConstant.TILE_SIZE) {
-                x = x + velX * deltaTime;
-                //y =j*GlobalConstant.TILE_SIZE);
-                if (Math.abs(y - j * GlobalConstant.TILE_SIZE) < vel * deltaTime) {
-                    y = j * GlobalConstant.TILE_SIZE;
-                } else if (y > j * GlobalConstant.TILE_SIZE) {
-                    y = y - vel * deltaTime;
-                } else if (y < j * GlobalConstant.TILE_SIZE) {
-                    y = y + vel * deltaTime;
-                }
-            } else if (x + velX * deltaTime > i * GlobalConstant.TILE_SIZE && map[j][i + 1] == 0) {
+        };//TODO: chỗ này phải được tạo thành từ obstructingObj
+        if ((velX > 0) && (x + velX * deltaTime < i * GlobalConstant.TILE_SIZE || x + velX * deltaTime > i * GlobalConstant.TILE_SIZE && map[j][i + 1] == 0)
+        || ((velX < 0) && (x + velX * deltaTime > i * GlobalConstant.TILE_SIZE || x + velX * deltaTime < i * GlobalConstant.TILE_SIZE && map[j][i - 1] == 0))) {
 
                 x = x + velX * deltaTime;
-                //y =j*GlobalConstant.TILE_SIZE);
                 if (Math.abs(y - j * GlobalConstant.TILE_SIZE) < vel * deltaTime) {
                     y = j * GlobalConstant.TILE_SIZE;
                 } else if (y > j * GlobalConstant.TILE_SIZE) {
@@ -66,35 +55,11 @@ public class MovingObject extends UpdatableObject {
                 } else if (y < j * GlobalConstant.TILE_SIZE) {
                     y = y + vel * deltaTime;
                 }
-            }
+
         }
-        if (velX < 0) {
-            if (x + velX * deltaTime > i * GlobalConstant.TILE_SIZE) {
-                x = x + velX * deltaTime;
-//                y =j*GlobalConstant.TILE_SIZE);
-                if (Math.abs(y - j * GlobalConstant.TILE_SIZE) < vel * deltaTime) {
-                    y = j * GlobalConstant.TILE_SIZE;
-                } else if (y > j * GlobalConstant.TILE_SIZE) {
-                    y = y - vel * deltaTime;
-                } else if (y < j * GlobalConstant.TILE_SIZE) {
-                    y = y + vel * deltaTime;
-                }
-            } else if (x + velX * deltaTime < i * GlobalConstant.TILE_SIZE && map[j][i - 1] == 0) {
-                x = x + velX * deltaTime;
-//                y =j*GlobalConstant.TILE_SIZE);
-                if (Math.abs(y - j * GlobalConstant.TILE_SIZE) < vel * deltaTime) {
-                    y = j * GlobalConstant.TILE_SIZE;
-                } else if (y > j * GlobalConstant.TILE_SIZE) {
-                    y = y - vel * deltaTime;
-                } else if (y < j * GlobalConstant.TILE_SIZE) {
-                    y = y + vel * deltaTime;
-                }
-            }
-        }
-        if (velY > 0) {
-            if (y + velY * deltaTime < j * GlobalConstant.TILE_SIZE) {
+        if ((velY > 0) && (y + velY * deltaTime < j * GlobalConstant.TILE_SIZE || y + velY * deltaTime > j * GlobalConstant.TILE_SIZE && map[j + 1][i] == 0)
+        || (velY < 0) && (y + velY * deltaTime > j * GlobalConstant.TILE_SIZE || y + velY * deltaTime < j * GlobalConstant.TILE_SIZE && map[j - 1][i] == 0)) {
                 y = y + velY * deltaTime;
-//                x =i*GlobalConstant.TILE_SIZE);
                 if (Math.abs(x - i * GlobalConstant.TILE_SIZE) < vel * deltaTime) {
                     x = i * GlobalConstant.TILE_SIZE;
                 } else if (x > i * GlobalConstant.TILE_SIZE) {
@@ -102,40 +67,6 @@ public class MovingObject extends UpdatableObject {
                 } else if (x < i * GlobalConstant.TILE_SIZE) {
                     x = x + vel * deltaTime;
                 }
-            } else if (y + velY * deltaTime > j * GlobalConstant.TILE_SIZE && map[j + 1][i] == 0) {
-                y = y + velY * deltaTime;
-                //x =i *GlobalConstant.TILE_SIZE);
-                if (Math.abs(x - i * GlobalConstant.TILE_SIZE) < vel * deltaTime) {
-                    x = i * GlobalConstant.TILE_SIZE;
-                } else if (x > i * GlobalConstant.TILE_SIZE) {
-                    x = x - vel * deltaTime;
-                } else if (x < i * GlobalConstant.TILE_SIZE) {
-                    x = x + vel * deltaTime;
-                }
-            }
-        }
-        if (velY < 0) {
-            if (y + velY * deltaTime > j * GlobalConstant.TILE_SIZE) {
-                y = y + velY * deltaTime;
-                //x =i*GlobalConstant.TILE_SIZE);
-                if (Math.abs(x - i * GlobalConstant.TILE_SIZE) < vel * deltaTime) {
-                    x = i * GlobalConstant.TILE_SIZE;
-                } else if (x > i * GlobalConstant.TILE_SIZE) {
-                    x = x - vel * deltaTime;
-                } else if (x < i * GlobalConstant.TILE_SIZE) {
-                    x = x + vel * deltaTime;
-                }
-            } else if (y + velY * deltaTime < j * GlobalConstant.TILE_SIZE && map[j - 1][i] == 0) {
-                y = y + velY * deltaTime;
-                //x =i *GlobalConstant.TILE_SIZE);
-                if (Math.abs(x - i * GlobalConstant.TILE_SIZE) < vel * deltaTime) {
-                    x = i * GlobalConstant.TILE_SIZE;
-                } else if (x > i * GlobalConstant.TILE_SIZE) {
-                    x = x - vel * deltaTime;
-                } else if (x < i * GlobalConstant.TILE_SIZE) {
-                    x = x + vel * deltaTime;
-                }
-            }
         }
     }
 }

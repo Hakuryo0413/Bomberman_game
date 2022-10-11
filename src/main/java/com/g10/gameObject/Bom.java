@@ -9,13 +9,12 @@ import java.util.List;
 
 public class Bom extends UpdatableObject {
 
-    public Bom(float x, float y, int[][] map, List<Bom> bomList, List<Fire> fireList, List<DestructionZone> destructionZoneList) {
+    public Bom(float x, float y, int length, List<Root> rootList, List<Wall> wallList, List<Bom> bomList, List<Fire> fireList) {
         super(null, x, y);
         animation = new Animation(Duration.millis(400), "bom", 3);
         Timeline tl = new Timeline(new KeyFrame(Duration.seconds(1.5), actionEvent -> {
             bomList.remove(this);
-            //createFire
-            //createDeZone
+            //TODO: create fire
         }));
     }
 }

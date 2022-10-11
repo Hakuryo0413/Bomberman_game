@@ -17,8 +17,12 @@ public class Bomber extends MovingObject {
     private static final int DEATH_COUNT = 6;
     private static final int DURATION_DEATH_ANIMATION = 600;
     private static final int DEFAULT_VEL = 200;
+    private static final int DEFAULT_BOMB_CAN_BE_PLACE = 1;
+    private static final int DEFAULT_BOMB_LENGTH = 1;
 
     private boolean alive;
+    private int bomb_can_place;
+    private int bomb_length;
 
     public boolean isAlive() {
         return alive;
@@ -32,6 +36,8 @@ public class Bomber extends MovingObject {
         super(ImageManager.getImage("asset/bomber/bomberman_down2.png"), 2 * GlobalConstant.TILE_SIZE, GlobalConstant.TILE_SIZE, GlobalConstant.TILE_SIZE, GlobalConstant.TILE_SIZE);
         vel = DEFAULT_VEL;
         alive = true;
+        bomb_can_place = DEFAULT_BOMB_CAN_BE_PLACE;
+        bomb_length = DEFAULT_BOMB_LENGTH;
     }
 
     @Override
@@ -86,12 +92,12 @@ public class Bomber extends MovingObject {
     /**
      * Update phần đặt bom.
      */
-    public void update(List<Bom> bomList, List<Fire> fireList, List<DestructionZone> destructionZoneList, List<Wall> wallList, List<Root> rootList) {
+    public void update(List<Bom> bomList, List<Fire> fireList, List<Wall> wallList, List<Root> rootList) {
         boolean canPlaceBomb = true;
-        //TODO: check đặt bom
-        int[][] map = null;
-        if (canPlaceBomb) {
-            bomList.add(new Bom(x, y, null, bomList, fireList, destructionZoneList));
+        if(bomList.size() > bomb_can_place) canPlaceBomb = false;
+        if (canPlaceBomb && Input.getInput().contains("SPACE")) {
+            Input.getInput().remove("SPACE");
+            System.out.println("Bomb has been planted!");
         }
     }
 
