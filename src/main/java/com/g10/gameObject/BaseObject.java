@@ -53,4 +53,13 @@ public class BaseObject {
     public void setHeight(int height) {
         this.height = height;
     }
+
+    public static boolean checkCollision(BaseObject o1, BaseObject o2) {
+        int i1 = (int) ((o1.x + o1.width/2) / GlobalConstant.TILE_SIZE);
+        int i2 = (int) ((o2.x + o2.width/2) / GlobalConstant.TILE_SIZE);
+        int j1 = (int) ((o1.y + o1.height/2) / GlobalConstant.TILE_SIZE);
+        int j2 = (int) ((o2.y + o2.height/2) / GlobalConstant.TILE_SIZE);
+        if(i1 == i2 && j1 == j2) return true;
+        else return  false;
+    };
 }
