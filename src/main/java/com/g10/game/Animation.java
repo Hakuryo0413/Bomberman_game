@@ -55,5 +55,6 @@ public class Animation extends Transition {
     protected void interpolate(double v) {
         final int index = Math.min((int) Math.floor(count * v), count - 1);
         currentImage = ImageManager.getImage(str + (index + 1) + ".png");
+        System.out.println(str + (index + 1) + ".png");
     }
 }
