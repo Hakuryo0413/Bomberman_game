@@ -31,6 +31,8 @@ public class GameScreen implements Screen {
     @Override
     public void render() {
         map.render();
+//        wallList.forEach(Wall::render);
+        rootList.forEach(VisibleObject::render);
         bomber.render();
     }
 

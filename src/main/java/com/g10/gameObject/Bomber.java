@@ -84,8 +84,9 @@ public class Bomber extends MovingObject {
             animation.pause();
         }
         List<BaseObject> obstructingObjectList = new ArrayList<>();
-
-
+        obstructingObjectList.addAll(wallList);
+        obstructingObjectList.addAll(rootList);
+        obstructingObjectList.addAll(bomList);
         super.update(deltaTime, obstructingObjectList);
     }
 

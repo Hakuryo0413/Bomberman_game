@@ -29,21 +29,10 @@ public class MovingObject extends UpdatableObject {
     private void move(float deltaTime, List<BaseObject> obstructingObjectList) {
         int i = (int) ((x + width / 2) / GlobalConstant.TILE_SIZE);
         int j = (int) ((y + height / 2) / GlobalConstant.TILE_SIZE);
-        int[][] map = new int[][]{
-                {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
-                {1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1},
-                {1, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 1},
-                {1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1},
-                {1, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 1},
-                {1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1},
-                {1, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 1},
-                {1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1},
-                {1, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 1},
-                {1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1},
-                {1, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 1},
-                {1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1},
-                {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1}
-        };//TODO: chỗ này phải được tạo thành từ obstructingObj
+        int[][] map = new int[1000][1000];
+        for(BaseObject object : obstructingObjectList) {
+            map[(int) ((object.y + object.height / 2)/GlobalConstant.TILE_SIZE)][(int) ((object.x + object.width/2)/GlobalConstant.TILE_SIZE)] = 1;
+        }
         if ((velX > 0) && (x + velX * deltaTime < i * GlobalConstant.TILE_SIZE || x + velX * deltaTime > i * GlobalConstant.TILE_SIZE && map[j][i + 1] == 0)
         || ((velX < 0) && (x + velX * deltaTime > i * GlobalConstant.TILE_SIZE || x + velX * deltaTime < i * GlobalConstant.TILE_SIZE && map[j][i - 1] == 0))) {
 

@@ -6,6 +6,7 @@ import javafx.scene.image.Image;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
@@ -14,7 +15,6 @@ public class Map extends VisibleObject {
     private int a[][];
     public Map(String path, Image image) {
         super(image, 0, 0);
-        int[][] a;
         File file = new File(path);
         try {
             Scanner sc = new Scanner(file);
@@ -52,11 +52,31 @@ public class Map extends VisibleObject {
     }
 
     public List<Wall> createWall() {
-        return null;
+        List<Wall> wallList = new ArrayList<>();
+        for (int i = 0; i < height; i++) {
+            for (int j = 0; j < width; j++) {
+                if(a[i][j] == 1) {
+                    wallList.add(new Wall(j * GlobalConstant.TILE_SIZE, i * GlobalConstant.TILE_SIZE));
+//                    System.out.println(i + " " +  j);
+                }
+            }
+        }
+        return wallList;
     }
 
     public List<Root> createRoot() {
-        return null;
+        List<Root> rootList = new ArrayList<>();
+        for (int i = 0; i < height; i++) {
+            for (int j = 0; j < width; j++) {
+                if(a[i][j] != 1 && !(i == 1 && j == 2) && !(i == 1 && j == 3) && !(i == 2 && j == 2)) {
+                    int rand = (int) (Math.random() * 100 % 3);
+                    if(rand == 0) {
+                        rootList.add(new Root(j * GlobalConstant.TILE_SIZE, i * GlobalConstant.TILE_SIZE));
+                    }
+                }
+            }
+        }
+        return rootList;
     }
 
     public Portal createPortal() {
