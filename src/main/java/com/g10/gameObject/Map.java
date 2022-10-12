@@ -13,6 +13,7 @@ import java.util.Scanner;
 public class Map extends VisibleObject {
 
     private int a[][];
+
     public Map(String path, Image image) {
         super(image, 0, 0);
         File file = new File(path);
@@ -55,7 +56,7 @@ public class Map extends VisibleObject {
         List<Wall> wallList = new ArrayList<>();
         for (int i = 0; i < height; i++) {
             for (int j = 0; j < width; j++) {
-                if(a[i][j] == 1) {
+                if (a[i][j] == 1) {
                     wallList.add(new Wall(j * GlobalConstant.TILE_SIZE, i * GlobalConstant.TILE_SIZE));
 //                    System.out.println(i + " " +  j);
                 }
@@ -68,9 +69,9 @@ public class Map extends VisibleObject {
         List<Root> rootList = new ArrayList<>();
         for (int i = 0; i < height; i++) {
             for (int j = 0; j < width; j++) {
-                if(a[i][j] != 1 && !(i == 1 && j == 2) && !(i == 1 && j == 3) && !(i == 2 && j == 2)) {
+                if (a[i][j] != 1 && !(i == 1 && j == 2) && !(i == 1 && j == 3) && !(i == 2 && j == 2)) {
                     int rand = (int) (Math.random() * 100 % 3);
-                    if(rand == 0) {
+                    if (rand == 0) {
                         rootList.add(new Root(j * GlobalConstant.TILE_SIZE, i * GlobalConstant.TILE_SIZE));
                     }
                 }
@@ -83,7 +84,7 @@ public class Map extends VisibleObject {
         return null;
     }
 
-    public List<Item> createItem(){
+    public List<Item> createItem() {
         List<Item> itemList = new ArrayList<>();
         return itemList;
     }

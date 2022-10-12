@@ -42,7 +42,7 @@ public class Bomber extends MovingObject {
         vel = DEFAULT_VEL;
         alive = true;
         bomb_can_place = DEFAULT_BOMB_CAN_BE_PLACE;
-        bomb_length = 2;
+        bomb_length = DEFAULT_BOMB_LENGTH;
     }
 
     @Override
@@ -100,13 +100,13 @@ public class Bomber extends MovingObject {
      */
     public void update(List<Bom> bomList, List<Fire> fireList, List<Wall> wallList, List<Root> rootList) {
         boolean canPlaceBomb = true;
-        if(bomList.size() > bomb_can_place) canPlaceBomb = false;
-        if (canPlaceBomb && Input.getInput().contains("SPACE")) {
+        if (bomList.size() > bomb_can_place) canPlaceBomb = false;
+        if (canPlaceBomb && Input.getInput().contains("SPACE") && bomList.size() < bomb_can_place) {
             Input.getInput().remove("SPACE");
-            int i = (int) ((x + width/2)/GlobalConstant.TILE_SIZE);
-            int j = (int) ((y + height/2)/GlobalConstant.TILE_SIZE);
+            int i = (int) ((x + width / 2) / GlobalConstant.TILE_SIZE);
+            int j = (int) ((y + height / 2) / GlobalConstant.TILE_SIZE);
 
-            bomList.add(new Bom(i*GlobalConstant.TILE_SIZE,j*GlobalConstant.TILE_SIZE,bomb_length,rootList,wallList,bomList,fireList));
+            bomList.add(new Bom(i * GlobalConstant.TILE_SIZE, j * GlobalConstant.TILE_SIZE, bomb_length, rootList, wallList, bomList, fireList));
         }
     }
 
@@ -115,8 +115,8 @@ public class Bomber extends MovingObject {
      */
     public void update(List<Fire> fireList, List<Enemy> enemies) {
         boolean check = false;
-        for(int i = 0 ;i < fireList.size();i++){
-            if(BaseObject.checkCollision(this,fireList.get(i))){
+        for (int i = 0; i < fireList.size(); i++) {
+            if (BaseObject.checkCollision(this, fireList.get(i))) {
                 check = true;
             }
         }

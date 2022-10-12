@@ -8,7 +8,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-
 public class GameScreen implements Screen {
 
     Bomber bomber;
@@ -32,10 +31,9 @@ public class GameScreen implements Screen {
         bomber = new Bomber();
         fireList = new ArrayList<>();
         itemList = new ArrayList<>();
-        itemList.add(new Item(ItemType.BOM_UP,2*GlobalConstant.TILE_SIZE,2*GlobalConstant.TILE_SIZE));
-        //itemList.add(new Item(ItemType.FIRE_UP,5*GlobalConstant.TILE_SIZE,6*GlobalConstant.TILE_SIZE));
-        //itemList.add(new Item(ItemType.SPEED_UP,5*GlobalConstant.TILE_SIZE,7*GlobalConstant.TILE_SIZE));
-
+        itemList.add(new Item(ItemType.BOM_UP, 2 * GlobalConstant.TILE_SIZE, 2 * GlobalConstant.TILE_SIZE));
+        itemList.add(new Item(ItemType.FIRE_UP, 4 * GlobalConstant.TILE_SIZE, 2 * GlobalConstant.TILE_SIZE));
+        itemList.add(new Item(ItemType.SPEED_UP, 6 * GlobalConstant.TILE_SIZE, 2 * GlobalConstant.TILE_SIZE));
 
 
     }
@@ -46,8 +44,8 @@ public class GameScreen implements Screen {
 //        wallList.forEach(Wall::render);
         itemList.forEach(VisibleObject::render);
         rootList.forEach(VisibleObject::render);
-        bomList.forEach(UpdatableObject:: render);
-        fireList.forEach(UpdatableObject:: render);
+        bomList.forEach(UpdatableObject::render);
+        fireList.forEach(UpdatableObject::render);
 
         bomber.render();
 
@@ -60,7 +58,7 @@ public class GameScreen implements Screen {
         if (bomber.isAlive()) {
             bomber.update(deltaTime, wallList, rootList, bomList); //update movement
             bomber.update(bomList, fireList, wallList, rootList);
-            bomber.update(fireList,null);
+            bomber.update(fireList, null);
             //update plant bomb
             //update death
         } else {
@@ -69,8 +67,8 @@ public class GameScreen implements Screen {
 
         bomList.forEach(UpdatableObject::update);
         fireList.forEach(UpdatableObject::update);
-        itemList.forEach(UpdatableObject:: update);
-        rootList.forEach(UpdatableObject:: update);
+        itemList.forEach(UpdatableObject::update);
+        rootList.forEach(UpdatableObject::update);
 
     }
 }
