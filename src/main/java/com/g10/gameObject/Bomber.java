@@ -24,18 +24,11 @@ public class Bomber extends MovingObject {
     private static final int DEFAULT_VEL = 200;
     private static final int DEFAULT_BOMB_CAN_BE_PLACE = 1;
     private static final int DEFAULT_BOMB_LENGTH = 1;
+    private static final int DEFAULT_SPEED_UP = 60;
 
     private boolean alive;
     private int bomb_can_place;
     private int bomb_length;
-
-    public boolean isAlive() {
-        return alive;
-    }
-
-    public void setAlive(boolean alive) {
-        this.alive = alive;
-    }
 
     public Bomber() {
         super(ImageManager.getImage("asset/bomber/bomberman_down2.png"), 2 * GlobalConstant.TILE_SIZE, GlobalConstant.TILE_SIZE, GlobalConstant.TILE_SIZE, GlobalConstant.TILE_SIZE);
@@ -43,6 +36,14 @@ public class Bomber extends MovingObject {
         alive = true;
         bomb_can_place = DEFAULT_BOMB_CAN_BE_PLACE;
         bomb_length = DEFAULT_BOMB_LENGTH;
+    }
+
+    public boolean isAlive() {
+        return alive;
+    }
+
+    public void setAlive(boolean alive) {
+        this.alive = alive;
     }
 
     @Override
@@ -103,8 +104,8 @@ public class Bomber extends MovingObject {
         int i = (int) ((x + width / 2) / GlobalConstant.TILE_SIZE);
         int j = (int) ((y + height / 2) / GlobalConstant.TILE_SIZE);
         if (bomList.size() > bomb_can_place) canPlaceBomb = false;
-        for(Bom bom : bomList) {
-            if(BaseObject.checkCollision(bom, i, j)) {
+        for (Bom bom : bomList) {
+            if (BaseObject.checkCollision(bom, i, j)) {
                 canPlaceBomb = false;
             }
         }
@@ -125,8 +126,8 @@ public class Bomber extends MovingObject {
                 check = true;
             }
         }
-        for(Enemy enemy : enemies) {
-            if(BaseObject.checkCollision(enemy, this)) {
+        for (Enemy enemy : enemies) {
+            if (BaseObject.checkCollision(enemy, this)) {
                 check = true;
             }
         }
@@ -146,15 +147,31 @@ public class Bomber extends MovingObject {
             animation.setCycleCount(1);
             animation.play();
         }
-
     }
+
+
     /**
      * Update phần ăn item
      */
+
     public void update(List<Item> itemList) {
         //TODO:
         //ở Item viết thêm thuộc tính cài getter để còn biết là va chạm với item gì
         //duyệt hết item check va chạm với mỗi va chạm thì thay đổi thuộc tính của bomber vả remove nó ra khỏi itemlist
-        //nhớ gọi hàm update này tại gameScreen với
+        for (int i = 0; i < itemList.size(); i++) {
+
+            if (BaseObject.checkCollision(this, itemList.get(i))) {
+                if (itemList.get(i).getItem().equals(ItemType.BOM_UP)) {
+                    bomb_can_place++;
+                } else if (itemList.get(i).getItem() == ItemType.FIRE_UP) {
+                    bomb_length++;
+                } else if (itemList.get(i).getItem() == ItemType.SPEED_UP) {
+                    vel += DEFAULT_SPEED_UP;
+                }
+                itemList.remove(itemList.get(i));
+            }
+        }
+
     }
 }
+

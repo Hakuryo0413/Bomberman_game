@@ -59,9 +59,11 @@ public class GameScreen implements Screen {
     public void update(float deltaTime) {
 
         if (bomber.isAlive()) {
+            bomber.update(itemList);
             bomber.update(deltaTime, wallList, rootList, bomList); //update movement
             bomber.update(bomList, fireList, wallList, rootList);
             bomber.update(fireList, enemyList);
+
             //update plant bomb
             //update death
         } else {
