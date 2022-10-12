@@ -6,6 +6,8 @@ import com.g10.general.ImageManager;
 import java.util.ArrayList;
 import java.util.List;
 
+import static com.g10.gameObject.FireType.TOP;
+
 public class GameScreen implements Screen {
 
     Bomber bomber;
@@ -24,8 +26,10 @@ public class GameScreen implements Screen {
         itemList = map.createItem();
         rootList = map.createRoot();
         bomList = new ArrayList<>();
+
         bomber = new Bomber();
         fireList = new ArrayList<>();
+        fireList.add(new Fire(TOP,100,100, rootList, wallList,bomList,fireList));
     }
 
     @Override
