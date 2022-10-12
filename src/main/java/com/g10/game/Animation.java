@@ -6,7 +6,7 @@ import javafx.animation.Transition;
 import javafx.scene.image.Image;
 import javafx.util.Duration;
 
-public class Animation extends Transition {
+public class Animation extends Transition    {
     private static final int DEFALUT_DURATION = 500;
 
     private Image currentImage;
@@ -55,6 +55,6 @@ public class Animation extends Transition {
     protected void interpolate(double v) {
         final int index = Math.min((int) Math.floor(count * v), count - 1);
         currentImage = ImageManager.getImage(str + (index + 1) + ".png");
-       // System.out.println(str + (index + 1) + ".png");
+        System.out.println(str + (index + 1) + ".png");
     }
 }

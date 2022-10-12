@@ -1,9 +1,14 @@
 package com.g10.gameObject;
 
 import com.g10.constants.GlobalConstant;
+import com.g10.game.Animation;
 import com.g10.general.ImageManager;
 import com.g10.general.Input;
 import com.g10.general.Sandbox;
+import com.g10.screens.ScreenManager;
+import com.g10.screens.ScreenType;
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.util.Duration;
 
@@ -116,12 +121,18 @@ public class Bomber extends MovingObject {
             }
         }
         if (check) {
-
             alive = false;
-
-            animation.setDuration(Duration.millis(DURATION_DEATH_ANIMATION));
-            animation.setCount(DEATH_COUNT);
-            animation.setStr("asset/bomber/bomberman_death");
+            Timeline tl = new Timeline(new KeyFrame(Duration.millis(3000), actionEvent -> {
+                ScreenManager.switchScreen(ScreenType.HOME_SCREEN);
+            }));
+            tl.setCycleCount(1);
+            tl.play();
+//            animation.setDuration(Duration.millis(DURATION_DEATH_ANIMATION));
+//            animation.setCount(DEATH_COUNT);
+//            animation.setStr("asset/bomber/bomberman_death");
+//            animation.setCycleCount(1);
+//            animation.play();
+            animation = new Animation(Duration.millis(1200), "asset/bomber/bomberman_death", 6);
             animation.setCycleCount(1);
             animation.play();
         }

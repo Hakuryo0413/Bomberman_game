@@ -68,6 +68,7 @@ public class Fire extends UpdatableObject {
         }
             Timeline tl = new Timeline(new KeyFrame(Duration.millis(DURATION_FIRE_REMOVE_ANIMATION), actionEvent -> {
                 fireList.remove(this);
+                animation.stop();
             }));
             tl.setCycleCount(1);
             tl.play();

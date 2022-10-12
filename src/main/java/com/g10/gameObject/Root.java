@@ -23,6 +23,7 @@ public class Root extends UpdatableObject {
         animation.play();
         Timeline tl = new Timeline(new KeyFrame(Duration.millis(500),actionEvent -> {
             rootList.remove(this);
+            animation.stop();
         } ));
         tl.setCycleCount(1);
         tl.play();

@@ -22,6 +22,7 @@ public class Bom extends UpdatableObject {
         animation.play();
         Timeline tl = new Timeline(new KeyFrame(Duration.millis(DURATION_BOM_REMOVE_ANIMATION),actionEvent -> {
             bomList.remove(this);
+            animation.stop();
             explode(rootList,wallList,bomList,fireList);
         }));
         tl.setCycleCount(1);
