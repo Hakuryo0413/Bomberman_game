@@ -1,12 +1,13 @@
 package com.g10.screens;
 
+import com.g10.constants.GlobalConstant;
 import com.g10.gameObject.*;
 import com.g10.general.ImageManager;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import static com.g10.gameObject.FireType.TOP;
+
 
 public class GameScreen implements Screen {
 
@@ -25,11 +26,14 @@ public class GameScreen implements Screen {
         portal = map.createPortal();
         itemList = map.createItem();
         rootList = map.createRoot();
+
         bomList = new ArrayList<>();
 
         bomber = new Bomber();
         fireList = new ArrayList<>();
-        fireList.add(new Fire(TOP,100,100, rootList, wallList,bomList,fireList));
+
+
+
     }
 
     @Override
@@ -39,6 +43,7 @@ public class GameScreen implements Screen {
         rootList.forEach(VisibleObject::render);
         bomList.forEach(UpdatableObject:: render);
         fireList.forEach(UpdatableObject:: render);
+
         bomber.render();
 
 
@@ -50,6 +55,7 @@ public class GameScreen implements Screen {
         if (bomber.isAlive()) {
             bomber.update(deltaTime, wallList, rootList, bomList); //update movement
             bomber.update(bomList, fireList, wallList, rootList);
+            bomber.update(fireList,null);
             //update plant bomb
             //update death
         } else {
@@ -57,5 +63,6 @@ public class GameScreen implements Screen {
         }
         bomList.forEach(UpdatableObject::update);
         fireList.forEach(UpdatableObject::update);
+        rootList.forEach(UpdatableObject:: update);
     }
 }

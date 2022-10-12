@@ -10,13 +10,10 @@ import java.util.List;
 
 public class Fire extends UpdatableObject {
     private static final int FIRE_COUNT = 5;
-    private static final int DURATION_FIRE_SET_ANIMATION = 450;
-    private static final int DURATION_FIRE_REMOVE_ANIMATION = 1000;
+    private static final int DURATION_FIRE_SET_ANIMATION = 600;
+    private static final int DURATION_FIRE_REMOVE_ANIMATION = 600;
 
-    public Fire(Image image, float x, float y) {
-        super(image, x, y);
-    }
-    public Fire(FireType type,float x, float y, List<Root> rootList, List<Wall> wallList, List<Bom> bomList, List<Fire> fireList) {
+    public Fire(FireType type,float x, float y, List<Fire> fireList) {
         super(null, x, y, GlobalConstant.TILE_SIZE,GlobalConstant.TILE_SIZE);
         switch (type) {
             case TOP -> {

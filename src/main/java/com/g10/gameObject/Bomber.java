@@ -15,7 +15,7 @@ public class Bomber extends MovingObject {
     private static final int MOVEMENT_COUNT = 3;
     private static final int DURATION_MOVEMENT_ANIMATION = 400;
     private static final int DEATH_COUNT = 6;
-    private static final int DURATION_DEATH_ANIMATION = 600;
+    private static final int DURATION_DEATH_ANIMATION = 1200;
     private static final int DEFAULT_VEL = 200;
     private static final int DEFAULT_BOMB_CAN_BE_PLACE = 1;
     private static final int DEFAULT_BOMB_LENGTH = 1;
@@ -37,7 +37,7 @@ public class Bomber extends MovingObject {
         vel = DEFAULT_VEL;
         alive = true;
         bomb_can_place = DEFAULT_BOMB_CAN_BE_PLACE;
-        bomb_length = DEFAULT_BOMB_LENGTH;
+        bomb_length = 2;
     }
 
     @Override
@@ -109,11 +109,20 @@ public class Bomber extends MovingObject {
      * Update phần chết.
      */
     public void update(List<Fire> fireList, List<Enemy> enemies) {
-        if (false) {
+        boolean check = false;
+        for(int i = 0 ;i < fireList.size();i++){
+            if(BaseObject.checkCollision(this,fireList.get(i))){
+                check = true;
+            }
+        }
+        if (check) {
+
             alive = false;
+
             animation.setDuration(Duration.millis(DURATION_DEATH_ANIMATION));
             animation.setCount(DEATH_COUNT);
             animation.setStr("asset/bomber/bomberman_death");
+            animation.setCycleCount(1);
             animation.play();
         }
     }
