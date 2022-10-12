@@ -31,6 +31,10 @@ public class GameScreen implements Screen {
 
         bomber = new Bomber();
         fireList = new ArrayList<>();
+        itemList = new ArrayList<>();
+        itemList.add(new Item(ItemType.BOM_UP,2*GlobalConstant.TILE_SIZE,2*GlobalConstant.TILE_SIZE));
+        //itemList.add(new Item(ItemType.FIRE_UP,5*GlobalConstant.TILE_SIZE,6*GlobalConstant.TILE_SIZE));
+        //itemList.add(new Item(ItemType.SPEED_UP,5*GlobalConstant.TILE_SIZE,7*GlobalConstant.TILE_SIZE));
 
 
 
@@ -40,6 +44,7 @@ public class GameScreen implements Screen {
     public void render() {
         map.render();
 //        wallList.forEach(Wall::render);
+        itemList.forEach(VisibleObject::render);
         rootList.forEach(VisibleObject::render);
         bomList.forEach(UpdatableObject:: render);
         fireList.forEach(UpdatableObject:: render);
@@ -61,8 +66,11 @@ public class GameScreen implements Screen {
         } else {
             bomber.update();
         }
+
         bomList.forEach(UpdatableObject::update);
         fireList.forEach(UpdatableObject::update);
+        itemList.forEach(UpdatableObject:: update);
         rootList.forEach(UpdatableObject:: update);
+
     }
 }
