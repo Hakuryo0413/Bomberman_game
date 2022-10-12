@@ -28,7 +28,7 @@ public class GameScreen implements Screen {
         itemList = map.createItem();
         rootList = map.createRoot();
         enemyList = map.createEnemy();
-        enemyList.add(new Enemy(ImageManager.getImage("asset/portal/portal1.png"), 9 * GlobalConstant.TILE_SIZE, 7 * GlobalConstant.TILE_SIZE));
+        enemyList.add(new Enemy(ImageManager.getImage("asset/enemy/enemy.png"), 9 * GlobalConstant.TILE_SIZE, 7 * GlobalConstant.TILE_SIZE));
         bomList = new ArrayList<>();
 
         bomber = new Bomber();
