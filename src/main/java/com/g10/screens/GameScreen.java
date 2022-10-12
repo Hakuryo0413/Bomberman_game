@@ -51,6 +51,7 @@ public class GameScreen implements Screen {
         fireList.forEach(UpdatableObject::render);
 
         bomber.render();
+        portal.render();
         enemyList.forEach(VisibleObject::render);
 
     }
@@ -63,7 +64,7 @@ public class GameScreen implements Screen {
             bomber.update(deltaTime, wallList, rootList, bomList); //update movement
             bomber.update(bomList, fireList, wallList, rootList);
             bomber.update(fireList, enemyList);
-
+            bomber.update(enemyList,portal);
             //update plant bomb
             //update death
         } else {
@@ -74,5 +75,6 @@ public class GameScreen implements Screen {
         itemList.forEach(UpdatableObject::update);
         rootList.forEach(UpdatableObject::update);
         enemyList.forEach(UpdatableObject::update);
+        portal.update();
     }
 }

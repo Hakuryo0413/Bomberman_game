@@ -81,7 +81,7 @@ public class Map extends VisibleObject {
     }
 
     public Portal createPortal() {
-        return null;
+        return new Portal(4*GlobalConstant.TILE_SIZE,5*GlobalConstant.TILE_SIZE);
     }
 
     public List<Item> createItem() {
