@@ -33,12 +33,16 @@ public class GameScreen implements Screen {
         map.render();
 //        wallList.forEach(Wall::render);
         rootList.forEach(VisibleObject::render);
-        bomber.render();
         bomList.forEach(UpdatableObject:: render);
+        fireList.forEach(UpdatableObject:: render);
+        bomber.render();
+
+
     }
 
     @Override
     public void update(float deltaTime) {
+
         if (bomber.isAlive()) {
             bomber.update(deltaTime, wallList, rootList, bomList); //update movement
             bomber.update(bomList, fireList, wallList, rootList);
@@ -48,5 +52,6 @@ public class GameScreen implements Screen {
             bomber.update();
         }
         bomList.forEach(UpdatableObject::update);
+        fireList.forEach(UpdatableObject::update);
     }
 }

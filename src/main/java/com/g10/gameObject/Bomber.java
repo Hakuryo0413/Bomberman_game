@@ -98,7 +98,10 @@ public class Bomber extends MovingObject {
         if(bomList.size() > bomb_can_place) canPlaceBomb = false;
         if (canPlaceBomb && Input.getInput().contains("SPACE")) {
             Input.getInput().remove("SPACE");
-            bomList.add(new Bom(100,100,bomb_length,rootList,wallList,bomList,fireList));
+            int i = (int) ((x + width/2)/GlobalConstant.TILE_SIZE);
+            int j = (int) ((y + height/2)/GlobalConstant.TILE_SIZE);
+
+            bomList.add(new Bom(i*GlobalConstant.TILE_SIZE,j*GlobalConstant.TILE_SIZE,bomb_length,rootList,wallList,bomList,fireList));
         }
     }
 
