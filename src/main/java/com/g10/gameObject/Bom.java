@@ -11,10 +11,9 @@ public class Bom extends UpdatableObject {
 
     public Bom(float x, float y, int length, List<Root> rootList, List<Wall> wallList, List<Bom> bomList, List<Fire> fireList) {
         super(null, x, y);
-        animation = new Animation(Duration.millis(400), "bom", 3);
-        Timeline tl = new Timeline(new KeyFrame(Duration.seconds(1.5), actionEvent -> {
-            bomList.remove(this);
-            //TODO: create fire
-        }));
+        animation.setStr("asset/bom/bom");
+        animation.setCount(3);
+        animation.setDuration(Duration.millis(600));
+
     }
 }

@@ -98,7 +98,7 @@ public class Bomber extends MovingObject {
         if(bomList.size() > bomb_can_place) canPlaceBomb = false;
         if (canPlaceBomb && Input.getInput().contains("SPACE")) {
             Input.getInput().remove("SPACE");
-            System.out.println("Bomb has been planted!");
+            bomList.add(new Bom(100,100,bomb_length,rootList,wallList,bomList,fireList));
         }
     }
 

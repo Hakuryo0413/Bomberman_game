@@ -34,6 +34,7 @@ public class GameScreen implements Screen {
 //        wallList.forEach(Wall::render);
         rootList.forEach(VisibleObject::render);
         bomber.render();
+        bomList.forEach(UpdatableObject:: render);
     }
 
     @Override
@@ -46,5 +47,6 @@ public class GameScreen implements Screen {
         } else {
             bomber.update();
         }
+        bomList.forEach(UpdatableObject::update);
     }
 }
