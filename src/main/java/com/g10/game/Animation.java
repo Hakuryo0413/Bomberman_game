@@ -7,7 +7,7 @@ import javafx.scene.image.Image;
 import javafx.util.Duration;
 
 public class Animation extends Transition {
-    private static final int DEFALUT_DURATION = 500;
+    private static final int DEFAULT_DURATION = 500;
 
     private Image currentImage;
 
@@ -32,7 +32,7 @@ public class Animation extends Transition {
     }
 
     public Animation() {
-        setCycleDuration(Duration.millis(DEFALUT_DURATION));
+        setCycleDuration(Duration.millis(DEFAULT_DURATION));
         setCycleCount(javafx.animation.Animation.INDEFINITE);
         setInterpolator(Interpolator.LINEAR);
     }
