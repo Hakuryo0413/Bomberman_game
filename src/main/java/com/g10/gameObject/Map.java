@@ -84,7 +84,8 @@ public class Map extends VisibleObject {
     }
 
     public List<Item> createItem(){
-        return null;
+        List<Item> itemList = new ArrayList<>();
+        return itemList;
     }
 
     @Override
