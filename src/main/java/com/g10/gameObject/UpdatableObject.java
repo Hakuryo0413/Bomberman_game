@@ -18,6 +18,5 @@ public class UpdatableObject extends VisibleObject {
         if (animation.getCurrentImage() != null) {
             image = animation.getCurrentImage();
         }
-
     }
 }

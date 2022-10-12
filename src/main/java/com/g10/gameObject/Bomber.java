@@ -1,9 +1,14 @@
 package com.g10.gameObject;
 
 import com.g10.constants.GlobalConstant;
+import com.g10.game.Animation;
 import com.g10.general.ImageManager;
 import com.g10.general.Input;
 import com.g10.general.Sandbox;
+import com.g10.screens.ScreenManager;
+import com.g10.screens.ScreenType;
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.util.Duration;
 
@@ -15,10 +20,14 @@ public class Bomber extends MovingObject {
     private static final int MOVEMENT_COUNT = 3;
     private static final int DURATION_MOVEMENT_ANIMATION = 400;
     private static final int DEATH_COUNT = 6;
-    private static final int DURATION_DEATH_ANIMATION = 600;
+    private static final int DURATION_DEATH_ANIMATION = 1200;
     private static final int DEFAULT_VEL = 200;
+    private static final int DEFAULT_BOMB_CAN_BE_PLACE = 1;
+    private static final int DEFAULT_BOMB_LENGTH = 1;
 
     private boolean alive;
+    private int bomb_can_place;
+    private int bomb_length;
 
     public boolean isAlive() {
         return alive;
@@ -32,6 +41,8 @@ public class Bomber extends MovingObject {
         super(ImageManager.getImage("asset/bomber/bomberman_down2.png"), 2 * GlobalConstant.TILE_SIZE, GlobalConstant.TILE_SIZE, GlobalConstant.TILE_SIZE, GlobalConstant.TILE_SIZE);
         vel = DEFAULT_VEL;
         alive = true;
+        bomb_can_place = DEFAULT_BOMB_CAN_BE_PLACE;
+        bomb_length = DEFAULT_BOMB_LENGTH;
     }
 
     @Override
@@ -78,20 +89,29 @@ public class Bomber extends MovingObject {
             animation.pause();
         }
         List<BaseObject> obstructingObjectList = new ArrayList<>();
-
-
+        obstructingObjectList.addAll(wallList);
+        obstructingObjectList.addAll(rootList);
+        obstructingObjectList.addAll(bomList);
         super.update(deltaTime, obstructingObjectList);
     }
 
     /**
      * Update phần đặt bom.
      */
-    public void update(List<Bom> bomList, List<Fire> fireList, List<DestructionZone> destructionZoneList, List<Wall> wallList, List<Root> rootList) {
+    public void update(List<Bom> bomList, List<Fire> fireList, List<Wall> wallList, List<Root> rootList) {
         boolean canPlaceBomb = true;
-        //TODO: check đặt bom
-        int[][] map = null;
-        if (canPlaceBomb) {
-            bomList.add(new Bom(x, y, null, bomList, fireList, destructionZoneList));
+        int i = (int) ((x + width / 2) / GlobalConstant.TILE_SIZE);
+        int j = (int) ((y + height / 2) / GlobalConstant.TILE_SIZE);
+        if (bomList.size() > bomb_can_place) canPlaceBomb = false;
+        for(Bom bom : bomList) {
+            if(BaseObject.checkCollision(bom, i, j)) {
+                canPlaceBomb = false;
+            }
+        }
+        if (canPlaceBomb && Input.getInput().contains("SPACE") && bomList.size() < bomb_can_place) {
+            Input.getInput().remove("SPACE");
+            bomList.add(new Bom(i * GlobalConstant.TILE_SIZE, j * GlobalConstant.TILE_SIZE, bomb_length, rootList, wallList, bomList, fireList));
+//            System.out.println("BOMB HAS BEEN PLANTED!");
         }
     }
 
@@ -99,12 +119,42 @@ public class Bomber extends MovingObject {
      * Update phần chết.
      */
     public void update(List<Fire> fireList, List<Enemy> enemies) {
-        if (false) {
+        boolean check = false;
+        for (int i = 0; i < fireList.size(); i++) {
+            if (BaseObject.checkCollision(this, fireList.get(i))) {
+                check = true;
+            }
+        }
+        for(Enemy enemy : enemies) {
+            if(BaseObject.checkCollision(enemy, this)) {
+                check = true;
+            }
+        }
+        if (check) {
             alive = false;
-            animation.setDuration(Duration.millis(DURATION_DEATH_ANIMATION));
-            animation.setCount(DEATH_COUNT);
-            animation.setStr("asset/bomber/bomberman_death");
+            Timeline tl = new Timeline(new KeyFrame(Duration.millis(3000), actionEvent -> {
+                ScreenManager.switchScreen(ScreenType.HOME_SCREEN);
+            }));
+            tl.setCycleCount(1);
+            tl.play();
+//            animation.setDuration(Duration.millis(DURATION_DEATH_ANIMATION));
+//            animation.setCount(DEATH_COUNT);
+//            animation.setStr("asset/bomber/bomberman_death");
+//            animation.setCycleCount(1);
+//            animation.play();
+            animation = new Animation(Duration.millis(1200), "asset/bomber/bomberman_death", 6);
+            animation.setCycleCount(1);
             animation.play();
         }
+
+    }
+    /**
+     * Update phần ăn item
+     */
+    public void update(List<Item> itemList) {
+        //TODO:
+        //ở Item viết thêm thuộc tính cài getter để còn biết là va chạm với item gì
+        //duyệt hết item check va chạm với mỗi va chạm thì thay đổi thuộc tính của bomber vả remove nó ra khỏi itemlist
+        //nhớ gọi hàm update này tại gameScreen với
     }
 }

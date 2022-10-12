@@ -1,17 +1,21 @@
 package com.g10.gameObject;
 
 import com.g10.constants.GlobalConstant;
+import com.g10.general.Sandbox;
 import javafx.scene.image.Image;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
 public class Map extends VisibleObject {
-    public Map(String path, Image image, List<Wall> wallList, List<Root> rootList, Portal portal) {
+
+    private int a[][];
+
+    public Map(String path, Image image) {
         super(image, 0, 0);
-        int[][] a;
         File file = new File(path);
         try {
             Scanner sc = new Scanner(file);
@@ -26,11 +30,6 @@ public class Map extends VisibleObject {
         } catch (FileNotFoundException e) {
             throw new RuntimeException(e);
         }
-        createWall(wallList);
-        createRoot(rootList);
-        createPortal(portal);
-        this.width = width * GlobalConstant.TILE_SIZE;
-        this.height = height * GlobalConstant.TILE_SIZE;
     }
 
     @Override
@@ -53,14 +52,50 @@ public class Map extends VisibleObject {
         this.height = height;
     }
 
-    public void createWall(List<Wall> wallList) {
+    public List<Wall> createWall() {
+        List<Wall> wallList = new ArrayList<>();
+        for (int i = 0; i < height; i++) {
+            for (int j = 0; j < width; j++) {
+                if (a[i][j] == 1) {
+                    wallList.add(new Wall(j * GlobalConstant.TILE_SIZE, i * GlobalConstant.TILE_SIZE));
+//                    System.out.println(i + " " +  j);
+                }
+            }
+        }
+        return wallList;
     }
 
-    public void createRoot(List<Root> rootList) {
-
+    public List<Root> createRoot() {
+        List<Root> rootList = new ArrayList<>();
+        for (int i = 0; i < height; i++) {
+            for (int j = 0; j < width; j++) {
+                if (a[i][j] != 1 && !(i == 1 && j == 2) && !(i == 1 && j == 3) && !(i == 2 && j == 2)) {
+                    int rand = (int) (Math.random() * 100 % 3);
+                    if (rand == 0) {
+                        rootList.add(new Root(j * GlobalConstant.TILE_SIZE, i * GlobalConstant.TILE_SIZE));
+                    }
+                }
+            }
+        }
+        return rootList;
     }
 
-    public void createPortal(Portal portal) {
+    public Portal createPortal() {
+        return null;
+    }
 
+    public List<Item> createItem() {
+        List<Item> itemList = new ArrayList<>();
+        return itemList;
+    }
+
+    public List<Enemy> createEnemy(){
+        List<Enemy> enemyList = new ArrayList<>();
+        return enemyList;
+    }
+
+    @Override
+    public void render() {
+        Sandbox.getGc().drawImage(image, x, y, width * GlobalConstant.TILE_SIZE, height * GlobalConstant.TILE_SIZE);
     }
 }
