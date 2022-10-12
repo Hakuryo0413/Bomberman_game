@@ -89,6 +89,11 @@ public class Map extends VisibleObject {
         return itemList;
     }
 
+    public List<Enemy> createEnemy(){
+        List<Enemy> enemyList = new ArrayList<>();
+        return enemyList;
+    }
+
     @Override
     public void render() {
         Sandbox.getGc().drawImage(image, x, y, width * GlobalConstant.TILE_SIZE, height * GlobalConstant.TILE_SIZE);

@@ -100,13 +100,18 @@ public class Bomber extends MovingObject {
      */
     public void update(List<Bom> bomList, List<Fire> fireList, List<Wall> wallList, List<Root> rootList) {
         boolean canPlaceBomb = true;
+        int i = (int) ((x + width / 2) / GlobalConstant.TILE_SIZE);
+        int j = (int) ((y + height / 2) / GlobalConstant.TILE_SIZE);
         if (bomList.size() > bomb_can_place) canPlaceBomb = false;
+        for(Bom bom : bomList) {
+            if(BaseObject.checkCollision(bom, i, j)) {
+                canPlaceBomb = false;
+            }
+        }
         if (canPlaceBomb && Input.getInput().contains("SPACE") && bomList.size() < bomb_can_place) {
             Input.getInput().remove("SPACE");
-            int i = (int) ((x + width / 2) / GlobalConstant.TILE_SIZE);
-            int j = (int) ((y + height / 2) / GlobalConstant.TILE_SIZE);
-
             bomList.add(new Bom(i * GlobalConstant.TILE_SIZE, j * GlobalConstant.TILE_SIZE, bomb_length, rootList, wallList, bomList, fireList));
+//            System.out.println("BOMB HAS BEEN PLANTED!");
         }
     }
 
@@ -117,6 +122,11 @@ public class Bomber extends MovingObject {
         boolean check = false;
         for (int i = 0; i < fireList.size(); i++) {
             if (BaseObject.checkCollision(this, fireList.get(i))) {
+                check = true;
+            }
+        }
+        for(Enemy enemy : enemies) {
+            if(BaseObject.checkCollision(enemy, this)) {
                 check = true;
             }
         }
@@ -136,5 +146,15 @@ public class Bomber extends MovingObject {
             animation.setCycleCount(1);
             animation.play();
         }
+
+    }
+    /**
+     * Update phần ăn item
+     */
+    public void update(List<Item> itemList) {
+        //TODO:
+        //ở Item viết thêm thuộc tính cài getter để còn biết là va chạm với item gì
+        //duyệt hết item check va chạm với mỗi va chạm thì thay đổi thuộc tính của bomber vả remove nó ra khỏi itemlist
+        //nhớ gọi hàm update này tại gameScreen với
     }
 }
