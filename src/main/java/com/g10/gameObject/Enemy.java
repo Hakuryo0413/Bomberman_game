@@ -12,4 +12,14 @@ public abstract class Enemy extends MovingObject {
     }
 
     public abstract void update(float deltaTime, List<Wall> wallList, List<Root> rootList, List<Bom> bomList);
+    public void update(List<Fire> fireList, List<Enemy> enemies) {
+        boolean check = false;
+        for (int i = 0; i < fireList.size(); i++) {
+            if (BaseObject.checkCollision(this, fireList.get(i))) {
+                check = true;
+            }
+            if(check) enemies.remove(this);
+        }
+
+    }
 }

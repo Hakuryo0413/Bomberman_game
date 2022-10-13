@@ -77,6 +77,7 @@ public class GameScreen implements Screen {
         rootList.forEach(UpdatableObject::update);
         for(Enemy enemy : enemyList) {
             enemy.update(deltaTime, wallList, rootList, bomList);
+            enemy.update(fireList,enemyList);
         }
         portal.update();
     }
