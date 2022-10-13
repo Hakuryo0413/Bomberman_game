@@ -122,7 +122,7 @@ public class NutsStar extends Enemy{
                 animation.play();
             }
         }
-        super.update(deltaTime, obstructingObjectList);
+        super.update(deltaTime, map);
     }
 
     @Override

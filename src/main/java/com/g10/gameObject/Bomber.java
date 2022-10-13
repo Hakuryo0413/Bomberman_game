@@ -176,7 +176,7 @@ public class Bomber extends MovingObject {
 
     public void update(List<Enemy> enemyList, Portal portal) {
         if (enemyList.size() == 0 && BaseObject.checkCollision(this, portal)) {
-            System.out.println("NEXT_ROUND");
+            ScreenManager.switchScreen(ScreenType.HOME_SCREEN);
         }
     }
 }
