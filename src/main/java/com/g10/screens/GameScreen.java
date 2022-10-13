@@ -28,7 +28,7 @@ public class GameScreen implements Screen {
         itemList = map.createItem();
         rootList = map.createRoot();
         enemyList = map.createEnemy();
-        enemyList.add(new Enemy(ImageManager.getImage("asset/enemy/enemy.png"), 9 * GlobalConstant.TILE_SIZE, 7 * GlobalConstant.TILE_SIZE));
+        enemyList.add(new NutsStar(10 * GlobalConstant.TILE_SIZE, 10 * GlobalConstant.TILE_SIZE));
         bomList = new ArrayList<>();
 
         bomber = new Bomber();
@@ -46,12 +46,11 @@ public class GameScreen implements Screen {
         map.render();
 //        wallList.forEach(Wall::render);
         itemList.forEach(VisibleObject::render);
+        portal.render();
         rootList.forEach(VisibleObject::render);
         bomList.forEach(UpdatableObject::render);
         fireList.forEach(UpdatableObject::render);
-
         bomber.render();
-        portal.render();
         enemyList.forEach(VisibleObject::render);
 
     }
@@ -74,7 +73,9 @@ public class GameScreen implements Screen {
         fireList.forEach(UpdatableObject::update);
         itemList.forEach(UpdatableObject::update);
         rootList.forEach(UpdatableObject::update);
-        enemyList.forEach(UpdatableObject::update);
+        for(Enemy enemy : enemyList) {
+            enemy.update(deltaTime, wallList, rootList, bomList);
+        }
         portal.update();
     }
 }
