@@ -3,10 +3,12 @@ package com.g10.gameObject;
 import com.g10.constants.GlobalConstant;
 import com.g10.general.Sandbox;
 import javafx.scene.image.Image;
+import javafx.util.Pair;
 
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Scanner;
 
@@ -73,6 +75,7 @@ public class Map extends VisibleObject {
                     int rand = (int) (Math.random() * 100 % 3);
                     if (rand == 0) {
                         rootList.add(new Root(j * GlobalConstant.TILE_SIZE, i * GlobalConstant.TILE_SIZE));
+                        a[i][j] = 2;
                     }
                 }
             }
@@ -81,16 +84,70 @@ public class Map extends VisibleObject {
     }
 
     public Portal createPortal() {
-        return new Portal(4*GlobalConstant.TILE_SIZE,5*GlobalConstant.TILE_SIZE);
+        List<Pair<Integer, Integer>> rootLocation = new ArrayList<>();
+        for(int i = 0; i < height; i++) {
+            for (int j = 0; j < width; j++) {
+                if(a[i][j] == 2) {
+                    rootLocation.add(new Pair<>(i, j));
+                }
+            }
+        }
+        Collections.shuffle(rootLocation);
+        Portal portal = new Portal(rootLocation.get(0).getValue() * GlobalConstant.TILE_SIZE, rootLocation.get(0).getKey()* GlobalConstant.TILE_SIZE);
+        a[rootLocation.get(0).getKey()][rootLocation.get(0).getValue()] = 1;
+        return portal;
     }
 
     public List<Item> createItem() {
+        List<Pair<Integer, Integer>> rootLocation = new ArrayList<>();
         List<Item> itemList = new ArrayList<>();
+        for(int i = 0; i < height; i++) {
+            for (int j = 0; j < width; j++) {
+                if(a[i][j] == 2) {
+                    rootLocation.add(new Pair<>(i, j));
+                }
+            }
+        }
+        Collections.shuffle(rootLocation);
+        itemList.add(new Item(ItemType.BOM_UP, rootLocation.get(0).getValue() * GlobalConstant.TILE_SIZE, rootLocation.get(0).getKey()* GlobalConstant.TILE_SIZE));
+        a[rootLocation.get(0).getKey()][rootLocation.get(0).getValue()] = 1;
+        rootLocation.remove(rootLocation.get(0));
+
+
+        Collections.shuffle(rootLocation);
+        itemList.add(new Item(ItemType.FIRE_UP, rootLocation.get(0).getValue()* GlobalConstant.TILE_SIZE, rootLocation.get(0).getKey()* GlobalConstant.TILE_SIZE));
+        a[rootLocation.get(0).getKey()][rootLocation.get(0).getValue()] = 1;
+        rootLocation.remove(rootLocation.get(0));
+
+
+        Collections.shuffle(rootLocation);
+        itemList.add(new Item(ItemType.SPEED_UP, rootLocation.get(0).getValue()* GlobalConstant.TILE_SIZE, rootLocation.get(0).getKey()* GlobalConstant.TILE_SIZE));
+        a[rootLocation.get(0).getKey()][rootLocation.get(0).getValue()] = 1;
+        rootLocation.remove(rootLocation.get(0));
+
         return itemList;
     }
 
     public List<Enemy> createEnemy(){
+        List<Pair<Integer, Integer>> grassLocation = new ArrayList<>();
+        for(int i = 0; i < height; i++) {
+            for (int j = 0; j < width; j++) {
+                if(a[i][j] == 0) {
+                    grassLocation.add(new Pair<>(i, j));
+                }
+            }
+        }
         List<Enemy> enemyList = new ArrayList<>();
+        for(int t = 0; t < 5; t++) {
+            Collections.shuffle(grassLocation);
+            if(grassLocation.get(0).getValue() > 3 && grassLocation.get(0).getKey() > 3) {
+                enemyList.add(new NutsStar(grassLocation.get(0).getValue()* GlobalConstant.TILE_SIZE, grassLocation.get(0).getKey()*GlobalConstant.TILE_SIZE));
+                grassLocation.remove(grassLocation.get(0));
+            }
+            else {
+                t--;
+            }
+        }
         return enemyList;
     }
 

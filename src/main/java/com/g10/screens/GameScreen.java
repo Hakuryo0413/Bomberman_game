@@ -24,19 +24,21 @@ public class GameScreen implements Screen {
     public GameScreen() {
         map = new Map("src/main/res/com/g10/asset/map/stage1.txt", ImageManager.getImage("asset/map/stage1.png"));
         wallList = map.createWall();
-        portal = map.createPortal();
-        itemList = map.createItem();
+
+
         rootList = map.createRoot();
+        itemList = map.createItem();
+        portal = map.createPortal();
+//        for(Root root: rootList) {
+//            root.burn(rootList);
+//        }
         enemyList = map.createEnemy();
-        enemyList.add(new NutsStar(10 * GlobalConstant.TILE_SIZE, 10 * GlobalConstant.TILE_SIZE));
         bomList = new ArrayList<>();
 
         bomber = new Bomber();
         fireList = new ArrayList<>();
-        itemList = new ArrayList<>();
-        itemList.add(new Item(ItemType.BOM_UP, 2 * GlobalConstant.TILE_SIZE, 2 * GlobalConstant.TILE_SIZE));
-        itemList.add(new Item(ItemType.FIRE_UP, 4 * GlobalConstant.TILE_SIZE, 2 * GlobalConstant.TILE_SIZE));
-        itemList.add(new Item(ItemType.SPEED_UP, 6 * GlobalConstant.TILE_SIZE, 2 * GlobalConstant.TILE_SIZE));
+
+
 
 
     }
