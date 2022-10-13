@@ -22,20 +22,21 @@ public class NutsStar extends Enemy{
     Direction direction;
 
 
-    boolean canChangeDir;
-    Timeline switchCanChangeDir;
+
 
     public NutsStar(float x, float y) {
         super(x, y);
         image = ImageManager.getImage("asset/enemy/nuts_star/nuts_star_right1.png");
-        direction = Direction.UP;
+        //random direction
+        List<Direction> directions = new ArrayList<>();
+        directions.add(Direction.UP);
+        directions.add(Direction.DOWN);
+        directions.add(Direction.LEFT);
+        directions.add(Direction.RIGHT);
+        Collections.shuffle(directions);
+        direction = directions.get(0);
         vel = 100;
-        canChangeDir = false;
-        switchCanChangeDir = new Timeline(new KeyFrame(Duration.millis(3000), actionEvent -> {
-            canChangeDir = true;
-        }));
-        switchCanChangeDir.setCycleCount(1);
-        switchCanChangeDir.play();
+
     }
 
     //update phần di chuyển
@@ -58,7 +59,7 @@ public class NutsStar extends Enemy{
         || direction == Direction.DOWN && map[j + 1][i] == 1 && y  + 1>= j * GlobalConstant.TILE_SIZE
         || direction == Direction.LEFT && map[j][i - 1] == 1 && x - 1<= i * GlobalConstant.TILE_SIZE
         || direction == Direction.RIGHT && map[j][i+ 1] == 1 && x + 1>= i * GlobalConstant.TILE_SIZE
-        || canChangeDir || direction == Direction.STAND) {
+        || direction == Direction.STAND) {
             List<Direction> mayGo = new ArrayList<>();
             if(map[j - 1][i] == 0) mayGo.add(Direction.UP);
             if(map[j + 1][i] == 0) mayGo.add(Direction.DOWN);
@@ -66,13 +67,12 @@ public class NutsStar extends Enemy{
             if(map[j][i + 1] == 0) mayGo.add(Direction.RIGHT);
             if(mayGo.size() == 0) {
                 direction = Direction.STAND;
+                x = i * GlobalConstant.TILE_SIZE;
+                y = j * GlobalConstant.TILE_SIZE;
             }
             else {
                 Collections.shuffle(mayGo);
                 direction = mayGo.get(0);
-                canChangeDir = false;
-                switchCanChangeDir.play();
-
             }
         }
 
