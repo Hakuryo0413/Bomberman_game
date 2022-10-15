@@ -17,6 +17,10 @@ public class ScreenManager {
                 currentScreen = new GameScreen();
                 break;
             }
+            case OPTION_SCREEN -> {
+                currentScreen = new OptionScreen();
+                break;
+            }
         }
     }
 }
