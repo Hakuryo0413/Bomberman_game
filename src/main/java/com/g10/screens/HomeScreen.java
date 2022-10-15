@@ -9,14 +9,19 @@ import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+
 public class HomeScreen implements Screen {
     private HomeMenu homeMenu;
     public HomeScreen(){
         homeMenu = new HomeMenu();
     }
     @Override
-    public void render() {
+    public void render() throws FileNotFoundException {
         homeMenu.render();
+
+
     }
 
     @Override
