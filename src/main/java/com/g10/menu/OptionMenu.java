@@ -27,7 +27,10 @@ public class OptionMenu {
         cusor.setSpaceBetween(20);
     }
     public void update(){
-
+        if (Input.getInput().contains("ESCAPE")) {
+            Input.getInput().remove("ESCAPE");
+            ScreenManager.switchScreen(ScreenType.HOME_SCREEN);
+        }
         cusor.update();
     }
 
