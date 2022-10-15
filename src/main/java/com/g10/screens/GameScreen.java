@@ -22,7 +22,7 @@ public class GameScreen implements Screen {
     Map map;
 
     public GameScreen() {
-        map = new Map("src/main/res/com/g10/asset/map/stage1.txt", ImageManager.getImage("asset/map/stage1.png"));
+        map = new Map("src/main/resources/com/g10/asset/map/stage1.txt", ImageManager.getImage("asset/map/stage1.png"));
         wallList = map.createWall();
 
 
