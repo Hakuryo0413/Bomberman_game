@@ -35,7 +35,7 @@ public class OptionMenu {
 //                ScreenManager.switchScreen(ScreenType.OPTION_SCREEN);
 //            }
             if(Input.getInput().contains("ESCAPE")){
-                Sandbox.closeStage();
+               // Sandbox.closeStage();
             }
         }
         cusor.update();
