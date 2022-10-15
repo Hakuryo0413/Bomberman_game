@@ -23,21 +23,22 @@ public class HomeMenu {
     public HomeMenu(){
         this.background= ImageManager.getImage("asset/background/home_background.png");
         this.cusor = new Cusor(ImageManager.getImage("asset/menu/cusor.png"),280,300);
-        cusor.setCount(3);
+        cusor.setCount(2);
         cusor.setSpaceBetween(20);
     }
 
         public void update(){
             if (Input.getInput().contains("ENTER")) {
+                Input.getInput().remove("ENTER");
                 if (cusor.getNumOfSelect() == 1) {
                     ScreenManager.switchScreen(ScreenType.GAME_SCREEN);
                 }
-                if (cusor.getNumOfSelect() == 3) {
-                    Sandbox.closeStage();
-                }
-                else {
+                if (cusor.getNumOfSelect() == 2) {
                     ScreenManager.switchScreen(ScreenType.OPTION_SCREEN);
                 }
+            }
+            if (Input.getInput().contains("ESCAPE")) {
+                Sandbox.closeStage();
             }
             cusor.update();
         }
@@ -53,7 +54,6 @@ public class HomeMenu {
         Sandbox.getGc().setFill(Color.WHITE);
         Sandbox.getGc().fillText("START",cusor.getX()+65,cusor.getY()+35);
         Sandbox.getGc().fillText("OPTION",cusor.getX()+65,cusor.getY()+35+cusor.getSpaceBetween()+GlobalConstant.TILE_SIZE);
-        Sandbox.getGc().fillText("EXIT",cusor.getX()+65,cusor.getY()+35+2*(cusor.getSpaceBetween()+GlobalConstant.TILE_SIZE));
     }
 
 }

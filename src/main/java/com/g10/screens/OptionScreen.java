@@ -23,8 +23,6 @@ public class OptionScreen implements Screen {
     @Override
     public void render() throws FileNotFoundException {
         optionMenu.render();
-
-
     }
 
     @Override
