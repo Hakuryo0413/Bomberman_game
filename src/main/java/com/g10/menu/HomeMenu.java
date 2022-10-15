@@ -26,20 +26,23 @@ public class HomeMenu {
         cusor.setCount(3);
         cusor.setSpaceBetween(20);
     }
-    public void update(){
-        if (Input.getInput().contains("ENTER")) {
-            switch (cusor.getNumOfSelect()) {
-                case 1: {
+
+        public void update(){
+            if (Input.getInput().contains("ENTER")) {
+                if (cusor.getNumOfSelect() == 1) {
                     ScreenManager.switchScreen(ScreenType.GAME_SCREEN);
                 }
-                case 2: {
+                if (cusor.getNumOfSelect() == 3) {
+                    Sandbox.closeStage();
+                }
+                else {
                     ScreenManager.switchScreen(ScreenType.OPTION_SCREEN);
                 }
             }
-
+            cusor.update();
         }
-        cusor.update();
-    }
+
+
     public void render() throws FileNotFoundException {
         //Sandbox.getGc().drawImage(background,0,0, GlobalConstant.SCREEN_WIDTH,GlobalConstant.SCREEN_HEIGHT);
         Sandbox.getGc().setFill(Color.BLACK);
