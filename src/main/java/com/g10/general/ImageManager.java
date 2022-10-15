@@ -19,7 +19,7 @@ public class ImageManager {
     }
 
     private static Image loadImage(String path) {
-        path = "src/main/res/com/g10/" + path;
+        path = "src/main/resources/com/g10/" + path;
         File file = new File(path);
         String imagePath = file.getAbsolutePath();
         if (File.separatorChar == '\\') {

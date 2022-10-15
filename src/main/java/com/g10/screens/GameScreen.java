@@ -3,6 +3,7 @@ package com.g10.screens;
 import com.g10.constants.GlobalConstant;
 import com.g10.gameObject.*;
 import com.g10.general.ImageManager;
+import com.g10.general.Sandbox;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -22,7 +23,7 @@ public class GameScreen implements Screen {
     Map map;
 
     public GameScreen() {
-        map = new Map("src/main/res/com/g10/asset/map/stage1.txt", ImageManager.getImage("asset/map/stage1.png"));
+        map = new Map("src/main/resources/com/g10/asset/map/stage1.txt", ImageManager.getImage("asset/map/stage1.png"));
         wallList = map.createWall();
 
 
@@ -37,10 +38,6 @@ public class GameScreen implements Screen {
 
         bomber = new Bomber();
         fireList = new ArrayList<>();
-
-
-
-
     }
 
     @Override
