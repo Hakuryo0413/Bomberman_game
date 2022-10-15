@@ -14,7 +14,7 @@ public class Main extends Application {
         stage.setTitle("Bomberman");
         stage.getIcons().add(ImageManager.getImage("asset/icon/icon.png"));
         stage.setResizable(false);
-        Sandbox.init();
+        Sandbox.init(stage);
         stage.setScene(Sandbox.getScene());
         stage.show();
     }

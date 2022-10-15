@@ -3,6 +3,7 @@ package com.g10.screens;
 import com.g10.constants.GlobalConstant;
 import com.g10.gameObject.*;
 import com.g10.general.ImageManager;
+import com.g10.general.Sandbox;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -37,10 +38,6 @@ public class GameScreen implements Screen {
 
         bomber = new Bomber();
         fireList = new ArrayList<>();
-
-
-
-
     }
 
     @Override
