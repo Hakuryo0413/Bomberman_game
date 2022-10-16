@@ -16,7 +16,7 @@ public class AudioManager {
     private static MediaPlayer mediaPlayer = new MediaPlayer(new Media(Main.class.getResource("/com/g10/media/music.wav").toExternalForm()));
 
     public static void playMusic(String path) {
-        if (soundMap.get(path) == null) {
+        if (musicMap.get(path) == null) {
             Media media = new Media(Main.class.getResource("/com/g10/media/" + path).toExternalForm());
             musicMap.put(path, media);
         }
