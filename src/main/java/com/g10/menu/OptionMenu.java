@@ -21,9 +21,9 @@ public class OptionMenu {
     private Font font;
 
     public OptionMenu(){
-        this.background= ImageManager.getImage("asset/background/home_background.png");
+        background = ImageManager.getImage("asset/background/home_screen_background.png");
         this.cusor = new Cusor(ImageManager.getImage("asset/menu/cusor.png"),280,300);
-        Font font = Font.loadFont(getClass().getResource("/com/g10/font/font.ttf").toExternalForm(), 40);
+        font = Font.loadFont(getClass().getResource("/com/g10/font/font.ttf").toExternalForm(), 40);
         cusor.setCount(3);
         cusor.setSpaceBetween(20);
     }
@@ -36,9 +36,9 @@ public class OptionMenu {
     }
 
     public void render() {
-        //Sandbox.getGc().drawImage(background,0,0, GlobalConstant.SCREEN_WIDTH,GlobalConstant.SCREEN_HEIGHT);
-        Sandbox.getGc().setFill(Color.BLACK);
-        Sandbox.getGc().fillRect(0,0,GlobalConstant.SCREEN_WIDTH,GlobalConstant.SCREEN_HEIGHT);
+        Sandbox.getGc().drawImage(background,0,0, GlobalConstant.SCREEN_WIDTH,GlobalConstant.SCREEN_HEIGHT);
+//        Sandbox.getGc().setFill(Color.BLACK);
+//        Sandbox.getGc().fillRect(0,0,GlobalConstant.SCREEN_WIDTH,GlobalConstant.SCREEN_HEIGHT);
         cusor.render();
         Sandbox.getGc().setFont(font);
         Sandbox.getGc().setFill(Color.WHITE);

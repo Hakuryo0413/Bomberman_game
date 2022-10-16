@@ -1,6 +1,8 @@
 package com.g10.menu;
 
+import com.g10.constants.GlobalConstant;
 import com.g10.game.GameStatus;
+import com.g10.general.ImageManager;
 import com.g10.general.Sandbox;
 import javafx.scene.image.Image;
 import javafx.scene.paint.Color;
@@ -11,10 +13,10 @@ public class TopMenu {
 
     private Cusor cusor;
     private Font font;
-
+    private Image cover;
     public TopMenu() {
-        Font font = Font.loadFont(getClass().getResource("/com/g10/font/font.ttf").toExternalForm(), 40);
-
+        font = Font.loadFont(getClass().getResource("/com/g10/font/font.ttf").toExternalForm(), 40);
+        cover = ImageManager.getImage("asset/background/top_menu_cover.png");
     }
 
     public void update() {
@@ -22,9 +24,10 @@ public class TopMenu {
     }
 
     public void render() {
+        Sandbox.getGc().drawImage(cover, 0, 0, GlobalConstant.SCREEN_WIDTH, GlobalConstant.MENU_TOP_HEIGHT);
         Sandbox.getGc().setFont(font);
         Sandbox.getGc().setFill(Color.WHITE);
-        Sandbox.getGc().fillText("ALIVE " + GameStatus.getRemainingLives(), 30, 50);
+        Sandbox.getGc().fillText(String.valueOf(GameStatus.getRemainingLives()), 80, 55);
 
     }
 

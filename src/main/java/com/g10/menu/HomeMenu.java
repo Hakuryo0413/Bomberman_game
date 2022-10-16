@@ -17,10 +17,13 @@ public class HomeMenu {
     private final Cusor cusor;
     private Font font;
 
+    private Image logo;
+
     public HomeMenu() {
-        this.background = ImageManager.getImage("asset/background/home_background.png");
-        Font font = Font.loadFont(getClass().getResource("/com/g10/font/font.ttf").toExternalForm(), 40);
-        this.cusor = new Cusor(ImageManager.getImage("asset/menu/cusor.png"), 280, 300);
+        this.background = ImageManager.getImage("asset/background/home_screen_background.png");
+        logo = ImageManager.getImage("asset/logo/logo.png");
+        font = Font.loadFont(getClass().getResource("/com/g10/font/font.ttf").toExternalForm(), 40);
+        this.cusor = new Cusor(ImageManager.getImage("asset/menu/cusor.png"), 280, 500);
         cusor.setCount(2);
         cusor.setSpaceBetween(20);
     }
@@ -45,9 +48,10 @@ public class HomeMenu {
 
 
     public void render() {
-        //Sandbox.getGc().drawImage(background,0,0, GlobalConstant.SCREEN_WIDTH,GlobalConstant.SCREEN_HEIGHT);
-        Sandbox.getGc().setFill(Color.BLACK);
-        Sandbox.getGc().fillRect(0, 0, GlobalConstant.SCREEN_WIDTH, GlobalConstant.SCREEN_HEIGHT);
+        Sandbox.getGc().drawImage(background,0,0, GlobalConstant.SCREEN_WIDTH,GlobalConstant.SCREEN_HEIGHT);
+        Sandbox.getGc().drawImage(logo, 170, 75);
+//        Sandbox.getGc().setFill(Color.BLACK);
+//        Sandbox.getGc().fillRect(0, 0, GlobalConstant.SCREEN_WIDTH, GlobalConstant.SCREEN_HEIGHT);
         cusor.render();
         Sandbox.getGc().setFont(font);
         Sandbox.getGc().setFill(Color.WHITE);
