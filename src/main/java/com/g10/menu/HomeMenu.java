@@ -12,6 +12,7 @@ import javafx.scene.image.Image;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 
@@ -22,6 +23,7 @@ public class HomeMenu {
     private Font font;
    // private ButtonManager button;
     public HomeMenu(){
+
         this.background= ImageManager.getImage("asset/background/home_background.png");
         this.cusor = new Cusor(ImageManager.getImage("asset/menu/cusor.png"),280,300);
         cusor.setCount(2);
@@ -46,12 +48,21 @@ public class HomeMenu {
         }
 
 
-    public void render() throws FileNotFoundException {
+    public void render()  {
         //Sandbox.getGc().drawImage(background,0,0, GlobalConstant.SCREEN_WIDTH,GlobalConstant.SCREEN_HEIGHT);
         Sandbox.getGc().setFill(Color.BLACK);
         Sandbox.getGc().fillRect(0,0,GlobalConstant.SCREEN_WIDTH,GlobalConstant.SCREEN_HEIGHT);
         cusor.render();
-        Font font = Font.loadFont(new FileInputStream("src/main/resources/com/g10/font/font.ttf"),40);
+
+//        try {
+//            File file = new File("/src/main/resources/com/g10/font/font.ttf");
+//            System.out.println(file.getAbsolutePath());
+            Font font = Font.loadFont(getClass().getResource("/com/g10/font/font.ttf").toExternalForm(), 40);
+//            System.out.println(font.toString());
+//        } catch (FileNotFoundException e) {
+//            System.out.println("@@");
+//        }
+
         Sandbox.getGc().setFont(font);
         Sandbox.getGc().setFill(Color.WHITE);
         Sandbox.getGc().fillText("START",cusor.getX()+65,cusor.getY()+35);

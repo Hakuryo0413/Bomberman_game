@@ -18,10 +18,8 @@ public class HomeScreen implements Screen {
         homeMenu = new HomeMenu();
     }
     @Override
-    public void render() throws FileNotFoundException {
+    public void render() {
         homeMenu.render();
-
-
     }
 
     @Override

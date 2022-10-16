@@ -21,7 +21,7 @@ public class OptionScreen implements Screen {
         optionMenu = new OptionMenu();
     }
     @Override
-    public void render() throws FileNotFoundException {
+    public void render()  {
         optionMenu.render();
     }
 
