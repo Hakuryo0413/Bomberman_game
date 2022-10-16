@@ -1,6 +1,7 @@
 package com.g10.menu;
 
 import com.g10.constants.GlobalConstant;
+import com.g10.game.GameStatus;
 import com.g10.general.ImageManager;
 import com.g10.general.Input;
 import com.g10.general.Sandbox;
@@ -31,6 +32,7 @@ public class HomeMenu {
             if (Input.getInput().contains("ENTER")) {
                 Input.getInput().remove("ENTER");
                 if (cusor.getNumOfSelect() == 1) {
+                    GameStatus.init();
                     ScreenManager.switchScreen(ScreenType.GAME_SCREEN);
                 }
                 if (cusor.getNumOfSelect() == 2) {

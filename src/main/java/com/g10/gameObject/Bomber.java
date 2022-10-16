@@ -2,6 +2,7 @@ package com.g10.gameObject;
 
 import com.g10.constants.GlobalConstant;
 import com.g10.game.Animation;
+import com.g10.game.GameStatus;
 import com.g10.general.ImageManager;
 import com.g10.general.Input;
 import com.g10.general.Sandbox;
@@ -32,10 +33,10 @@ public class Bomber extends MovingObject {
 
     public Bomber() {
         super(ImageManager.getImage("asset/bomber/bomberman_down2.png"), 2 * GlobalConstant.TILE_SIZE, GlobalConstant.TILE_SIZE, GlobalConstant.TILE_SIZE, GlobalConstant.TILE_SIZE);
-        vel = DEFAULT_VEL;
+        vel = GameStatus.getVel();
         alive = true;
-        bomb_can_place = DEFAULT_BOMB_CAN_BE_PLACE;
-        bomb_length = DEFAULT_BOMB_LENGTH;
+        bomb_can_place = GameStatus.getNumBombsCanPlace();
+        bomb_length = GameStatus.getBomLength();
     }
 
     public boolean isAlive() {
@@ -134,7 +135,13 @@ public class Bomber extends MovingObject {
         if (check) {
             alive = false;
             Timeline tl = new Timeline(new KeyFrame(Duration.millis(3000), actionEvent -> {
-                ScreenManager.switchScreen(ScreenType.HOME_SCREEN);
+                GameStatus.setRemainingLives(GameStatus.getRemainingLives() - 1);
+                if(GameStatus.getRemainingLives() < 0) {
+                    ScreenManager.switchScreen(ScreenType.HOME_SCREEN); //TODO: cái này sẽ đến mafn hình chiếu điểm
+                }
+                else {
+                    ScreenManager.switchScreen(ScreenType.GAME_SCREEN);
+                }
             }));
             tl.setCycleCount(1);
             tl.play();
@@ -176,7 +183,11 @@ public class Bomber extends MovingObject {
 
     public void update(List<Enemy> enemyList, Portal portal) {
         if (enemyList.size() == 0 && BaseObject.checkCollision(this, portal)) {
-            ScreenManager.switchScreen(ScreenType.HOME_SCREEN);
+            GameStatus.setVel(vel);
+            GameStatus.setBomLength(bomb_length);
+            GameStatus.setNumBombsCanPlace(bomb_can_place);
+            GameStatus.setStage(GameStatus.getStage() + 1);
+            ScreenManager.switchScreen(ScreenType.GAME_SCREEN);
         }
     }
 }
