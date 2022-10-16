@@ -13,6 +13,7 @@ import javafx.animation.Timeline;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.util.Duration;
 
+import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -137,10 +138,14 @@ public class Bomber extends MovingObject {
             Timeline tl = new Timeline(new KeyFrame(Duration.millis(3000), actionEvent -> {
                 GameStatus.setRemainingLives(GameStatus.getRemainingLives() - 1);
                 if(GameStatus.getRemainingLives() < 0) {
+
                     ScreenManager.switchScreen(ScreenType.HOME_SCREEN); //TODO: cái này sẽ đến mafn hình chiếu điểm
+
                 }
                 else {
-                    ScreenManager.switchScreen(ScreenType.GAME_SCREEN);
+
+                    ScreenManager.switchScreen(ScreenType.STAGE_SCREEN);
+
                 }
             }));
             tl.setCycleCount(1);
@@ -181,13 +186,13 @@ public class Bomber extends MovingObject {
 
     }
 
-    public void update(List<Enemy> enemyList, Portal portal) {
+    public void update(List<Enemy> enemyList, Portal portal)  {
         if (enemyList.size() == 0 && BaseObject.checkCollision(this, portal)) {
             GameStatus.setVel(vel);
             GameStatus.setBomLength(bomb_length);
             GameStatus.setNumBombsCanPlace(bomb_can_place);
             GameStatus.setStage(GameStatus.getStage() + 1);
-            ScreenManager.switchScreen(ScreenType.GAME_SCREEN);
+            ScreenManager.switchScreen(ScreenType.STAGE_SCREEN);
         }
     }
 }

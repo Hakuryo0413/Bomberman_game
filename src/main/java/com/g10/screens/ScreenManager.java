@@ -1,5 +1,9 @@
 package com.g10.screens;
 
+import javafx.stage.Stage;
+
+import java.io.FileNotFoundException;
+
 public class ScreenManager {
     private static Screen currentScreen;
 
@@ -9,8 +13,13 @@ public class ScreenManager {
 
     public static void switchScreen(ScreenType screenType) {
         switch (screenType) {
+
             case HOME_SCREEN -> {
                 currentScreen = new HomeScreen();
+                break;
+            }
+            case STAGE_SCREEN -> {
+                currentScreen = new StageScreen();
                 break;
             }
             case GAME_SCREEN -> {

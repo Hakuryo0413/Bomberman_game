@@ -5,5 +5,5 @@ import java.io.FileNotFoundException;
 public interface Screen {
     void render() ;
 
-    void update(float deltaTime);
+    void update(float deltaTime) ;
 }
