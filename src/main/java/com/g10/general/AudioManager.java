@@ -5,54 +5,53 @@ import javafx.scene.media.AudioClip;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class AudioManager {
-    private boolean muteSound = false;
-    private boolean muteMusic = false;
-    private Media currentMusic = new Media(Main.class.getResource("/com/g10/media/music.wav").toExternalForm());
-    private MediaPlayer mediaPlayer;
+    private static final Map<String, AudioClip> soundMap = new HashMap<String, AudioClip>();
+    private static final Map<String, Media> musicMap = new HashMap<String, Media>();
+    private static boolean muteSound = false;
+    private static boolean muteMusic = false;
+    private static MediaPlayer mediaPlayer = new MediaPlayer(new Media(Main.class.getResource("/com/g10/media/music.wav").toExternalForm()));
 
-    public void playMusic() {
+    public static void playMusic(String path) {
+        if (soundMap.get(path) == null) {
+            Media media = new Media(Main.class.getResource("/com/g10/media/" + path).toExternalForm());
+            musicMap.put(path, media);
+        }
         if (!muteMusic) {
-            mediaPlayer = new MediaPlayer(currentMusic);
-            mediaPlayer.setAutoPlay(true);
-            mediaPlayer.setCycleCount(Integer.MAX_VALUE);
+            mediaPlayer.stop();
+            mediaPlayer = new MediaPlayer(musicMap.get(path));
+            mediaPlayer.setCycleCount(MediaPlayer.INDEFINITE);
+            mediaPlayer.play();
         }
     }
 
-    public void playSound(String path) {
-        if (!muteSound) {
+    public static void playSound(String path) {
+        if (soundMap.get(path) == null) {
             AudioClip audioClip = new AudioClip(Main.class.getResource("/com/g10/media/" + path).toExternalForm());
-            audioClip.play();
+            soundMap.put(path, audioClip);
+        }
+        if (!muteSound) {
+            soundMap.get(path).play();
         }
     }
 
-    public boolean isMuteSound() {
+    public static boolean isMuteSound() {
         return muteSound;
     }
 
-    public void setMuteSound(boolean muteSound) {
-        this.muteSound = muteSound;
-    }
-
-    public boolean isMuteMusic() {
+    public static boolean isMuteMusic() {
         return muteMusic;
     }
 
-    public void setMuteMusic(boolean muteMusic) {
-        this.muteMusic = muteMusic;
-    }
-
-    public void switchMuteSound() {
+    public static void switchMuteSound() {
         muteSound = !muteSound;
     }
 
-    public void switchMuteMusic() {
+    public static void switchMuteMusic() {
         muteMusic = !muteMusic;
-    }
-
-    public void switchCurrentMusic(String path) {
-        mediaPlayer.pause();
-        currentMusic = new Media(Main.class.getResource("/com/g10/media/" + path).toExternalForm());
-        playMusic();
+        mediaPlayer.setMute(muteMusic);
     }
 }
