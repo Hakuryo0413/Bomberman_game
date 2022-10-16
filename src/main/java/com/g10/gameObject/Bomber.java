@@ -50,7 +50,7 @@ public class Bomber extends MovingObject {
     @Override
     public void render() {
         GraphicsContext gc = Sandbox.getGc();
-        gc.drawImage(image, x, y + GlobalConstant.TILE_SIZE - image.getHeight() * GlobalConstant.SCALE, image.getWidth() * GlobalConstant.SCALE, image.getHeight() * GlobalConstant.SCALE);
+        gc.drawImage(image, x, y + GlobalConstant.TILE_SIZE - image.getHeight() * GlobalConstant.SCALE + GlobalConstant.MENU_TOP_HEIGHT, image.getWidth() * GlobalConstant.SCALE, image.getHeight() * GlobalConstant.SCALE);
     }
 
     /**

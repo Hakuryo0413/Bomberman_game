@@ -153,6 +153,6 @@ public class Map extends VisibleObject {
 
     @Override
     public void render() {
-        Sandbox.getGc().drawImage(image, x, y, width * GlobalConstant.TILE_SIZE, height * GlobalConstant.TILE_SIZE);
+        Sandbox.getGc().drawImage(image, x, y + GlobalConstant.MENU_TOP_HEIGHT, width * GlobalConstant.TILE_SIZE, height * GlobalConstant.TILE_SIZE);
     }
 }

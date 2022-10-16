@@ -1,6 +1,7 @@
 package com.g10.gameObject;
 
 
+import com.g10.constants.GlobalConstant;
 import com.g10.general.Sandbox;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
@@ -20,7 +21,7 @@ public class VisibleObject extends BaseObject {
 
     public void render() {
         GraphicsContext gc = Sandbox.getGc();
-        gc.drawImage(image, x, y, width, height);
+        gc.drawImage(image, x, y + GlobalConstant.MENU_TOP_HEIGHT, width, height);
     }
 
     public Image getImage() {
