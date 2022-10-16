@@ -1,5 +1,6 @@
 package com.g10;
 
+import com.g10.general.AudioManager;
 import com.g10.general.ImageManager;
 import com.g10.general.Sandbox;
 import javafx.application.Application;
@@ -9,8 +10,9 @@ import javafx.stage.Stage;
 public class Main extends Application {
     @Override
     public void start(Stage stage) throws Exception {
-        AudioClip audioClip = new AudioClip(getClass().getResource("/com/g10/media/sound.m4a").toExternalForm());
-        audioClip.play();
+        AudioManager audioManager = new AudioManager();
+        audioManager.playMusic();
+        //audioManager.switchCurrentMusic("effect.mp3");
         stage.setTitle("Bomberman");
         stage.getIcons().add(ImageManager.getImage("asset/icon/icon.png"));
         stage.setResizable(false);
