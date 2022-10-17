@@ -85,15 +85,15 @@ public class Map extends VisibleObject {
 
     public Portal createPortal() {
         List<Pair<Integer, Integer>> rootLocation = new ArrayList<>();
-        for(int i = 0; i < height; i++) {
+        for (int i = 0; i < height; i++) {
             for (int j = 0; j < width; j++) {
-                if(a[i][j] == 2) {
+                if (a[i][j] == 2) {
                     rootLocation.add(new Pair<>(i, j));
                 }
             }
         }
         Collections.shuffle(rootLocation);
-        Portal portal = new Portal(rootLocation.get(0).getValue() * GlobalConstant.TILE_SIZE, rootLocation.get(0).getKey()* GlobalConstant.TILE_SIZE);
+        Portal portal = new Portal(rootLocation.get(0).getValue() * GlobalConstant.TILE_SIZE, rootLocation.get(0).getKey() * GlobalConstant.TILE_SIZE);
         a[rootLocation.get(0).getKey()][rootLocation.get(0).getValue()] = 1;
         return portal;
     }
@@ -101,29 +101,34 @@ public class Map extends VisibleObject {
     public List<Item> createItem() {
         List<Pair<Integer, Integer>> rootLocation = new ArrayList<>();
         List<Item> itemList = new ArrayList<>();
-        for(int i = 0; i < height; i++) {
+        for (int i = 0; i < height; i++) {
             for (int j = 0; j < width; j++) {
-                if(a[i][j] == 2) {
+                if (a[i][j] == 2) {
                     rootLocation.add(new Pair<>(i, j));
                 }
             }
         }
         Collections.shuffle(rootLocation);
-        itemList.add(new Item(ItemType.BOM_UP, rootLocation.get(0).getValue() * GlobalConstant.TILE_SIZE, rootLocation.get(0).getKey()* GlobalConstant.TILE_SIZE));
+        itemList.add(new Item(ItemType.BOM_UP, rootLocation.get(0).getValue() * GlobalConstant.TILE_SIZE, rootLocation.get(0).getKey() * GlobalConstant.TILE_SIZE));
         a[rootLocation.get(0).getKey()][rootLocation.get(0).getValue()] = 1;
         rootLocation.remove(rootLocation.get(0));
 
 
         Collections.shuffle(rootLocation);
-        itemList.add(new Item(ItemType.FIRE_UP, rootLocation.get(0).getValue()* GlobalConstant.TILE_SIZE, rootLocation.get(0).getKey()* GlobalConstant.TILE_SIZE));
+        itemList.add(new Item(ItemType.FIRE_UP, rootLocation.get(0).getValue() * GlobalConstant.TILE_SIZE, rootLocation.get(0).getKey() * GlobalConstant.TILE_SIZE));
         a[rootLocation.get(0).getKey()][rootLocation.get(0).getValue()] = 1;
         rootLocation.remove(rootLocation.get(0));
-
 
         Collections.shuffle(rootLocation);
         itemList.add(new Item(ItemType.SPEED_UP, rootLocation.get(0).getValue()* GlobalConstant.TILE_SIZE, rootLocation.get(0).getKey()* GlobalConstant.TILE_SIZE));
         a[rootLocation.get(0).getKey()][rootLocation.get(0).getValue()] = 1;
         rootLocation.remove(rootLocation.get(0));
+
+        Collections.shuffle(rootLocation);
+        itemList.add(new Item(ItemType.LIVES_UP, rootLocation.get(0).getValue()* GlobalConstant.TILE_SIZE, rootLocation.get(0).getKey()* GlobalConstant.TILE_SIZE));
+        a[rootLocation.get(0).getKey()][rootLocation.get(0).getValue()] = 1;
+        rootLocation.remove(rootLocation.get(0));
+
 
         return itemList;
     }

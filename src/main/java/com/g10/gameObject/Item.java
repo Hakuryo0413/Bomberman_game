@@ -31,6 +31,13 @@ public class Item extends UpdatableObject {
                 animation.setDuration(Duration.millis(DURATION_ITEM_UP_ANIMATION));
                 animation.play();
             }
+            case LIVES_UP -> {
+                animation.setStr("asset/item/lives_up");
+                animation.setCount(ITEM_UP_COUNT);
+                animation.setDuration(Duration.millis(DURATION_ITEM_UP_ANIMATION));
+                animation.play();
+            }
+
         }
 
     }

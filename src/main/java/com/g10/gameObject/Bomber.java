@@ -25,6 +25,7 @@ public class Bomber extends MovingObject {
     private static final int DEATH_COUNT = 6;
     private static final int DURATION_DEATH_ANIMATION = 1200;
     private static final int DEFAULT_VEL = 200;
+    private static final int DEFAULT_LIVES_UP = 1;
     private static final int DEFAULT_BOMB_CAN_BE_PLACE = 1;
     private static final int DEFAULT_BOMB_LENGTH = 1;
     private static final int DEFAULT_SPEED_UP = 60;
@@ -33,12 +34,14 @@ public class Bomber extends MovingObject {
     private int bomb_can_place;
     private int bomb_length;
 
+
     public Bomber() {
         super(ImageManager.getImage("asset/bomber/bomberman_down2.png"), 2 * GlobalConstant.TILE_SIZE, GlobalConstant.TILE_SIZE, GlobalConstant.TILE_SIZE, GlobalConstant.TILE_SIZE);
         vel = GameStatus.getVel();
         alive = true;
         bomb_can_place = GameStatus.getNumBombsCanPlace();
         bomb_length = GameStatus.getBomLength();
+
     }
 
     public boolean isAlive() {
@@ -98,7 +101,6 @@ public class Bomber extends MovingObject {
         obstructingObjectList.addAll(bomList);
         super.update(deltaTime, obstructingObjectList);
     }
-
     /**
      * Update phần đặt bom.
      */
@@ -180,7 +182,10 @@ public class Bomber extends MovingObject {
                     bomb_length++;
                 } else if (itemList.get(i).getItem() == ItemType.SPEED_UP) {
                     vel += DEFAULT_SPEED_UP;
+                } else if (itemList.get(i).getItem() == ItemType.LIVES_UP ){
+                    GameStatus.setRemainingLives(GameStatus.getRemainingLives() + 1);
                 }
+
                 itemList.remove(itemList.get(i));
             }
         }
@@ -191,10 +196,8 @@ public class Bomber extends MovingObject {
         if (enemyList.size() == 0 && BaseObject.checkCollision(this, portal)) {
             GameStatus.setVel(vel);
             GameStatus.setBomLength(bomb_length);
-            GameStatus.setNumBombsCanPlace(bomb_can_place);
             GameStatus.setStage(GameStatus.getStage() + 1);
             ScreenManager.switchScreen(ScreenType.STAGE_SCREEN);
         }
     }
 }
-
