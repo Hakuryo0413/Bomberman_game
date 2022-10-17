@@ -20,6 +20,7 @@ import java.util.List;
 public class Bomber extends MovingObject {
 
     private static final int MOVEMENT_COUNT = 3;
+    //hi
     private static final int DURATION_MOVEMENT_ANIMATION = 400;
     private static final int DEATH_COUNT = 6;
     private static final int DURATION_DEATH_ANIMATION = 1200;
