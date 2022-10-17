@@ -1,6 +1,8 @@
 package com.g10.menu;
 
 import com.g10.constants.GlobalConstant;
+import com.g10.game.GameStatus;
+import com.g10.general.AudioManager;
 import com.g10.general.ImageManager;
 import com.g10.general.Input;
 import com.g10.general.Sandbox;
@@ -23,11 +25,21 @@ public class OptionMenu {
     public OptionMenu(){
         background = ImageManager.getImage("asset/background/home_screen_background.png");
         this.cusor = new Cusor(ImageManager.getImage("asset/menu/cusor.png"),280,300);
-        font = Font.loadFont(getClass().getResource("/com/g10/font/font.ttf").toExternalForm(), 40);
+       // font = Font.loadFont(getClass().getResource("/com/g10/font/font.ttf").toExternalForm(), 40);
         cusor.setCount(3);
         cusor.setSpaceBetween(20);
     }
     public void update()  {
+        if (Input.getInput().contains("ENTER")) {
+            Input.getInput().remove("ENTER");
+            if (cusor.getNumOfSelect() == 1) {
+                AudioManager.switchMuteMusic();
+
+            }
+            if (cusor.getNumOfSelect() == 2) {
+                AudioManager.switchMuteSound();
+            }
+        }
         if (Input.getInput().contains("ESCAPE")) {
             Input.getInput().remove("ESCAPE");
             ScreenManager.switchScreen(ScreenType.HOME_SCREEN);
@@ -42,8 +54,20 @@ public class OptionMenu {
         cusor.render();
         Sandbox.getGc().setFont(font);
         Sandbox.getGc().setFill(Color.WHITE);
-        Sandbox.getGc().fillText("MUSIC",cusor.getX()+65,cusor.getY()+35);
-        Sandbox.getGc().fillText("SOUND",cusor.getX()+65,cusor.getY()+35+cusor.getSpaceBetween()+GlobalConstant.TILE_SIZE);
+        if(AudioManager.isMuteMusic()){
+            Sandbox.getGc().fillText("MUSIC: OFF",cusor.getX()+65,cusor.getY()+35);
+        }
+        else {
+            Sandbox.getGc().fillText("MUSIC: ON",cusor.getX()+65,cusor.getY()+35);
+        }
+        if(AudioManager.isMuteSound()){
+            Sandbox.getGc().fillText("SOUND: OFF",cusor.getX()+65,cusor.getY()+35+cusor.getSpaceBetween()+GlobalConstant.TILE_SIZE);
+        }
+        else {
+            Sandbox.getGc().fillText("SOUND: ON",cusor.getX()+65,cusor.getY()+35+cusor.getSpaceBetween()+GlobalConstant.TILE_SIZE);
+        }
+//        Sandbox.getGc().fillText("MUSIC",cusor.getX()+65,cusor.getY()+35);
+//        Sandbox.getGc().fillText("SOUND",cusor.getX()+65,cusor.getY()+35+cusor.getSpaceBetween()+GlobalConstant.TILE_SIZE);
     }
 
 }

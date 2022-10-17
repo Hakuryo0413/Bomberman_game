@@ -15,7 +15,7 @@ public class TopMenu {
     private Font font;
     private Image cover;
     public TopMenu() {
-        font = Font.loadFont(getClass().getResource("/com/g10/font/font.ttf").toExternalForm(), 40);
+        //font = Font.loadFont(getClass().getResource("/com/g10/font/font.ttf").toExternalForm(), 40);
         cover = ImageManager.getImage("asset/background/top_menu_cover.png");
     }
 
