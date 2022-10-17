@@ -25,7 +25,7 @@ public class OptionMenu {
     public OptionMenu(){
         background = ImageManager.getImage("asset/background/home_screen_background.png");
         this.cusor = new Cusor(ImageManager.getImage("asset/menu/cusor.png"),280,300);
-       // font = Font.loadFont(getClass().getResource("/com/g10/font/font.ttf").toExternalForm(), 40);
+        font = Font.loadFont(getClass().getResource("/com/g10/font/font.ttf").toExternalForm(), 40);
         cusor.setCount(3);
         cusor.setSpaceBetween(20);
     }

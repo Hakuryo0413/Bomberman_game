@@ -54,8 +54,8 @@ public class GameStatus {
 
     public static void init() {
         stage = 1;
-        remainingLives = 2;
-        numBombsCanPlace = 3;
+        remainingLives = 1;
+        numBombsCanPlace = 1;
         bomLength = 1;
         vel = 200;
     }

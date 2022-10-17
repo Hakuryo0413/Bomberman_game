@@ -21,6 +21,7 @@ public class HomeMenu {
 
     public HomeMenu() {
         this.background = ImageManager.getImage("asset/background/home_screen_background.png");
+        font = Font.loadFont(getClass().getResource("/com/g10/font/font.ttf").toExternalForm(), 40);
         logo = ImageManager.getImage("asset/logo/logo.png");
         this.cusor = new Cusor(ImageManager.getImage("asset/menu/cusor.png"), 280, 500);
         cusor.setCount(2);
