@@ -26,6 +26,10 @@ public class ScreenManager {
                 currentScreen = new OptionScreen();
                 break;
             }
+            case TIME_OUT_SCREEN -> {
+                currentScreen = new TimeOutScreen();
+                break;
+            }
         }
     }
 }

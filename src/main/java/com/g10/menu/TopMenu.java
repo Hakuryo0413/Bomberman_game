@@ -15,13 +15,15 @@ public class TopMenu {
     private final Font font;
     private final Image cover;
 
+    private float time;
+
     public TopMenu() {
         font = Font.loadFont(getClass().getResource("/com/g10/font/font.ttf").toExternalForm(), 40);
         cover = ImageManager.getImage("asset/background/top_menu_cover.png");
     }
 
-    public void update() {
-
+    public void update(float time) {
+        this.time = time;
     }
 
     public void render() {
@@ -29,7 +31,7 @@ public class TopMenu {
         Sandbox.getGc().setFont(font);
         Sandbox.getGc().setFill(Color.WHITE);
         Sandbox.getGc().fillText(String.valueOf(GameStatus.getRemainingLives()), 80, 55);
-
+        Sandbox.getGc().fillText("Time: " + (int)time, 500, 55);
     }
 
 }

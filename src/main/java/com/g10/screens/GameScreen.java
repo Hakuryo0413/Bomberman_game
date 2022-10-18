@@ -26,6 +26,8 @@ public class GameScreen implements Screen {
 
     GameMenu gameMenu;
 
+    float time = 100;
+
     public GameScreen() {
         //TODO: xoá đi nehs
         GameStatus.init();
@@ -66,6 +68,7 @@ public class GameScreen implements Screen {
 
     @Override
     public void update(float deltaTime) {
+
         if (!gameMenu.isActive()) {
 
             if (bomber.isAlive()) {
@@ -88,6 +91,9 @@ public class GameScreen implements Screen {
                 enemy.update(fireList, enemyList);
             }
             portal.update();
+            time -= deltaTime;
+            if(time < 0) ScreenManager.switchScreen(ScreenType.TIME_OUT_SCREEN);
+            topMenu.update(time);
         }
         gameMenu.update();
     }
