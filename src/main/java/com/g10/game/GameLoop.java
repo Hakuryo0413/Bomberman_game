@@ -5,8 +5,6 @@ import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.util.Duration;
 
-import java.io.FileNotFoundException;
-
 public class GameLoop {
     static long deltaTime = System.nanoTime();
 

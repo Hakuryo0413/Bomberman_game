@@ -12,8 +12,9 @@ public class TopMenu {
     private Image background;
 
     private Cusor cusor;
-    private Font font;
-    private Image cover;
+    private final Font font;
+    private final Image cover;
+
     public TopMenu() {
         font = Font.loadFont(getClass().getResource("/com/g10/font/font.ttf").toExternalForm(), 40);
         cover = ImageManager.getImage("asset/background/top_menu_cover.png");

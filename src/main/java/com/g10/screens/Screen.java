@@ -1,9 +1,7 @@
 package com.g10.screens;
 
-import java.io.FileNotFoundException;
-
 public interface Screen {
-    void render() ;
+    void render();
 
-    void update(float deltaTime) ;
+    void update(float deltaTime);
 }

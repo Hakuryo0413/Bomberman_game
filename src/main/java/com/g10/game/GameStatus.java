@@ -19,7 +19,6 @@ public class GameStatus {
     }
 
 
-
     public static int getRemainingLives() {
         return remainingLives;
     }

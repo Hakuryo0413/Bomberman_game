@@ -62,8 +62,6 @@ public class BaseObject {
         return i1 == i2 && j1 == j2;
     }
 
-    ;
-
     public static boolean checkCollision(BaseObject o, int x, int y) {
         int i = (int) ((o.x + o.width / 2) / GlobalConstant.TILE_SIZE);
         int j = (int) ((o.y + o.height / 2) / GlobalConstant.TILE_SIZE);

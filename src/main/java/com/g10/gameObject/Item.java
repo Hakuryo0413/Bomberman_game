@@ -11,7 +11,7 @@ public class Item extends UpdatableObject {
 
     public Item(ItemType type, int x, int y) {
         super(null, x, y, GlobalConstant.TILE_SIZE, GlobalConstant.TILE_SIZE);
-        this.type =type;
+        this.type = type;
         switch (type) {
             case BOM_UP -> {
                 animation.setStr("asset/item/bom_up");
@@ -41,10 +41,12 @@ public class Item extends UpdatableObject {
         }
 
     }
-    public ItemType getItem(){
+
+    public ItemType getItem() {
         return type;
     }
-    public void setItem(ItemType type){
+
+    public void setItem(ItemType type) {
         this.type = type;
     }
 

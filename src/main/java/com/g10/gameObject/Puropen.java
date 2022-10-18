@@ -4,9 +4,9 @@ import javafx.scene.image.Image;
 
 import java.util.List;
 
-public class Puropen extends Enemy{
+public class Puropen extends Enemy {
     public Puropen(Image image, float x, float y) {
-        super( x, y);
+        super(x, y);
     }
 
     @Override

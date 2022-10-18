@@ -4,7 +4,6 @@ import com.g10.constants.GlobalConstant;
 import com.g10.general.AnimationManager;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
-import javafx.scene.image.Image;
 import javafx.util.Duration;
 
 import java.util.List;
@@ -16,6 +15,7 @@ public abstract class Enemy extends MovingObject {
     }
 
     public abstract void update(float deltaTime, List<Wall> wallList, List<Root> rootList, List<Bom> bomList);
+
     public void update(List<Fire> fireList, List<Enemy> enemies) {
         boolean check = false;
         for (int i = 0; i < fireList.size(); i++) {
@@ -23,7 +23,7 @@ public abstract class Enemy extends MovingObject {
                 check = true;
             }
         }
-        if(check) {
+        if (check) {
             //TODO: sửa timeline tại đây nhé
             Timeline tl = new Timeline(new KeyFrame(Duration.millis(2), actionEvent -> {
                 enemies.remove(this);

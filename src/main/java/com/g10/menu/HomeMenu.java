@@ -15,9 +15,9 @@ public class HomeMenu {
     private final Image background;
 
     private final Cusor cusor;
-    private Font font;
+    private final Font font;
 
-    private Image logo;
+    private final Image logo;
 
     public HomeMenu() {
         this.background = ImageManager.getImage("asset/background/home_screen_background.png");
@@ -48,7 +48,7 @@ public class HomeMenu {
 
 
     public void render() {
-        Sandbox.getGc().drawImage(background,0,0, GlobalConstant.SCREEN_WIDTH,GlobalConstant.SCREEN_HEIGHT);
+        Sandbox.getGc().drawImage(background, 0, 0, GlobalConstant.SCREEN_WIDTH, GlobalConstant.SCREEN_HEIGHT);
         Sandbox.getGc().drawImage(logo, 170, 75);
 //        Sandbox.getGc().setFill(Color.BLACK);
 //        Sandbox.getGc().fillRect(0, 0, GlobalConstant.SCREEN_WIDTH, GlobalConstant.SCREEN_HEIGHT);

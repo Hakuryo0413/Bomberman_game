@@ -94,8 +94,7 @@ public class Bomber extends MovingObject {
         if (velX == 0 && velY == 0) {
             animation.pause();
             AnimationManager.removeAnimation(animation);
-        }
-        else {
+        } else {
             AnimationManager.addPlayingAnimation(animation);
         }
         List<BaseObject> obstructingObjectList = new ArrayList<>();
@@ -104,6 +103,7 @@ public class Bomber extends MovingObject {
         obstructingObjectList.addAll(bomList);
         super.update(deltaTime, obstructingObjectList);
     }
+
     /**
      * Update phần đặt bom.
      */
@@ -143,18 +143,18 @@ public class Bomber extends MovingObject {
             alive = false;
             deathTimeline = new Timeline(new KeyFrame(Duration.millis(3000), actionEvent -> {
                 GameStatus.setRemainingLives(GameStatus.getRemainingLives() - 1);
-                if(GameStatus.getRemainingLives() < 0) {
+                if (GameStatus.getRemainingLives() < 0) {
 
                     ScreenManager.switchScreen(ScreenType.HOME_SCREEN); //TODO: cái này sẽ đến mafn hình chiếu điểm
 
-                }
-                else {
+                } else {
 
                     ScreenManager.switchScreen(ScreenType.STAGE_SCREEN);
 
                 }
                 TimelineManager.removeTimeline(deathTimeline);
                 AnimationManager.removeAnimation(animation);
+                animation.stop();
             }));
             deathTimeline.setCycleCount(1);
             deathTimeline.play();
@@ -189,7 +189,7 @@ public class Bomber extends MovingObject {
                     bomb_length++;
                 } else if (itemList.get(i).getItem() == ItemType.SPEED_UP) {
                     vel += DEFAULT_SPEED_UP;
-                } else if (itemList.get(i).getItem() == ItemType.LIVES_UP ){
+                } else if (itemList.get(i).getItem() == ItemType.LIVES_UP) {
                     GameStatus.setRemainingLives(GameStatus.getRemainingLives() + 1);
                 }
 
@@ -199,7 +199,7 @@ public class Bomber extends MovingObject {
 
     }
 
-    public void update(List<Enemy> enemyList, Portal portal)  {
+    public void update(List<Enemy> enemyList, Portal portal) {
         if (enemyList.size() == 0 && BaseObject.checkCollision(this, portal)) {
             GameStatus.setVel(vel);
             GameStatus.setBomLength(bomb_length);

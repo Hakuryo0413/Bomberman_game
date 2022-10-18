@@ -7,13 +7,12 @@ import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.util.Duration;
 
-import java.sql.Time;
 import java.util.List;
 
 public class Bom extends UpdatableObject {
 
     Timeline explodeTimeline;
-    private int length;
+    private final int length;
     private static final int BOM_COUNT = 3;
     private static final int DURATION_BOM_ADD_ANIMATION = 400;
     private static final int DURATION_BOM_REMOVE_ANIMATION = 1500;
@@ -58,12 +57,12 @@ public class Bom extends UpdatableObject {
             for (int j = 0; j < bomList.size(); j++) {
                 if (checkCollision(bomList.get(j), m, n - i)) {
                     bomList.get(j).explodeTimeline.stop();
-                    bomList.get(j).explode(rootList, wallList,bomList, fireList);
+                    bomList.get(j).explode(rootList, wallList, bomList, fireList);
                     bomList.remove(bomList.get(j));
                 }
 
             }
-            if (check == false) {
+            if (!check) {
                 break;
             } else {
                 if (i < length) {
@@ -90,12 +89,12 @@ public class Bom extends UpdatableObject {
             for (int j = 0; j < bomList.size(); j++) {
                 if (checkCollision(bomList.get(j), m, n + i)) {
                     bomList.get(j).explodeTimeline.stop();
-                    bomList.get(j).explode(rootList, wallList,bomList, fireList);
+                    bomList.get(j).explode(rootList, wallList, bomList, fireList);
                     bomList.remove(bomList.get(j));
                 }
 
             }
-            if (check == false) {
+            if (!check) {
                 break;
             } else {
                 if (i < length) {
@@ -120,14 +119,14 @@ public class Bom extends UpdatableObject {
 
             }
             for (int j = 0; j < bomList.size(); j++) {
-                if (checkCollision(bomList.get(j), m - i, n )) {
+                if (checkCollision(bomList.get(j), m - i, n)) {
                     bomList.get(j).explodeTimeline.stop();
-                    bomList.get(j).explode(rootList, wallList,bomList, fireList);
+                    bomList.get(j).explode(rootList, wallList, bomList, fireList);
                     bomList.remove(bomList.get(j));
                 }
 
             }
-            if (check == false) {
+            if (!check) {
                 break;
             } else {
                 if (i < length) {
@@ -154,12 +153,12 @@ public class Bom extends UpdatableObject {
             for (int j = 0; j < bomList.size(); j++) {
                 if (checkCollision(bomList.get(j), m + i, n)) {
                     bomList.get(j).explodeTimeline.stop();
-                    bomList.get(j).explode(rootList, wallList,bomList, fireList);
+                    bomList.get(j).explode(rootList, wallList, bomList, fireList);
                     bomList.remove(bomList.get(j));
                 }
 
             }
-            if (check == false) {
+            if (!check) {
                 break;
             } else {
                 if (i < length) {

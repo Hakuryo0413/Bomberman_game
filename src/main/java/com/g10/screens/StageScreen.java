@@ -9,16 +9,12 @@ import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.util.Duration;
 
-
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-
 public class StageScreen implements Screen {
     private Font font;
 
-    public StageScreen()  {
+    public StageScreen() {
         Font font = Font.loadFont(getClass().getResource("/com/g10/font/font.ttf").toExternalForm(), 40);
-        Timeline tl = new Timeline(new KeyFrame(Duration.millis(2500),actionEvent -> {
+        Timeline tl = new Timeline(new KeyFrame(Duration.millis(2500), actionEvent -> {
 
             ScreenManager.switchScreen(ScreenType.GAME_SCREEN);
 
@@ -29,12 +25,12 @@ public class StageScreen implements Screen {
     }
 
     @Override
-    public void render()  {
+    public void render() {
         Sandbox.getGc().setFill(Color.BLACK);
-        Sandbox.getGc().fillRect(0,0, GlobalConstant.SCREEN_WIDTH,GlobalConstant.SCREEN_HEIGHT);
+        Sandbox.getGc().fillRect(0, 0, GlobalConstant.SCREEN_WIDTH, GlobalConstant.SCREEN_HEIGHT);
         Sandbox.getGc().setFont(font);
         Sandbox.getGc().setFill(Color.WHITE);
-        Sandbox.getGc().fillText("STAGE "+ GameStatus.getStage(),320,330);
+        Sandbox.getGc().fillText("STAGE " + GameStatus.getStage(), 320, 330);
     }
 
     @Override

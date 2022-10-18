@@ -4,9 +4,6 @@ import com.g10.constants.GlobalConstant;
 import com.g10.gameObject.VisibleObject;
 import com.g10.general.Input;
 import com.g10.general.Sandbox;
-import com.g10.screens.ScreenManager;
-import com.g10.screens.ScreenType;
-import javafx.scene.Cursor;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
 
@@ -16,32 +13,34 @@ public class Cusor extends VisibleObject {
     private int spaceBetween;
 
     public Cusor(Image image, float x, float y) {
-        super(image, x, y, GlobalConstant.TILE_SIZE,GlobalConstant.TILE_SIZE);
+        super(image, x, y, GlobalConstant.TILE_SIZE, GlobalConstant.TILE_SIZE);
     }
-    public Cusor(Image image, float x, float y ,int width, int height){
+
+    public Cusor(Image image, float x, float y, int width, int height) {
         super(image, x, y, width, height);
     }
 
     @Override
     public void render() {
         GraphicsContext gc = Sandbox.getGc();
-        gc.drawImage(image, x, y+ (numOfSelect-1)*(height+spaceBetween), width, height);
+        gc.drawImage(image, x, y + (numOfSelect - 1) * (height + spaceBetween), width, height);
     }
-    public void update(){
-       if(Input.getInput().contains("DOWN")){
-           Input.getInput().remove("DOWN");
-           numOfSelect++;
-           if(numOfSelect>count) {
-               numOfSelect=1;
-           }
-       }
-       if(Input.getInput().contains("UP")){
-           Input.getInput().remove("UP");
-           numOfSelect--;
-           if(numOfSelect<1){
-               numOfSelect=count;
-           }
-       }
+
+    public void update() {
+        if (Input.getInput().contains("DOWN")) {
+            Input.getInput().remove("DOWN");
+            numOfSelect++;
+            if (numOfSelect > count) {
+                numOfSelect = 1;
+            }
+        }
+        if (Input.getInput().contains("UP")) {
+            Input.getInput().remove("UP");
+            numOfSelect--;
+            if (numOfSelect < 1) {
+                numOfSelect = count;
+            }
+        }
     }
 
     public int getCount() {
@@ -63,6 +62,7 @@ public class Cusor extends VisibleObject {
     public int getNumOfSelect() {
         return numOfSelect;
     }
+
     public void setNumOfSelect(int numOfSelect) {
         this.numOfSelect = numOfSelect;
     }

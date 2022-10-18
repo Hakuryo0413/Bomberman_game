@@ -1,7 +1,6 @@
 package com.g10.gameObject;
 
 import com.g10.constants.GlobalConstant;
-import com.g10.game.Animation;
 import com.g10.general.AnimationManager;
 import com.g10.general.ImageManager;
 import com.g10.general.TimelineManager;
@@ -12,8 +11,8 @@ import javafx.util.Duration;
 import java.util.List;
 
 public class Root extends UpdatableObject {
-    private static int ROOT_BURNING_COUNT = 6;
-    private static int DURATION_ROOT_BURNING = 500;
+    private static final int ROOT_BURNING_COUNT = 6;
+    private static final int DURATION_ROOT_BURNING = 500;
 
     private Timeline burnTimeLine;
 

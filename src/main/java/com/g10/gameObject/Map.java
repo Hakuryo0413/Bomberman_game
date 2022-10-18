@@ -14,7 +14,7 @@ import java.util.Scanner;
 
 public class Map extends VisibleObject {
 
-    private int a[][];
+    private final int[][] a;
 
     public Map(String path, Image image) {
         super(image, 0, 0);
@@ -120,12 +120,12 @@ public class Map extends VisibleObject {
         rootLocation.remove(rootLocation.get(0));
 
         Collections.shuffle(rootLocation);
-        itemList.add(new Item(ItemType.SPEED_UP, rootLocation.get(0).getValue()* GlobalConstant.TILE_SIZE, rootLocation.get(0).getKey()* GlobalConstant.TILE_SIZE));
+        itemList.add(new Item(ItemType.SPEED_UP, rootLocation.get(0).getValue() * GlobalConstant.TILE_SIZE, rootLocation.get(0).getKey() * GlobalConstant.TILE_SIZE));
         a[rootLocation.get(0).getKey()][rootLocation.get(0).getValue()] = 1;
         rootLocation.remove(rootLocation.get(0));
 
         Collections.shuffle(rootLocation);
-        itemList.add(new Item(ItemType.LIVES_UP, rootLocation.get(0).getValue()* GlobalConstant.TILE_SIZE, rootLocation.get(0).getKey()* GlobalConstant.TILE_SIZE));
+        itemList.add(new Item(ItemType.LIVES_UP, rootLocation.get(0).getValue() * GlobalConstant.TILE_SIZE, rootLocation.get(0).getKey() * GlobalConstant.TILE_SIZE));
         a[rootLocation.get(0).getKey()][rootLocation.get(0).getValue()] = 1;
         rootLocation.remove(rootLocation.get(0));
 
@@ -133,23 +133,22 @@ public class Map extends VisibleObject {
         return itemList;
     }
 
-    public List<Enemy> createEnemy(){
+    public List<Enemy> createEnemy() {
         List<Pair<Integer, Integer>> grassLocation = new ArrayList<>();
-        for(int i = 0; i < height; i++) {
+        for (int i = 0; i < height; i++) {
             for (int j = 0; j < width; j++) {
-                if(a[i][j] == 0) {
+                if (a[i][j] == 0) {
                     grassLocation.add(new Pair<>(i, j));
                 }
             }
         }
         List<Enemy> enemyList = new ArrayList<>();
-        for(int t = 0; t < 5; t++) {
+        for (int t = 0; t < 5; t++) {
             Collections.shuffle(grassLocation);
-            if(grassLocation.get(0).getValue() > 3 && grassLocation.get(0).getKey() > 3) {
-                enemyList.add(new NutsStar(grassLocation.get(0).getValue()* GlobalConstant.TILE_SIZE, grassLocation.get(0).getKey()*GlobalConstant.TILE_SIZE));
+            if (grassLocation.get(0).getValue() > 3 && grassLocation.get(0).getKey() > 3) {
+                enemyList.add(new NutsStar(grassLocation.get(0).getValue() * GlobalConstant.TILE_SIZE, grassLocation.get(0).getKey() * GlobalConstant.TILE_SIZE));
                 grassLocation.remove(grassLocation.get(0));
-            }
-            else {
+            } else {
                 t--;
             }
         }

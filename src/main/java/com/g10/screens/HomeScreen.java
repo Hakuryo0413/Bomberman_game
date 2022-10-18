@@ -3,7 +3,7 @@ package com.g10.screens;
 import com.g10.menu.HomeMenu;
 
 public class HomeScreen implements Screen {
-    private HomeMenu homeMenu;
+    private final HomeMenu homeMenu;
 
     public HomeScreen() {
         homeMenu = new HomeMenu();

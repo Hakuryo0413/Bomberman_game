@@ -1,9 +1,5 @@
 package com.g10.screens;
 
-import javafx.stage.Stage;
-
-import java.io.FileNotFoundException;
-
 public class ScreenManager {
     private static Screen currentScreen;
 

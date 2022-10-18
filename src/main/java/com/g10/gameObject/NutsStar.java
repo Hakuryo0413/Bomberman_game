@@ -1,28 +1,19 @@
 package com.g10.gameObject;
 
 import com.g10.constants.GlobalConstant;
-import com.g10.game.Animation;
 import com.g10.general.AnimationManager;
 import com.g10.general.ImageManager;
 import com.g10.general.Sandbox;
-import com.g10.screens.ScreenManager;
-import com.g10.screens.ScreenType;
-import javafx.animation.KeyFrame;
-import javafx.animation.Timeline;
 import javafx.scene.canvas.GraphicsContext;
-import javafx.scene.image.Image;
 import javafx.util.Duration;
 
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-import java.util.Random;
 
-public class NutsStar extends Enemy{
+public class NutsStar extends Enemy {
 
     Direction direction;
-
-
 
 
     public NutsStar(float x, float y) {
@@ -54,24 +45,23 @@ public class NutsStar extends Enemy{
         }
 
         int i = (int) ((x + width / 2) / GlobalConstant.TILE_SIZE);
-        int j = (int) ((y + height/ 2) / GlobalConstant.TILE_SIZE);
+        int j = (int) ((y + height / 2) / GlobalConstant.TILE_SIZE);
 
-        if(direction == Direction.UP && map[j - 1][i] == 1 && y - 1 <= j *GlobalConstant.TILE_SIZE
-        || direction == Direction.DOWN && map[j + 1][i] == 1 && y  + 1>= j * GlobalConstant.TILE_SIZE
-        || direction == Direction.LEFT && map[j][i - 1] == 1 && x - 1<= i * GlobalConstant.TILE_SIZE
-        || direction == Direction.RIGHT && map[j][i+ 1] == 1 && x + 1>= i * GlobalConstant.TILE_SIZE
-        || direction == Direction.STAND) {
+        if (direction == Direction.UP && map[j - 1][i] == 1 && y - 1 <= j * GlobalConstant.TILE_SIZE
+                || direction == Direction.DOWN && map[j + 1][i] == 1 && y + 1 >= j * GlobalConstant.TILE_SIZE
+                || direction == Direction.LEFT && map[j][i - 1] == 1 && x - 1 <= i * GlobalConstant.TILE_SIZE
+                || direction == Direction.RIGHT && map[j][i + 1] == 1 && x + 1 >= i * GlobalConstant.TILE_SIZE
+                || direction == Direction.STAND) {
             List<Direction> mayGo = new ArrayList<>();
-            if(map[j - 1][i] == 0) mayGo.add(Direction.UP);
-            if(map[j + 1][i] == 0) mayGo.add(Direction.DOWN);
-            if(map[j][i - 1] == 0) mayGo.add(Direction.LEFT);
-            if(map[j][i + 1] == 0) mayGo.add(Direction.RIGHT);
-            if(mayGo.size() == 0) {
+            if (map[j - 1][i] == 0) mayGo.add(Direction.UP);
+            if (map[j + 1][i] == 0) mayGo.add(Direction.DOWN);
+            if (map[j][i - 1] == 0) mayGo.add(Direction.LEFT);
+            if (map[j][i + 1] == 0) mayGo.add(Direction.RIGHT);
+            if (mayGo.size() == 0) {
                 direction = Direction.STAND;
                 x = i * GlobalConstant.TILE_SIZE;
                 y = j * GlobalConstant.TILE_SIZE;
-            }
-            else {
+            } else {
                 Collections.shuffle(mayGo);
                 direction = mayGo.get(0);
             }
@@ -105,7 +95,7 @@ public class NutsStar extends Enemy{
                 animation.play();
                 break;
             }
-            case RIGHT ->  {
+            case RIGHT -> {
                 velX = 100;
                 velY = 0;
                 animation.setStr("asset/enemy/nuts_star/nuts_star_right");
@@ -130,6 +120,6 @@ public class NutsStar extends Enemy{
     @Override
     public void render() {
         GraphicsContext gc = Sandbox.getGc();
-        gc.drawImage(image, x, y + GlobalConstant.TILE_SIZE - image.getHeight() * GlobalConstant.SCALE + GlobalConstant.MENU_TOP_HEIGHT , image.getWidth() * GlobalConstant.SCALE, image.getHeight() * GlobalConstant.SCALE);
+        gc.drawImage(image, x, y + GlobalConstant.TILE_SIZE - image.getHeight() * GlobalConstant.SCALE + GlobalConstant.MENU_TOP_HEIGHT, image.getWidth() * GlobalConstant.SCALE, image.getHeight() * GlobalConstant.SCALE);
     }
 }
