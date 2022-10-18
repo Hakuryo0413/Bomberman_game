@@ -9,9 +9,6 @@ import javafx.stage.Stage;
 public class Main extends Application {
     @Override
     public void start(Stage stage) throws Exception {
-        AudioManager.playMusic("music.wav");
-        AudioManager.switchMuteMusic();
-        AudioManager.playSound("effect.mp3");
         stage.setTitle("Bomberman");
         stage.getIcons().add(ImageManager.getImage("asset/icon/icon.png"));
         stage.setResizable(false);

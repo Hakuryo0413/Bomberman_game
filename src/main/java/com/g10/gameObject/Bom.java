@@ -2,6 +2,7 @@ package com.g10.gameObject;
 
 import com.g10.constants.GlobalConstant;
 import com.g10.general.AnimationManager;
+import com.g10.general.AudioManager;
 import com.g10.general.TimelineManager;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
@@ -30,6 +31,7 @@ public class Bom extends UpdatableObject {
             explode(rootList, wallList, bomList, fireList);
             TimelineManager.removeTimeline(explodeTimeline);
             AnimationManager.removeAnimation(animation);
+            AudioManager.playSound("bomb_explodes.mp3");
         }));
         explodeTimeline.setCycleCount(1);
         explodeTimeline.play();
