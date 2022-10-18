@@ -27,6 +27,7 @@ public abstract class Enemy extends MovingObject {
             //TODO: sửa timeline tại đây nhé
             Timeline tl = new Timeline(new KeyFrame(Duration.millis(2), actionEvent -> {
                 enemies.remove(this);
+                animation.stop();
                 AnimationManager.removeAnimation(animation);
             }));
             tl.setCycleCount(1);

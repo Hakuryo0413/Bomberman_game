@@ -154,6 +154,7 @@ public class Bomber extends MovingObject {
 
                 }
                 TimelineManager.removeTimeline(deathTimeline);
+                AnimationManager.removeAnimation(animation);
             }));
             deathTimeline.setCycleCount(1);
             deathTimeline.play();
@@ -166,6 +167,7 @@ public class Bomber extends MovingObject {
             animation = new Animation(Duration.millis(1200), "asset/bomber/bomberman_death", 6);
             animation.setCycleCount(1);
             animation.play();
+            AnimationManager.addPlayingAnimation(animation);
         }
     }
 
