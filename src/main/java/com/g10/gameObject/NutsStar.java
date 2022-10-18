@@ -2,6 +2,7 @@ package com.g10.gameObject;
 
 import com.g10.constants.GlobalConstant;
 import com.g10.game.Animation;
+import com.g10.general.AnimationManager;
 import com.g10.general.ImageManager;
 import com.g10.general.Sandbox;
 import com.g10.screens.ScreenManager;
@@ -122,6 +123,7 @@ public class NutsStar extends Enemy{
                 animation.play();
             }
         }
+        AnimationManager.addPlayingAnimation(animation);
         super.update(deltaTime, map);
     }
 

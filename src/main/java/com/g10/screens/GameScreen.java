@@ -1,7 +1,9 @@
 package com.g10.screens;
 
+import com.g10.game.GameStatus;
 import com.g10.gameObject.*;
 import com.g10.general.ImageManager;
+import com.g10.menu.GameMenu;
 import com.g10.menu.TopMenu;
 
 import java.util.ArrayList;
@@ -22,7 +24,11 @@ public class GameScreen implements Screen {
     Map map;
     TopMenu topMenu;
 
+    GameMenu gameMenu;
+
     public GameScreen() {
+        //TODO: xoá đi nehs
+        GameStatus.init();
         map = new Map("src/main/resources/com/g10/asset/map/stage1.txt", ImageManager.getImage("asset/map/stage1.png"));
         wallList = map.createWall();
 
@@ -39,6 +45,7 @@ public class GameScreen implements Screen {
         bomber = new Bomber();
         fireList = new ArrayList<>();
         topMenu = new TopMenu();
+        gameMenu = new GameMenu();
 
     }
 
@@ -54,30 +61,34 @@ public class GameScreen implements Screen {
         bomber.render();
         enemyList.forEach(VisibleObject::render);
         topMenu.render();
+        gameMenu.render();
     }
 
     @Override
     public void update(float deltaTime) {
+        if (!gameMenu.isActive()) {
 
-        if (bomber.isAlive()) {
-            bomber.update(itemList);
-            bomber.update(deltaTime, wallList, rootList, bomList); //update movement
-            bomber.update(bomList, fireList, wallList, rootList);
-            bomber.update(fireList, enemyList);
-            bomber.update(enemyList, portal);
-            //update plant bomb
-            //update death
-        } else {
-            bomber.update();
+            if (bomber.isAlive()) {
+                bomber.update(itemList);
+                bomber.update(deltaTime, wallList, rootList, bomList); //update movement
+                bomber.update(bomList, fireList, wallList, rootList);
+                bomber.update(fireList, enemyList);
+                bomber.update(enemyList, portal);
+                //update plant bomb
+                //update death
+            } else {
+                bomber.update();
+            }
+            bomList.forEach(UpdatableObject::update);
+            fireList.forEach(UpdatableObject::update);
+            itemList.forEach(UpdatableObject::update);
+            rootList.forEach(UpdatableObject::update);
+            for (Enemy enemy : enemyList) {
+                enemy.update(deltaTime, wallList, rootList, bomList);
+                enemy.update(fireList, enemyList);
+            }
+            portal.update();
         }
-        bomList.forEach(UpdatableObject::update);
-        fireList.forEach(UpdatableObject::update);
-        itemList.forEach(UpdatableObject::update);
-        rootList.forEach(UpdatableObject::update);
-        for (Enemy enemy : enemyList) {
-            enemy.update(deltaTime, wallList, rootList, bomList);
-            enemy.update(fireList, enemyList);
-        }
-        portal.update();
+        gameMenu.update();
     }
 }

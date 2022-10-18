@@ -3,9 +3,7 @@ package com.g10.gameObject;
 import com.g10.constants.GlobalConstant;
 import com.g10.game.Animation;
 import com.g10.game.GameStatus;
-import com.g10.general.ImageManager;
-import com.g10.general.Input;
-import com.g10.general.Sandbox;
+import com.g10.general.*;
 import com.g10.screens.ScreenManager;
 import com.g10.screens.ScreenType;
 import javafx.animation.KeyFrame;
@@ -13,7 +11,6 @@ import javafx.animation.Timeline;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.util.Duration;
 
-import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -33,6 +30,8 @@ public class Bomber extends MovingObject {
     private boolean alive;
     private int bomb_can_place;
     private int bomb_length;
+
+    private Timeline deathTimeline;
 
 
     public Bomber() {
@@ -94,6 +93,10 @@ public class Bomber extends MovingObject {
         }
         if (velX == 0 && velY == 0) {
             animation.pause();
+            AnimationManager.removeAnimation(animation);
+        }
+        else {
+            AnimationManager.addPlayingAnimation(animation);
         }
         List<BaseObject> obstructingObjectList = new ArrayList<>();
         obstructingObjectList.addAll(wallList);
@@ -138,7 +141,7 @@ public class Bomber extends MovingObject {
         }
         if (check) {
             alive = false;
-            Timeline tl = new Timeline(new KeyFrame(Duration.millis(3000), actionEvent -> {
+            deathTimeline = new Timeline(new KeyFrame(Duration.millis(3000), actionEvent -> {
                 GameStatus.setRemainingLives(GameStatus.getRemainingLives() - 1);
                 if(GameStatus.getRemainingLives() < 0) {
 
@@ -150,9 +153,11 @@ public class Bomber extends MovingObject {
                     ScreenManager.switchScreen(ScreenType.STAGE_SCREEN);
 
                 }
+                TimelineManager.removeTimeline(deathTimeline);
             }));
-            tl.setCycleCount(1);
-            tl.play();
+            deathTimeline.setCycleCount(1);
+            deathTimeline.play();
+            TimelineManager.addPlayingTimeline(deathTimeline);
 //            animation.setDuration(Duration.millis(DURATION_DEATH_ANIMATION));
 //            animation.setCount(DEATH_COUNT);
 //            animation.setStr("asset/bomber/bomberman_death");

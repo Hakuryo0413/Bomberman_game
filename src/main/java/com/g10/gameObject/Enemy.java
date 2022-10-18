@@ -1,6 +1,7 @@
 package com.g10.gameObject;
 
 import com.g10.constants.GlobalConstant;
+import com.g10.general.AnimationManager;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.scene.image.Image;
@@ -23,8 +24,10 @@ public abstract class Enemy extends MovingObject {
             }
         }
         if(check) {
+            //TODO: sửa timeline tại đây nhé
             Timeline tl = new Timeline(new KeyFrame(Duration.millis(2), actionEvent -> {
                 enemies.remove(this);
+                AnimationManager.removeAnimation(animation);
             }));
             tl.setCycleCount(1);
             tl.play();
