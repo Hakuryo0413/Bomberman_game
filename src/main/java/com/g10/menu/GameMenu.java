@@ -56,7 +56,9 @@ public class GameMenu {
     public void render() {
         if (active) {
             Sandbox.getGc().setFill(Color.BLACK);
-            Sandbox.getGc().fillRect(270, 200, 300, 200);
+            Sandbox.getGc().setGlobalAlpha(0.6);
+            Sandbox.getGc().fillRect(0, 0, GlobalConstant.SCREEN_WIDTH, GlobalConstant.SCREEN_HEIGHT);
+            Sandbox.getGc().setGlobalAlpha(1);
             cusor.render();
             Sandbox.getGc().setFont(font);
             Sandbox.getGc().setFill(Color.WHITE);

@@ -31,12 +31,8 @@ public class GameScreen implements Screen {
 
     public GameScreen() {
         AudioManager.setMusic("in_game_music.mp3");
-        //TODO: xoá đi nehs
-        GameStatus.init();
         map = new Map("src/main/resources/com/g10/asset/map/stage1.txt", ImageManager.getImage("asset/map/stage1.png"));
         wallList = map.createWall();
-
-
         rootList = map.createRoot();
         itemList = map.createItem();
         portal = map.createPortal();

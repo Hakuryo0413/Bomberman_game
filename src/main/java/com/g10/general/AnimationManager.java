@@ -26,7 +26,7 @@ public class AnimationManager {
     public static void pauseAllPlayingAnimation() {
         List<Pair<Animation, Duration>> newplayingAnimations = new ArrayList<>();
         for (Pair<Animation, Duration> animationDurationPair : playingAnimations) {
-            System.out.println(animationDurationPair.getKey().getCurrentTime().toString());
+//            System.out.println(animationDurationPair.getKey().getCurrentTime().toString());
             newplayingAnimations.add(new Pair<>(animationDurationPair.getKey(), animationDurationPair.getKey().getCurrentTime()));
             animationDurationPair.getKey().pause();
         }
@@ -35,7 +35,7 @@ public class AnimationManager {
 
     public static void resumeAllPlayingAnimation() {
         for (Pair<Animation, Duration> animationDurationPair : playingAnimations) {
-            System.out.println(animationDurationPair.getValue().toString());
+//            System.out.println(animationDurationPair.getValue().toString());
             animationDurationPair.getKey().playFrom(animationDurationPair.getValue());
         }
     }

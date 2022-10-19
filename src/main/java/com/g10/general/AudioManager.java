@@ -39,6 +39,7 @@ public class AudioManager {
             Media media = musicMap.get(path);
             mediaPlayer = new MediaPlayer(media);
             mediaPlayer.setCycleCount(MediaPlayer.INDEFINITE);
+            mediaPlayer.setVolume(0.4);
             mediaPlayer.setMute(muteMusic);
             mediaPlayer.play();
             currentMusic = path;

@@ -27,7 +27,7 @@ public class TimelineManager {
     public static void pauseAllPlayingTimeline() {
         List<Pair<Timeline, Duration>> newplayingTimelines = new ArrayList<>();
         for (Pair<Timeline, Duration> timelineDurationPair : playingTimelines) {
-            System.out.println(timelineDurationPair.getKey().getCurrentTime().toString());
+//            System.out.println(timelineDurationPair.getKey().getCurrentTime().toString());
             newplayingTimelines.add(new Pair<>(timelineDurationPair.getKey(), timelineDurationPair.getKey().getCurrentTime()));
             timelineDurationPair.getKey().pause();
         }
@@ -36,7 +36,7 @@ public class TimelineManager {
 
     public static void resumeAllPlayingTimeline() {
         for (Pair<Timeline, Duration> timelineDurationPair : playingTimelines) {
-            System.out.println(timelineDurationPair.getValue().toString());
+//            System.out.println(timelineDurationPair.getValue().toString());
             timelineDurationPair.getKey().playFrom(timelineDurationPair.getValue());
         }
     }
