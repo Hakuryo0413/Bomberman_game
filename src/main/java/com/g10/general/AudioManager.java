@@ -13,20 +13,9 @@ public class AudioManager {
     private static final Map<String, Media> musicMap = new HashMap<String, Media>();
     private static boolean muteSound = false;
     private static boolean muteMusic = false;
-    private static MediaPlayer mediaPlayer = new MediaPlayer(new Media(Main.class.getResource("/com/g10/media/music.wav").toExternalForm()));
 
-    public static void playMusic(String path) {
-        if (musicMap.get(path) == null) {
-            Media media = new Media(Main.class.getResource("/com/g10/media/" + path).toExternalForm());
-            musicMap.put(path, media);
-        }
-        if (!muteMusic) {
-            mediaPlayer.stop();
-            mediaPlayer = new MediaPlayer(musicMap.get(path));
-            mediaPlayer.setCycleCount(MediaPlayer.INDEFINITE);
-            mediaPlayer.play();
-        }
-    }
+    private static String currentMusic = "";
+    private static MediaPlayer mediaPlayer;
 
     public static void playSound(String path) {
         if (soundMap.get(path) == null) {
@@ -35,6 +24,24 @@ public class AudioManager {
         }
         if (!muteSound) {
             soundMap.get(path).play();
+        }
+    }
+
+    public static void setMusic(String path) {
+        if(!currentMusic.equals(path)) {
+            if (mediaPlayer != null) {
+                mediaPlayer.stop();
+            }
+            if (musicMap.get(path) == null) {
+                Media media = new Media(Main.class.getResource("/com/g10/media/music/" + path).toExternalForm());
+                musicMap.put(path, media);
+            }
+            Media media = musicMap.get(path);
+            mediaPlayer = new MediaPlayer(media);
+            mediaPlayer.setCycleCount(MediaPlayer.INDEFINITE);
+            mediaPlayer.setMute(muteMusic);
+            mediaPlayer.play();
+            currentMusic = path;
         }
     }
 

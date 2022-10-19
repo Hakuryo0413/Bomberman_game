@@ -2,6 +2,7 @@ package com.g10.screens;
 
 import com.g10.game.GameStatus;
 import com.g10.gameObject.*;
+import com.g10.general.AudioManager;
 import com.g10.general.ImageManager;
 import com.g10.menu.GameMenu;
 import com.g10.menu.TopMenu;
@@ -29,6 +30,7 @@ public class GameScreen implements Screen {
     float time = 100;
 
     public GameScreen() {
+        AudioManager.setMusic("in_game_music.mp3");
         //TODO: xoá đi nehs
         GameStatus.init();
         map = new Map("src/main/resources/com/g10/asset/map/stage1.txt", ImageManager.getImage("asset/map/stage1.png"));

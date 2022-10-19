@@ -2,6 +2,7 @@ package com.g10.screens;
 
 import com.g10.constants.GlobalConstant;
 import com.g10.game.GameStatus;
+import com.g10.general.AudioManager;
 import com.g10.general.Sandbox;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
@@ -13,6 +14,7 @@ public class StageScreen implements Screen {
     private Font font;
 
     public StageScreen() {
+        AudioManager.setMusic("stage_start.mp3");
         Font font = Font.loadFont(getClass().getResource("/com/g10/font/font.ttf").toExternalForm(), 40);
         Timeline tl = new Timeline(new KeyFrame(Duration.millis(2500), actionEvent -> {
 
