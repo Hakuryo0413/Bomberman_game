@@ -3,23 +3,22 @@ package com.g10.gameObject;
 import com.g10.constants.GlobalConstant;
 import com.g10.general.AnimationManager;
 import com.g10.general.ImageManager;
-import javafx.scene.image.Image;
 import javafx.util.Duration;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class Puropen extends Enemy {
-    public Puropen(float x, float y) {
+public class MetalPuropen extends Enemy {
+    public MetalPuropen(float x, float y) {
         super(x, y);
-        vel = 100;
-        image = ImageManager.getImage("asset/enemy/puropen/puropen_left1.png");
-        live = 1;
+        vel = 80;
+        image = ImageManager.getImage("asset/enemy/metal_puropen/metal_puropen_left1.png");
+        live = 2;
     }
 
     @Override
     public void update(float deltaTime, List<Wall> wallList, List<Root> rootList, List<Bom> bomList) {
-        if (live > 0) {
+        if(live > 0) {
             List<BaseObject> obstructingObjectList = new ArrayList<>();
             obstructingObjectList.addAll(wallList);
             obstructingObjectList.addAll(rootList);
@@ -33,7 +32,7 @@ public class Puropen extends Enemy {
                 case UP -> {
                     velY = -vel;
                     velX = 0;
-                    animation.setStr("asset/enemy/puropen/puropen_up");
+                    animation.setStr("asset/enemy/metal_puropen/metal_puropen_up");
                     animation.setCount(4);
                     animation.setDuration(Duration.millis(400));
                     animation.play();
@@ -42,7 +41,7 @@ public class Puropen extends Enemy {
                 case DOWN -> {
                     velY = vel;
                     velX = 0;
-                    animation.setStr("asset/enemy/puropen/puropen_down");
+                    animation.setStr("asset/enemy/metal_puropen/metal_puropen_down");
                     animation.setCount(4);
                     animation.setDuration(Duration.millis(400));
                     animation.play();
@@ -51,7 +50,7 @@ public class Puropen extends Enemy {
                 case LEFT -> {
                     velX = -vel;
                     velY = 0;
-                    animation.setStr("asset/enemy/puropen/puropen_left");
+                    animation.setStr("asset/enemy/metal_puropen/metal_puropen_left");
                     animation.setCount(4);
                     animation.setDuration(Duration.millis(400));
                     animation.play();
@@ -60,7 +59,7 @@ public class Puropen extends Enemy {
                 case RIGHT -> {
                     velX = vel;
                     velY = 0;
-                    animation.setStr("asset/enemy/puropen/puropen_right");
+                    animation.setStr("asset/enemy/metal_puropen/metal_puropen_right");
                     animation.setCount(4);
                     animation.setDuration(Duration.millis(400));
                     animation.play();
@@ -69,7 +68,7 @@ public class Puropen extends Enemy {
                 case STAND -> {
                     velY = 0;
                     velX = 0;
-                    animation.setStr("asset/enemy/puropen/puropen_down");
+                    animation.setStr("asset/enemy/metal_puropen/metal_puropen_down");
                     animation.setCount(4);
                     animation.setDuration(Duration.millis(400));
                     animation.play();
