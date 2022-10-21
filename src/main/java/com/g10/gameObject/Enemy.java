@@ -24,6 +24,8 @@ public abstract class Enemy extends MovingObject {
 
     int live;
 
+    boolean shiled;
+
     public Enemy(float x, float y) {
         super(null, x, y, GlobalConstant.TILE_SIZE, GlobalConstant.TILE_SIZE);
         blink = new Timeline(new KeyFrame(Duration.millis(150), actionEvent -> {
@@ -38,6 +40,7 @@ public abstract class Enemy extends MovingObject {
         directions.add(Direction.RIGHT);
         Collections.shuffle(directions);
         direction = directions.get(0);
+        shiled = false;
     }
 
 
@@ -72,7 +75,7 @@ public abstract class Enemy extends MovingObject {
     public abstract void update(float deltaTime, List<Wall> wallList, List<Root> rootList, List<Bom> bomList);
 
     public void update(List<Fire> fireList, List<Enemy> enemies) {
-        if(live > 0) {
+        if(live > 0 && !shiled) {
             boolean check = false;
             for (int i = 0; i < fireList.size(); i++) {
                 if (BaseObject.checkCollision(this, fireList.get(i))) {
@@ -86,6 +89,16 @@ public abstract class Enemy extends MovingObject {
                     Timeline tl = new Timeline(new KeyFrame(Duration.millis(1200), actionEvent -> {
                         enemies.remove(this);
                         AnimationManager.removeAnimation(animation);
+                    }));
+                    tl.setCycleCount(1);
+                    tl.play();
+                }
+                else {
+                    shiled = true;
+                    blink.play();
+                    Timeline tl = new Timeline(new KeyFrame(Duration.millis(1200), actionEvent -> {
+                        shiled = false;
+                        blink.stop();
                     }));
                     tl.setCycleCount(1);
                     tl.play();
