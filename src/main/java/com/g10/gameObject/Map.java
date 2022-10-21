@@ -152,6 +152,7 @@ public class Map extends VisibleObject {
                 t--;
             }
         }
+        enemyList.add(new Pakupa(4 * GlobalConstant.TILE_SIZE, 4 * GlobalConstant.TILE_SIZE));
         return enemyList;
     }
 
