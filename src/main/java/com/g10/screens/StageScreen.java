@@ -10,12 +10,20 @@ import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.util.Duration;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+
 public class StageScreen implements Screen {
     private Font font;
 
     public StageScreen() {
         AudioManager.setMusic("stage_start.mp3");
-        font = Font.loadFont(getClass().getResource("/com/g10/font/font.ttf").toExternalForm(), 40);
+        try {
+            font =  Font.loadFont(new FileInputStream(new File("src/main/resources/com/g10/font/font.ttf")), 40);
+        } catch (FileNotFoundException e) {
+            System.out.println("not found");
+        }
         Timeline tl = new Timeline(new KeyFrame(Duration.millis(2500), actionEvent -> {
 
             ScreenManager.switchScreen(ScreenType.GAME_SCREEN);

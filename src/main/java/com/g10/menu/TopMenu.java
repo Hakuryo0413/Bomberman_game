@@ -8,16 +8,24 @@ import javafx.scene.image.Image;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+
 public class TopMenu {
     private Image background;
 
-    private final Font font;
+    private Font font;
     private final Image cover;
 
     private float time;
 
     public TopMenu() {
-        font = Font.loadFont(getClass().getResource("/com/g10/font/font.ttf").toExternalForm(), 50);
+        try {
+            font =  Font.loadFont(new FileInputStream(new File("src/main/resources/com/g10/font/font.ttf")), 40);
+        } catch (FileNotFoundException e) {
+            System.out.println("not found");
+        }
         cover = ImageManager.getImage("asset/menu/Top_Menu.png");
     }
 

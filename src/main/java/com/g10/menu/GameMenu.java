@@ -6,10 +6,14 @@ import javafx.scene.image.Image;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+
 public class GameMenu {
     private final Image background;
     private final Cursor cursor;
-    private final Font font;
+    private  Font font;
 
     private boolean active;
 
@@ -20,8 +24,12 @@ public class GameMenu {
     public GameMenu() {
         active = false;
         this.background = null;
-        font = Font.loadFont(getClass().getResource("/com/g10/font/font.ttf").toExternalForm(), 40);
-        cursor = new Cursor(ImageManager.getImage("asset/menu/Cursor.png"), 280, 230);
+        try {
+            font =  Font.loadFont(new FileInputStream(new File("src/main/resources/com/g10/font/font.ttf")), 40);
+        } catch (FileNotFoundException e) {
+            System.out.println("not found");
+        }
+        cursor = new Cursor(ImageManager.getImage("asset/menu/Cursor_Pause.png"), 280, 230);
         cursor.setCount(2);
         cursor.setSpaceBetween(20);
     }
