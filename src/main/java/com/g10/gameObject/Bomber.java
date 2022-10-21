@@ -135,7 +135,7 @@ public class Bomber extends MovingObject {
             }
         }
         for (Enemy enemy : enemies) {
-            if (BaseObject.checkCollision(enemy, this)) {
+            if (BaseObject.checkCollision(enemy, this) && enemy.getLive() > 0) {
                 check = true;
             }
         }

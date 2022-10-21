@@ -15,7 +15,7 @@ public class StageScreen implements Screen {
 
     public StageScreen() {
         AudioManager.setMusic("stage_start.mp3");
-        Font font = Font.loadFont(getClass().getResource("/com/g10/font/font.ttf").toExternalForm(), 40);
+        font = Font.loadFont(getClass().getResource("/com/g10/font/font.ttf").toExternalForm(), 40);
         Timeline tl = new Timeline(new KeyFrame(Duration.millis(2500), actionEvent -> {
 
             ScreenManager.switchScreen(ScreenType.GAME_SCREEN);
