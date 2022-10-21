@@ -143,7 +143,7 @@ public class Map extends VisibleObject {
             }
         }
         List<Enemy> enemyList = new ArrayList<>();
-        for (int t = 0; t < 5; t++) {
+        for (int t = 0; t < 1; t++) {
             Collections.shuffle(grassLocation);
             if (grassLocation.get(0).getValue() > 3 && grassLocation.get(0).getKey() > 3) {
                 enemyList.add(new NutsStar(grassLocation.get(0).getValue() * GlobalConstant.TILE_SIZE, grassLocation.get(0).getKey() * GlobalConstant.TILE_SIZE));
@@ -152,10 +152,55 @@ public class Map extends VisibleObject {
                 t--;
             }
         }
-        //enemyList.add(new Pakupa(4 * GlobalConstant.TILE_SIZE, 4 * GlobalConstant.TILE_SIZE));
-        enemyList.add(new Puropen(7 * GlobalConstant.TILE_SIZE, 7 * GlobalConstant.TILE_SIZE));
-        enemyList.add(new MetalPuropen(2 * GlobalConstant.TILE_SIZE, 5 * GlobalConstant.TILE_SIZE));
-        enemyList.add(new Cuppen(4 * GlobalConstant.TILE_SIZE, 4 * GlobalConstant.TILE_SIZE));
+        for (int t = 0; t < 1; t++) {
+            Collections.shuffle(grassLocation);
+            if (grassLocation.get(0).getValue() > 3 && grassLocation.get(0).getKey() > 3) {
+                enemyList.add(new Pakupa(grassLocation.get(0).getValue() * GlobalConstant.TILE_SIZE, grassLocation.get(0).getKey() * GlobalConstant.TILE_SIZE));
+                grassLocation.remove(grassLocation.get(0));
+            } else {
+                t--;
+            }
+        }
+
+        for (int t = 0; t < 1; t++) {
+            Collections.shuffle(grassLocation);
+            if (grassLocation.get(0).getValue() > 3 && grassLocation.get(0).getKey() > 3) {
+                enemyList.add(new Puropen(grassLocation.get(0).getValue() * GlobalConstant.TILE_SIZE, grassLocation.get(0).getKey() * GlobalConstant.TILE_SIZE));
+                grassLocation.remove(grassLocation.get(0));
+            } else {
+                t--;
+            }
+        }
+
+        for (int t = 0; t < 1; t++) {
+            Collections.shuffle(grassLocation);
+            if (grassLocation.get(0).getValue() > 3 && grassLocation.get(0).getKey() > 3) {
+                enemyList.add(new MetalPuropen(grassLocation.get(0).getValue() * GlobalConstant.TILE_SIZE, grassLocation.get(0).getKey() * GlobalConstant.TILE_SIZE));
+                grassLocation.remove(grassLocation.get(0));
+            } else {
+                t--;
+            }
+        }
+
+        for (int t = 0; t < 1; t++) {
+            Collections.shuffle(grassLocation);
+            if (grassLocation.get(0).getValue() > 3 && grassLocation.get(0).getKey() > 3) {
+                enemyList.add(new Cuppen(grassLocation.get(0).getValue() * GlobalConstant.TILE_SIZE, grassLocation.get(0).getKey() * GlobalConstant.TILE_SIZE));
+                grassLocation.remove(grassLocation.get(0));
+            } else {
+                t--;
+            }
+        }
+
+        for (int t = 0; t < 1; t++) {
+            Collections.shuffle(grassLocation);
+            if (grassLocation.get(0).getValue() > 3 && grassLocation.get(0).getKey() > 3) {
+                enemyList.add(new Denkyun(grassLocation.get(0).getValue() * GlobalConstant.TILE_SIZE, grassLocation.get(0).getKey() * GlobalConstant.TILE_SIZE));
+                grassLocation.remove(grassLocation.get(0));
+            } else {
+                t--;
+            }
+        }
         return enemyList;
     }
 
