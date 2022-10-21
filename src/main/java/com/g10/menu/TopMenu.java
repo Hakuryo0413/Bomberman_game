@@ -11,15 +11,14 @@ import javafx.scene.text.Font;
 public class TopMenu {
     private Image background;
 
-    private Cusor cusor;
     private final Font font;
     private final Image cover;
 
     private float time;
 
     public TopMenu() {
-        font = Font.loadFont(getClass().getResource("/com/g10/font/font.ttf").toExternalForm(), 40);
-        cover = ImageManager.getImage("asset/background/top_menu_cover.png");
+        font = Font.loadFont(getClass().getResource("/com/g10/font/font.ttf").toExternalForm(), 100);
+        cover = ImageManager.getImage("asset/menu/Top_Menu.png");
     }
 
     public void update(float time) {
@@ -30,8 +29,9 @@ public class TopMenu {
         Sandbox.getGc().drawImage(cover, 0, 0, GlobalConstant.SCREEN_WIDTH, GlobalConstant.MENU_TOP_HEIGHT);
         Sandbox.getGc().setFont(font);
         Sandbox.getGc().setFill(Color.WHITE);
-        Sandbox.getGc().fillText(String.valueOf(GameStatus.getRemainingLives()), 80, 55);
-        Sandbox.getGc().fillText("Time: " + (int)time, 500, 55);
+        Sandbox.getGc().fillText(String.valueOf(GameStatus.getRemainingLives()), 100, 20);
+        Sandbox.getGc().fillText(""+(int)time, 100, 20);
+       // Sandbox.getGc().fillText("Time: " + (int)time, 500, 55);
     }
 
 }

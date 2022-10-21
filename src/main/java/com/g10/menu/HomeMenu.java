@@ -8,55 +8,59 @@ import com.g10.general.Sandbox;
 import com.g10.screens.ScreenManager;
 import com.g10.screens.ScreenType;
 import javafx.scene.image.Image;
-import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 
 public class HomeMenu {
     private final Image background;
 
-    private final Cusor cusor;
+    private final Cursor cursor;
     private final Font font;
 
     private final Image logo;
+
 
     public HomeMenu() {
         this.background = ImageManager.getImage("asset/background/home_screen_background.png");
         font = Font.loadFont(getClass().getResource("/com/g10/font/font.ttf").toExternalForm(), 40);
         logo = ImageManager.getImage("asset/logo/logo.png");
-        this.cusor = new Cusor(ImageManager.getImage("asset/menu/cusor.png"), 280, 500);
-        cusor.setCount(2);
-        cusor.setSpaceBetween(20);
+
+        this.cursor = new Cursor(ImageManager.getImage("asset/menu/Cursor.png"), 240, 500);
+        cursor.setCount(3);
+        cursor.setSpaceBetween(20);
     }
 
     public void update() {
         if (Input.getInput().contains("ENTER")) {
             Input.getInput().remove("ENTER");
-            if (cusor.getNumOfSelect() == 1) {
+            if (cursor.getNumOfSelect() == 1) {
                 GameStatus.init();
-
                 ScreenManager.switchScreen(ScreenType.STAGE_SCREEN);
             }
-            if (cusor.getNumOfSelect() == 2) {
+            if (cursor.getNumOfSelect() == 2) {
+                GameStatus.init();
+                ScreenManager.switchScreen(ScreenType.STAGE_SCREEN);
+            }
+            if (cursor.getNumOfSelect() == 3) {
                 ScreenManager.switchScreen(ScreenType.OPTION_SCREEN);
             }
         }
         if (Input.getInput().contains("ESCAPE")) {
             Sandbox.closeStage();
         }
-        cusor.update();
+        cursor.update();
     }
 
 
     public void render() {
         Sandbox.getGc().drawImage(background, 0, 0, GlobalConstant.SCREEN_WIDTH, GlobalConstant.SCREEN_HEIGHT);
         Sandbox.getGc().drawImage(logo, 170, 75);
-//        Sandbox.getGc().setFill(Color.BLACK);
-//        Sandbox.getGc().fillRect(0, 0, GlobalConstant.SCREEN_WIDTH, GlobalConstant.SCREEN_HEIGHT);
-        cusor.render();
-        Sandbox.getGc().setFont(font);
-        Sandbox.getGc().setFill(Color.WHITE);
-        Sandbox.getGc().fillText("START", cusor.getX() + 65, cusor.getY() + 35);
-        Sandbox.getGc().fillText("OPTION", cusor.getX() + 65, cusor.getY() + 35 + cusor.getSpaceBetween() + GlobalConstant.TILE_SIZE);
+
+        Sandbox.getGc().drawImage(ImageManager.getImage("asset/menu/Normal_Game.png"), cursor.getX() + 50, cursor.getY() );
+        Sandbox.getGc().drawImage(ImageManager.getImage("asset/menu/PVP_Game.png"), cursor.getX() + 50, cursor.getY()  + cursor.getSpaceBetween() + GlobalConstant.TILE_SIZE);
+        Sandbox.getGc().drawImage(ImageManager.getImage("asset/menu/Option.png"), cursor.getX() + 50, cursor.getY() + 2*(cursor.getSpaceBetween() + GlobalConstant.TILE_SIZE));
+
+        cursor.render();
+
     }
 
 }

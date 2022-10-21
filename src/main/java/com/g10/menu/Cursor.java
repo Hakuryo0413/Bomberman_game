@@ -7,16 +7,16 @@ import com.g10.general.Sandbox;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
 
-public class Cusor extends VisibleObject {
+public class Cursor extends VisibleObject {
     private int numOfSelect = 1;
     private int count;
     private int spaceBetween;
 
-    public Cusor(Image image, float x, float y) {
+    public Cursor(Image image, float x, float y) {
         super(image, x, y, GlobalConstant.TILE_SIZE, GlobalConstant.TILE_SIZE);
     }
 
-    public Cusor(Image image, float x, float y, int width, int height) {
+    public Cursor(Image image, float x, float y, int width, int height) {
         super(image, x, y, width, height);
     }
 

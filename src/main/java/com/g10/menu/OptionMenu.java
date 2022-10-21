@@ -14,25 +14,25 @@ import javafx.scene.text.Font;
 public class OptionMenu {
     private final Image background;
 
-    private final Cusor cusor;
+    private final Cursor cursor;
     private final Font font;
 
     public OptionMenu() {
         background = ImageManager.getImage("asset/background/home_screen_background.png");
-        this.cusor = new Cusor(ImageManager.getImage("asset/menu/cusor.png"), 280, 300);
+        this.cursor = new Cursor(ImageManager.getImage("asset/menu/Cursor.png"), 240, 300);
         font = Font.loadFont(getClass().getResource("/com/g10/font/font.ttf").toExternalForm(), 40);
-        cusor.setCount(3);
-        cusor.setSpaceBetween(20);
+        cursor.setCount(2);
+        cursor.setSpaceBetween(20);
     }
 
     public void update() {
         if (Input.getInput().contains("ENTER")) {
             Input.getInput().remove("ENTER");
-            if (cusor.getNumOfSelect() == 1) {
+            if (cursor.getNumOfSelect() == 1) {
                 AudioManager.switchMuteMusic();
 
             }
-            if (cusor.getNumOfSelect() == 2) {
+            if (cursor.getNumOfSelect() == 2) {
                 AudioManager.switchMuteSound();
             }
         }
@@ -40,28 +40,25 @@ public class OptionMenu {
             Input.getInput().remove("ESCAPE");
             ScreenManager.switchScreen(ScreenType.HOME_SCREEN);
         }
-        cusor.update();
+        cursor.update();
     }
 
     public void render() {
         Sandbox.getGc().drawImage(background, 0, 0, GlobalConstant.SCREEN_WIDTH, GlobalConstant.SCREEN_HEIGHT);
-//        Sandbox.getGc().setFill(Color.BLACK);
-//        Sandbox.getGc().fillRect(0,0,GlobalConstant.SCREEN_WIDTH,GlobalConstant.SCREEN_HEIGHT);
-        cusor.render();
+        cursor.render();
+
         Sandbox.getGc().setFont(font);
         Sandbox.getGc().setFill(Color.WHITE);
         if (AudioManager.isMuteMusic()) {
-            Sandbox.getGc().fillText("MUSIC: OFF", cusor.getX() + 65, cusor.getY() + 35);
+            Sandbox.getGc().drawImage(ImageManager.getImage("asset/menu/Music_Off.png"), cursor.getX() + 50, cursor.getY() );
         } else {
-            Sandbox.getGc().fillText("MUSIC: ON", cusor.getX() + 65, cusor.getY() + 35);
+            Sandbox.getGc().drawImage(ImageManager.getImage("asset/menu/Music_On.png"), cursor.getX() + 50, cursor.getY() );
         }
         if (AudioManager.isMuteSound()) {
-            Sandbox.getGc().fillText("SOUND: OFF", cusor.getX() + 65, cusor.getY() + 35 + cusor.getSpaceBetween() + GlobalConstant.TILE_SIZE);
+            Sandbox.getGc().drawImage(ImageManager.getImage("asset/menu/Sound_Off.png"), cursor.getX() + 50, cursor.getY()+ cursor.getSpaceBetween() + GlobalConstant.TILE_SIZE );
         } else {
-            Sandbox.getGc().fillText("SOUND: ON", cusor.getX() + 65, cusor.getY() + 35 + cusor.getSpaceBetween() + GlobalConstant.TILE_SIZE);
+            Sandbox.getGc().drawImage(ImageManager.getImage("asset/menu/Sound_On.png"), cursor.getX() + 50, cursor.getY()+ cursor.getSpaceBetween() + GlobalConstant.TILE_SIZE );
         }
-//        Sandbox.getGc().fillText("MUSIC",cusor.getX()+65,cusor.getY()+35);
-//        Sandbox.getGc().fillText("SOUND",cusor.getX()+65,cusor.getY()+35+cusor.getSpaceBetween()+GlobalConstant.TILE_SIZE);
     }
 
 }
