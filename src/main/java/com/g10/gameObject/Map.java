@@ -152,9 +152,10 @@ public class Map extends VisibleObject {
                 t--;
             }
         }
-        enemyList.add(new Pakupa(4 * GlobalConstant.TILE_SIZE, 4 * GlobalConstant.TILE_SIZE));
+        //enemyList.add(new Pakupa(4 * GlobalConstant.TILE_SIZE, 4 * GlobalConstant.TILE_SIZE));
         enemyList.add(new Puropen(7 * GlobalConstant.TILE_SIZE, 7 * GlobalConstant.TILE_SIZE));
         enemyList.add(new MetalPuropen(2 * GlobalConstant.TILE_SIZE, 5 * GlobalConstant.TILE_SIZE));
+        enemyList.add(new Denkyun(4 * GlobalConstant.TILE_SIZE, 4 * GlobalConstant.TILE_SIZE));
         return enemyList;
     }
 
