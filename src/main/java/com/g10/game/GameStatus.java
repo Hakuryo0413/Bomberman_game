@@ -58,4 +58,14 @@ public class GameStatus {
         bomLength = 1;
         vel = 200;
     }
+
+    private static String bomberColor = "red";
+
+    public static void setBomberColor(String bomberColor) {
+        bomberColor = bomberColor;
+    }
+
+    public static String getBomberColor() {
+        return bomberColor;
+    }
 }

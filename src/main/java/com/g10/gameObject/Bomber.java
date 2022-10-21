@@ -35,7 +35,7 @@ public class Bomber extends MovingObject {
 
 
     public Bomber() {
-        super(ImageManager.getImage("asset/bomber/bomberman_down2.png"), 2 * GlobalConstant.TILE_SIZE, GlobalConstant.TILE_SIZE, GlobalConstant.TILE_SIZE, GlobalConstant.TILE_SIZE);
+        super(ImageManager.getImage("asset/bomber/bomber_" + GameStatus.getBomberColor() + "/bomber_"+GameStatus.getBomberColor()+"_down2.png" ), 2 * GlobalConstant.TILE_SIZE, GlobalConstant.TILE_SIZE, GlobalConstant.TILE_SIZE, GlobalConstant.TILE_SIZE);
         vel = GameStatus.getVel();
         alive = true;
         bomb_can_place = GameStatus.getNumBombsCanPlace();
@@ -65,13 +65,13 @@ public class Bomber extends MovingObject {
             velX = 0;
         } else if (Input.getInput().contains("LEFT")) {
             velX = -vel;
-            animation.setStr("asset/bomber/bomberman_left");
+            animation.setStr("asset/bomber/bomber_" + GameStatus.getBomberColor() + "/bomber_"+GameStatus.getBomberColor()+"_left");
             animation.setDuration(Duration.millis(DURATION_MOVEMENT_ANIMATION));
             animation.setCount(MOVEMENT_COUNT);
             animation.play();
         } else {
             velX = vel;
-            animation.setStr("asset/bomber/bomberman_right");
+            animation.setStr("asset/bomber/bomber_" + GameStatus.getBomberColor() + "/bomber_"+GameStatus.getBomberColor()+"_right");
             animation.setDuration(Duration.millis(DURATION_MOVEMENT_ANIMATION));
             animation.setCount(MOVEMENT_COUNT);
             animation.play();
@@ -80,13 +80,13 @@ public class Bomber extends MovingObject {
             velY = 0;
         } else if (Input.getInput().contains("UP")) {
             velY = -vel;
-            animation.setStr("asset/bomber/bomberman_top");
+            animation.setStr("asset/bomber/bomber_" + GameStatus.getBomberColor() + "/bomber_"+GameStatus.getBomberColor()+"_up");
             animation.setDuration(Duration.millis(DURATION_MOVEMENT_ANIMATION));
             animation.setCount(MOVEMENT_COUNT);
             animation.play();
         } else {
             velY = vel;
-            animation.setStr("asset/bomber/bomberman_down");
+            animation.setStr("asset/bomber/bomber_" + GameStatus.getBomberColor() + "/bomber_"+GameStatus.getBomberColor()+"_down");
             animation.setDuration(Duration.millis(DURATION_MOVEMENT_ANIMATION));
             animation.setCount(MOVEMENT_COUNT);
             animation.play();
@@ -164,7 +164,7 @@ public class Bomber extends MovingObject {
 //            animation.setStr("asset/bomber/bomberman_death");
 //            animation.setCycleCount(1);
 //            animation.play();
-            animation = new Animation(Duration.millis(1200), "asset/bomber/bomberman_death", 6);
+            animation = new Animation(Duration.millis(1200), "asset/bomber/bomber_" + GameStatus.getBomberColor() + "/bomber_"+GameStatus.getBomberColor()+"_die", 6);
             animation.setCycleCount(1);
             animation.play();
             AnimationManager.addPlayingAnimation(animation);
