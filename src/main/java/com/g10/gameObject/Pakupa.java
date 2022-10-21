@@ -3,6 +3,7 @@ package com.g10.gameObject;
 import com.g10.constants.GlobalConstant;
 import com.g10.general.AnimationManager;
 import com.g10.general.ImageManager;
+import com.g10.general.TimelineManager;
 import javafx.util.Duration;
 
 import java.util.ArrayList;
@@ -81,7 +82,8 @@ public class Pakupa extends Enemy{
             for(int i = 0; i < bomList.size(); i++ ){
                 Bom bom  = bomList.get(i);
                 if(checkCollision(bom, this)) {
-                    bom.explodeTimeline.stop();
+                    TimelineManager.removeTimeline(bom.getExplodeTimeline());
+                    bom.getExplodeTimeline().stop();
                     bomList.remove(i);
                 }
 

@@ -12,7 +12,7 @@ import java.util.List;
 
 public class Bom extends UpdatableObject {
 
-    Timeline explodeTimeline;
+    private Timeline explodeTimeline;
     private final int length;
     private static final int BOM_COUNT = 3;
     private static final int DURATION_BOM_ADD_ANIMATION = 400;
@@ -58,9 +58,11 @@ public class Bom extends UpdatableObject {
             }
             for (int j = 0; j < bomList.size(); j++) {
                 if (checkCollision(bomList.get(j), m, n - i)) {
-                    bomList.get(j).explodeTimeline.stop();
-                    bomList.get(j).explode(rootList, wallList, bomList, fireList);
-                    bomList.remove(bomList.get(j));
+                    Bom bom  = bomList.get(j);
+                    bomList.remove(j);
+                    TimelineManager.removeTimeline(bom.explodeTimeline);
+                    bom.explodeTimeline.stop();
+                    bom.explode(rootList, wallList, bomList, fireList);
                 }
 
             }
@@ -90,9 +92,11 @@ public class Bom extends UpdatableObject {
             }
             for (int j = 0; j < bomList.size(); j++) {
                 if (checkCollision(bomList.get(j), m, n + i)) {
-                    bomList.get(j).explodeTimeline.stop();
-                    bomList.get(j).explode(rootList, wallList, bomList, fireList);
-                    bomList.remove(bomList.get(j));
+                    Bom bom  = bomList.get(j);
+                    bomList.remove(j);
+                    TimelineManager.removeTimeline(bom.explodeTimeline);
+                    bom.explodeTimeline.stop();
+                    bom.explode(rootList, wallList, bomList, fireList);
                 }
 
             }
@@ -122,9 +126,11 @@ public class Bom extends UpdatableObject {
             }
             for (int j = 0; j < bomList.size(); j++) {
                 if (checkCollision(bomList.get(j), m - i, n)) {
-                    bomList.get(j).explodeTimeline.stop();
-                    bomList.get(j).explode(rootList, wallList, bomList, fireList);
-                    bomList.remove(bomList.get(j));
+                    Bom bom  = bomList.get(j);
+                    bomList.remove(j);
+                    TimelineManager.removeTimeline(bom.explodeTimeline);
+                    bom.explodeTimeline.stop();
+                    bom.explode(rootList, wallList, bomList, fireList);
                 }
 
             }
@@ -154,9 +160,11 @@ public class Bom extends UpdatableObject {
             }
             for (int j = 0; j < bomList.size(); j++) {
                 if (checkCollision(bomList.get(j), m + i, n)) {
-                    bomList.get(j).explodeTimeline.stop();
-                    bomList.get(j).explode(rootList, wallList, bomList, fireList);
-                    bomList.remove(bomList.get(j));
+                    Bom bom  = bomList.get(j);
+                    bomList.remove(j);
+                    TimelineManager.removeTimeline(bom.explodeTimeline);
+                    bom.explodeTimeline.stop();
+                    bom.explode(rootList, wallList, bomList, fireList);
                 }
 
             }
@@ -174,5 +182,7 @@ public class Bom extends UpdatableObject {
 
     }
 
-
+    public Timeline getExplodeTimeline() {
+        return explodeTimeline;
+    }
 }
