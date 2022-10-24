@@ -26,6 +26,12 @@ public abstract class Enemy extends MovingObject {
 
     boolean shield;
 
+    float redirectProbability;
+
+    Timeline redirectTimeline;
+
+    boolean redirect;
+
     public Enemy(float x, float y) {
         super(null, x, y, GlobalConstant.TILE_SIZE, GlobalConstant.TILE_SIZE);
         blink = new Timeline(new KeyFrame(Duration.millis(150), actionEvent -> {
@@ -41,6 +47,17 @@ public abstract class Enemy extends MovingObject {
         Collections.shuffle(directions);
         direction = directions.get(0);
         shield = false;
+        redirectProbability = 0;
+        redirect = false;
+        redirectTimeline = new Timeline(new KeyFrame(Duration.millis(100), actionEvent -> {
+            redirectProbability += 0.1;
+            if((int)(Math.random() * 1000) % 100 < redirectProbability){
+                redirectProbability = 0;
+                redirect = true;
+            }
+        }));
+        redirectTimeline.setCycleCount(Animation.INDEFINITE);
+        redirectTimeline.play();
     }
 
 
@@ -66,6 +83,18 @@ public abstract class Enemy extends MovingObject {
                 x = i * GlobalConstant.TILE_SIZE;
                 y = j * GlobalConstant.TILE_SIZE;
             } else {
+                Collections.shuffle(mayGo);
+                direction = mayGo.get(0);
+            }
+        }
+        if(redirect) {
+            redirect = false;
+            List<Direction> mayGo = new ArrayList<>();
+            if (map[j - 1][i] == 0 && direction != Direction.UP) mayGo.add(Direction.UP);
+            if (map[j + 1][i] == 0 && direction != Direction.DOWN) mayGo.add(Direction.DOWN);
+            if (map[j][i - 1] == 0 && direction != Direction.LEFT) mayGo.add(Direction.LEFT);
+            if (map[j][i + 1] == 0 && direction != Direction.RIGHT) mayGo.add(Direction.RIGHT);
+            if (mayGo.size() != 0) {
                 Collections.shuffle(mayGo);
                 direction = mayGo.get(0);
             }
