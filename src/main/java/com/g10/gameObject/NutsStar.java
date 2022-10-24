@@ -33,14 +33,20 @@ public class NutsStar extends Enemy {
             }
             int i = (int) ((x + width / 2) / GlobalConstant.TILE_SIZE);
             int j = (int) ((y + height / 2) / GlobalConstant.TILE_SIZE);
-            map[j][i] = 2;
-            bfs(map, (int) ((bomber.y + bomber.height / 2) / GlobalConstant.TILE_SIZE), (int) ((bomber.x + bomber.width / 2) / GlobalConstant.TILE_SIZE));
+            int iBomber = (int) ((bomber.x + bomber.width / 2) / GlobalConstant.TILE_SIZE);
+            int jBomber = (int) ((bomber.y + bomber.height / 2) / GlobalConstant.TILE_SIZE);
+            if(Math.sqrt(Math.pow((i - iBomber), 2) + Math.pow((j - jBomber), 2)) < 6) {
+                map[j][i] = 2;
+                bfs(map, jBomber, iBomber);
 //            System.out.println(direction);
-            map = new int[1000][1000];
-            for (BaseObject object : obstructingObjectList) {
-                map[(int) ((object.y + object.height / 2) / GlobalConstant.TILE_SIZE)][(int) ((object.x + object.width / 2) / GlobalConstant.TILE_SIZE)] = 1;
+                map = new int[1000][1000];
+                for (BaseObject object : obstructingObjectList) {
+                    map[(int) ((object.y + object.height / 2) / GlobalConstant.TILE_SIZE)][(int) ((object.x + object.width / 2) / GlobalConstant.TILE_SIZE)] = 1;
+                }
             }
-            //setDirectionRandom(map);
+            else {
+                setDirectionRandom(map);
+            }
             switch (direction) {
                 case UP -> {
                     velY = -vel;
