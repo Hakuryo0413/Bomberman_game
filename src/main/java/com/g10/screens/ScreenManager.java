@@ -34,6 +34,10 @@ public class ScreenManager {
                 currentScreen = new ScoreScreen();
                 break;
             }
+            case PVP_SCREEN -> {
+                currentScreen = new PVPScreen();
+                break;
+            }
         }
     }
 }

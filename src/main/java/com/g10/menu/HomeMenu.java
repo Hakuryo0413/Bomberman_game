@@ -38,7 +38,7 @@ public class HomeMenu {
             }
             if (cursor.getNumOfSelect() == 2) {
                 GameStatus.init();
-                ScreenManager.switchScreen(ScreenType.STAGE_SCREEN);
+                ScreenManager.switchScreen(ScreenType.PVP_SCREEN);
             }
             if (cursor.getNumOfSelect() == 3) {
                 ScreenManager.switchScreen(ScreenType.OPTION_SCREEN);
