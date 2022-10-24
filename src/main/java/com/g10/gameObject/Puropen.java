@@ -3,7 +3,6 @@ package com.g10.gameObject;
 import com.g10.constants.GlobalConstant;
 import com.g10.general.AnimationManager;
 import com.g10.general.ImageManager;
-import javafx.scene.image.Image;
 import javafx.util.Duration;
 
 import java.util.ArrayList;
@@ -18,7 +17,7 @@ public class Puropen extends Enemy {
     }
 
     @Override
-    public void update(float deltaTime, List<Wall> wallList, List<Root> rootList, List<Bom> bomList) {
+    public void update(float deltaTime, List<Wall> wallList, List<Root> rootList, List<Bom> bomList, Bomber bomber) {
         if (live > 0) {
             List<BaseObject> obstructingObjectList = new ArrayList<>();
             obstructingObjectList.addAll(wallList);

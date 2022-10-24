@@ -1,6 +1,5 @@
 package com.g10.screens;
 
-import com.g10.game.GameStatus;
 import com.g10.gameObject.*;
 import com.g10.general.AudioManager;
 import com.g10.general.ImageManager;
@@ -36,9 +35,9 @@ public class GameScreen implements Screen {
         rootList = map.createRoot();
         itemList = map.createItem();
         portal = map.createPortal();
-//        for(Root root: rootList) {
-//            root.burn(rootList);
-//        }
+        for(Root root: rootList) {
+            root.burn(rootList);
+        }
         enemyList = map.createEnemy();
         bomList = new ArrayList<>();
 
@@ -85,7 +84,7 @@ public class GameScreen implements Screen {
             itemList.forEach(UpdatableObject::update);
             rootList.forEach(UpdatableObject::update);
             for (Enemy enemy : enemyList) {
-                enemy.update(deltaTime, wallList, rootList, bomList);
+                enemy.update(deltaTime, wallList, rootList, bomList, bomber);
                 enemy.update(fireList, enemyList);
             }
             portal.update();

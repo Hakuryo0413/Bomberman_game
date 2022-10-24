@@ -101,7 +101,7 @@ public abstract class Enemy extends MovingObject {
         }
     }
 
-    public abstract void update(float deltaTime, List<Wall> wallList, List<Root> rootList, List<Bom> bomList);
+    public abstract void update(float deltaTime, List<Wall> wallList, List<Root> rootList, List<Bom> bomList, Bomber bomber);
 
     public void update(List<Fire> fireList, List<Enemy> enemies) {
         if(live > 0 && !shield) {

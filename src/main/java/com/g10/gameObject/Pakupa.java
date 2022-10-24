@@ -18,7 +18,7 @@ public class Pakupa extends Enemy{
     }
 
     @Override
-    public void update(float deltaTime, List<Wall> wallList, List<Root> rootList, List<Bom> bomList) {
+    public void update(float deltaTime, List<Wall> wallList, List<Root> rootList, List<Bom> bomList, Bomber bomber) {
         if(live > 0) {
             List<BaseObject> obstructingObjectList = new ArrayList<>();
             obstructingObjectList.addAll(wallList);

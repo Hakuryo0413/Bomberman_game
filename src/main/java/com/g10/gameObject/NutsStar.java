@@ -3,16 +3,13 @@ package com.g10.gameObject;
 import com.g10.constants.GlobalConstant;
 import com.g10.general.AnimationManager;
 import com.g10.general.ImageManager;
-import com.g10.general.Sandbox;
-import javafx.animation.KeyFrame;
-import javafx.animation.Timeline;
-import javafx.scene.canvas.GraphicsContext;
-import javafx.scene.effect.ColorAdjust;
 import javafx.util.Duration;
+import javafx.util.Pair;
 
 import java.util.ArrayList;
-import java.util.Collections;
+import java.util.LinkedList;
 import java.util.List;
+import java.util.Queue;
 
 public class NutsStar extends Enemy {
     public NutsStar(float x, float y) {
@@ -23,7 +20,7 @@ public class NutsStar extends Enemy {
     }
 
     //update phần di chuyển
-    public void update(float deltaTime, List<Wall> wallList, List<Root> rootList, List<Bom> bomList) {
+    public void update(float deltaTime, List<Wall> wallList, List<Root> rootList, List<Bom> bomList, Bomber bomber) {
         if(live > 0) {
             List<BaseObject> obstructingObjectList = new ArrayList<>();
             obstructingObjectList.addAll(wallList);
@@ -34,8 +31,16 @@ public class NutsStar extends Enemy {
             for (BaseObject object : obstructingObjectList) {
                 map[(int) ((object.y + object.height / 2) / GlobalConstant.TILE_SIZE)][(int) ((object.x + object.width / 2) / GlobalConstant.TILE_SIZE)] = 1;
             }
-
-            setDirectionRandom(map);
+            int i = (int) ((x + width / 2) / GlobalConstant.TILE_SIZE);
+            int j = (int) ((y + height / 2) / GlobalConstant.TILE_SIZE);
+            map[j][i] = 2;
+            bfs(map, (int) ((bomber.y + bomber.height / 2) / GlobalConstant.TILE_SIZE), (int) ((bomber.x + bomber.width / 2) / GlobalConstant.TILE_SIZE));
+//            System.out.println(direction);
+            map = new int[1000][1000];
+            for (BaseObject object : obstructingObjectList) {
+                map[(int) ((object.y + object.height / 2) / GlobalConstant.TILE_SIZE)][(int) ((object.x + object.width / 2) / GlobalConstant.TILE_SIZE)] = 1;
+            }
+            //setDirectionRandom(map);
             switch (direction) {
                 case UP -> {
                     velY = -vel;
@@ -82,8 +87,53 @@ public class NutsStar extends Enemy {
                     animation.play();
                 }
             }
+//            System.out.println(velX + " " + velY);
             AnimationManager.addPlayingAnimation(animation);
             super.update(deltaTime, map);
+        }
+    }
+
+    Queue<Pair<Integer, Integer>> queue = new LinkedList<>();
+    private void bfs(int[][] map, int i, int j) {
+        map[i][j] = 1;
+        if(map[i + 1][j] == 2) {
+            direction = Direction.UP;
+            queue.clear();
+            return;
+        }
+        if(map[i - 1][j] == 2) {
+            direction = Direction.DOWN;
+            queue.clear();
+            return;
+        }
+        if(map[i][j + 1] == 2) {
+            direction = Direction.LEFT;
+            queue.clear();
+            return;
+        }
+        if(map[i][j - 1] == 2) {
+            direction = Direction.RIGHT;
+            queue.clear();
+            return;
+        }
+        if(map[i + 1][j] == 0) {
+            queue.add(new Pair<>(i + 1, j));
+        }
+        if(map[i - 1][j] == 0) {
+            queue.add(new Pair<>(i - 1, j));
+        }
+        if(map[i][j + 1] == 0) {
+            queue.add(new Pair<>(i, j + 1));
+        }
+        if(map[i][j - 1] == 0) {
+            queue.add(new Pair<>(i, j - 1));
+        }
+        if(queue.isEmpty()){
+            direction = Direction.STAND;
+        }
+        else {
+            Pair<Integer, Integer> next = queue.poll();
+            bfs(map, next.getKey(), next.getValue());
         }
     }
 }
