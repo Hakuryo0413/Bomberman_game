@@ -35,9 +35,6 @@ public class GameScreen implements Screen {
         rootList = map.createRoot();
         itemList = map.createItem();
         portal = map.createPortal();
-        for(Root root: rootList) {
-            root.burn(rootList);
-        }
         enemyList = map.createEnemy();
         bomList = new ArrayList<>();
 
