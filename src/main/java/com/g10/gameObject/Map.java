@@ -73,7 +73,7 @@ public class Map extends VisibleObject {
         for (int i = 0; i < height; i++) {
             for (int j = 0; j < width; j++) {
                 if (a[i][j] != 1 && !(i == 1 && j == 2) && !(i == 1 && j == 3) && !(i == 2 && j == 2)) {
-                    int rand = (int) (Math.random() * 100 % 4);
+                    int rand = (int) (Math.random() * 100 % 5);
                     if (rand == 0) {
                         rootList.add(new Root(j * GlobalConstant.TILE_SIZE, i * GlobalConstant.TILE_SIZE));
                         a[i][j] = 2;
@@ -232,28 +232,25 @@ public class Map extends VisibleObject {
         switch(GameStatus.getStage()) {
             case 1: // instruction - easy
                 numOfPuropen = 2;
-                numOfPakupa = 2;
+                break;
+            case 2: // medium
+                numOfPuropen = 2;
                 numOfDenkyun = 1;
                 break;
-            case 2: // warm-up - medium
-                numOfMetalPuropen = 2;
-                numOfNutsStar = 1;
-                numOfPakupa = 2;
-                break;
             case 3: // đòi hỏi player đặt nhiều bom và timing chính xác
-                numOfPuropen = 1;
-                numOfMetalPuropen = 2;
+                numOfMetalPuropen = 1;
                 numOfPakupa = 2;
                 break;
             case 4: // đòi hỏi player di chuyển nhanh nhạy khi gặp enemy mạnh
-                numOfNutsStar = 2;
+                numOfPuropen = 1;
+                numOfNutsStar = 1;
                 numOfDenkyun = 2;
-                numOfCuppen = 1;
                 break;
             case 5: // final
                 numOfMetalPuropen = 1;
-                numOfNutsStar = 2;
-                numOfCuppen = 2;
+                numOfPakupa = 1;
+                numOfNutsStar = 1;
+                numOfCuppen = 1;
                 break;
         }
 

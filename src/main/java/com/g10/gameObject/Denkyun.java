@@ -110,6 +110,6 @@ public class Denkyun extends Enemy {
 
     @Override
     protected int getEnemyScore() {
-        return 100;
+        return 150;
     }
 }

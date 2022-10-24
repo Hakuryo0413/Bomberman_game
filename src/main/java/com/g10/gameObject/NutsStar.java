@@ -101,7 +101,7 @@ public class NutsStar extends Enemy {
 
     @Override
     protected int getEnemyScore() {
-        return 100;
+        return 500;
     }
 
     Queue<Pair<Integer, Integer>> queue = new LinkedList<>();
