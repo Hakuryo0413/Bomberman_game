@@ -252,6 +252,24 @@ public class Map extends VisibleObject {
                 numOfNutsStar = 1;
                 numOfCuppen = 1;
                 break;
+
+            // enemy demo stage
+            case 101:
+                numOfPuropen = 1;
+                break;
+            case 102:
+                numOfMetalPuropen = 1;
+                break;
+            case 103:
+                numOfDenkyun = 1;
+                break;
+            case 104:
+                numOfPakupa = 1;
+                break;
+            case 105:
+                numOfNutsStar = 1;
+            case 106:
+                numOfCuppen = 1;
         }
 
         for (int t = 0; t < numOfNutsStar; t++) {
