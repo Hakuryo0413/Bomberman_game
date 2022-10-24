@@ -30,6 +30,10 @@ public class ScreenManager {
                 currentScreen = new TimeOutScreen();
                 break;
             }
+            case SCORE_SCREEN -> {
+                currentScreen = new ScoreScreen();
+                break;
+            }
         }
     }
 }

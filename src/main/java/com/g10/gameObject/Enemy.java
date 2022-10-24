@@ -1,6 +1,7 @@
 package com.g10.gameObject;
 
 import com.g10.constants.GlobalConstant;
+import com.g10.game.GameStatus;
 import com.g10.general.AnimationManager;
 import com.g10.general.Sandbox;
 import javafx.animation.Animation;
@@ -114,6 +115,7 @@ public abstract class Enemy extends MovingObject {
             if (check) {
                 live--;
                 if(live == 0) {
+                    GameStatus.incScore(getEnemyScore());
                     blink.play();
                     Timeline tl = new Timeline(new KeyFrame(Duration.millis(1200), actionEvent -> {
                         enemies.remove(this);
@@ -146,4 +148,6 @@ public abstract class Enemy extends MovingObject {
         colorAdjust.setBrightness(0);
         gc.setEffect(colorAdjust);
     }
+
+    protected abstract int getEnemyScore();
 }

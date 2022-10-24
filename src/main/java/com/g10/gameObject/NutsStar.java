@@ -99,6 +99,11 @@ public class NutsStar extends Enemy {
         }
     }
 
+    @Override
+    protected int getEnemyScore() {
+        return 100;
+    }
+
     Queue<Pair<Integer, Integer>> queue = new LinkedList<>();
     private void bfs(int[][] map, int i, int j) {
         map[i][j] = 1;

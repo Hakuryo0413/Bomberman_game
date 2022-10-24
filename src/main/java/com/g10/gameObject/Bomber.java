@@ -145,7 +145,7 @@ public class Bomber extends MovingObject {
                 GameStatus.setRemainingLives(GameStatus.getRemainingLives() - 1);
                 if (GameStatus.getRemainingLives() < 0) {
 
-                    ScreenManager.switchScreen(ScreenType.HOME_SCREEN); //TODO: cái này sẽ đến mafn hình chiếu điểm
+                    ScreenManager.switchScreen(ScreenType.SCORE_SCREEN); //TODO: cái này sẽ đến mafn hình chiếu điểm
 
                 } else {
 

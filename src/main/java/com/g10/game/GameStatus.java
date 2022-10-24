@@ -10,6 +10,8 @@ public class GameStatus {
 
     private static float vel;
 
+    private static int score;
+
     public static int getStage() {
         return stage;
     }
@@ -57,7 +59,10 @@ public class GameStatus {
         numBombsCanPlace = 1;
         bomLength = 1;
         vel = 200;
+        score = 0;
     }
+
+
 
     private static String bomberColor = "red";
 
@@ -67,5 +72,13 @@ public class GameStatus {
 
     public static String getBomberColor() {
         return bomberColor;
+    }
+
+    public static int getScore() {
+        return score;
+    }
+
+    public static void incScore(int value) {
+        score += value;
     }
 }

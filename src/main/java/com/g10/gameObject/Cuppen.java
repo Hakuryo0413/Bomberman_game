@@ -77,4 +77,9 @@ public class Cuppen extends Enemy {
             super.update(deltaTime, map);
         }
     }
+
+    @Override
+    protected int getEnemyScore() {
+        return 100;
+    }
 }

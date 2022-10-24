@@ -38,6 +38,14 @@ public class TopMenu {
         Sandbox.getGc().setFont(font);
         Sandbox.getGc().setFill(Color.WHITE);
         Sandbox.getGc().fillText(String.valueOf(GameStatus.getRemainingLives()), 103, 60);
+        String score = String.valueOf(GameStatus.getScore());
+        StringBuilder sb = new StringBuilder();
+        for (int i = 0; i < 10; i++) {
+            sb.append(' ');
+        }
+
+        score =  sb.substring(score.length()) + score;
+        Sandbox.getGc().fillText(score, 280, 60);
         Sandbox.getGc().fillText(""+((int)time/60) + ":" + ((int)(time%60)/10) + ((int)(time%60)%10), 670, 60);
     }
 
