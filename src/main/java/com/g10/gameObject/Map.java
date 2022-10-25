@@ -268,8 +268,10 @@ public class Map extends VisibleObject {
                 break;
             case 105:
                 numOfNutsStar = 1;
+                break;
             case 106:
                 numOfCuppen = 1;
+                break;
         }
 
         for (int t = 0; t < numOfNutsStar; t++) {
