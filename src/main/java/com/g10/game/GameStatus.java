@@ -64,7 +64,7 @@ public class GameStatus {
 
 
 
-    private static String bomberColor;
+    private static String bomberColor = "white";
 
     public static void setBomberColor(String bomberColor) {
         GameStatus.bomberColor = bomberColor;

@@ -30,6 +30,7 @@ public class ColorMenu {
 
     public void update() {
         if (Input.getInput().contains("ESCAPE")) {
+            Input.getInput().remove("ESCAPE");
             ScreenManager.switchScreen(ScreenType.HOME_SCREEN);
         }
         cursor.update();
