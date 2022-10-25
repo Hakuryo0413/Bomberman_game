@@ -73,7 +73,7 @@ public class Map extends VisibleObject {
         for (int i = 0; i < height; i++) {
             for (int j = 0; j < width; j++) {
                 if (a[i][j] != 1 && !(i == 1 && j == 2) && !(i == 1 && j == 3) && !(i == 2 && j == 2)) {
-                    int rand = (int) (Math.random() * 100 % 5);
+                    int rand = (int) (Math.random() * 100 % 4);
                     if (rand == 0) {
                         rootList.add(new Root(j * GlobalConstant.TILE_SIZE, i * GlobalConstant.TILE_SIZE));
                         a[i][j] = 2;
