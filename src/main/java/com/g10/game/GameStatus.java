@@ -64,10 +64,10 @@ public class GameStatus {
 
 
 
-    private static String bomberColor = "red";
+    private static String bomberColor;
 
     public static void setBomberColor(String bomberColor) {
-        bomberColor = bomberColor;
+        GameStatus.bomberColor = bomberColor;
     }
 
     public static String getBomberColor() {

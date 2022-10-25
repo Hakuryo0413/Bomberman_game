@@ -34,7 +34,7 @@ public class HomeMenu {
             Input.getInput().remove("ENTER");
             if (cursor.getNumOfSelect() == 1) {
                 GameStatus.init();
-                ScreenManager.switchScreen(ScreenType.STAGE_SCREEN);
+                ScreenManager.switchScreen(ScreenType.CHANGE_COLOR_SCREEN);
             }
             if (cursor.getNumOfSelect() == 2) {
                 GameStatus.init();

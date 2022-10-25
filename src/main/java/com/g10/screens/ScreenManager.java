@@ -38,6 +38,10 @@ public class ScreenManager {
                 currentScreen = new PVPScreen();
                 break;
             }
+            case CHANGE_COLOR_SCREEN -> {
+                currentScreen = new ChangeColorScreen();
+                break;
+            }
         }
     }
 }
