@@ -118,27 +118,24 @@ public class Map extends VisibleObject {
         switch (GameStatus.getStage()) {
             case 1:
                 numOfBomUp = 1;
-                numOfSpeedUp = 1;
                 numOfFireUp = 1;
-                numOfLivesUp = 1;
                 break;
             case 2:
-                numOfBomUp = 1;
                 numOfSpeedUp = 1;
-                numOfLivesUp = 1;
                 break;
             case 3:
                 numOfSpeedUp = 1;
                 numOfFireUp = 1;
+                numOfLivesUp = 1;
                 break;
             case 4:
                 numOfBomUp = 1;
-                numOfLivesUp = 1;
                 break;
             case 5:
                 numOfBomUp = 1;
                 numOfSpeedUp = 1;
                 numOfFireUp = 1;
+                numOfLivesUp = 1;
                 break;
         }
 
@@ -231,25 +228,29 @@ public class Map extends VisibleObject {
 
         switch(GameStatus.getStage()) {
             case 1: // instruction - easy
-                numOfPuropen = 2;
+                numOfPuropen = 3;
+                numOfMetalPuropen = 1;
                 break;
             case 2: // medium
-                numOfPuropen = 2;
-                numOfDenkyun = 1;
+                numOfPuropen = 1;
+                numOfMetalPuropen = 1;
+                numOfDenkyun = 2;
                 break;
             case 3: // đòi hỏi player đặt nhiều bom và timing chính xác
-                numOfMetalPuropen = 1;
+                numOfMetalPuropen = 2;
+                numOfDenkyun = 1;
                 numOfPakupa = 2;
                 break;
             case 4: // đòi hỏi player di chuyển nhanh nhạy khi gặp enemy mạnh
                 numOfPuropen = 1;
+                numOfMetalPuropen = 1;
                 numOfNutsStar = 1;
                 numOfDenkyun = 2;
                 break;
             case 5: // final
                 numOfMetalPuropen = 1;
                 numOfPakupa = 1;
-                numOfNutsStar = 1;
+                numOfNutsStar = 2;
                 numOfCuppen = 1;
                 break;
 

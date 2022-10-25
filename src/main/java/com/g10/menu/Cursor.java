@@ -2,10 +2,12 @@ package com.g10.menu;
 
 import com.g10.constants.GlobalConstant;
 import com.g10.gameObject.VisibleObject;
+import com.g10.general.AudioManager;
 import com.g10.general.Input;
 import com.g10.general.Sandbox;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
+import javafx.scene.media.AudioClip;
 
 public class Cursor extends VisibleObject {
     private int numOfSelect = 1;
@@ -33,6 +35,7 @@ public class Cursor extends VisibleObject {
             if (numOfSelect > count) {
                 numOfSelect = 1;
             }
+            AudioManager.playSound("sound/cursor.mp3");
         }
         if (Input.getInput().contains("UP")) {
             Input.getInput().remove("UP");
@@ -40,6 +43,7 @@ public class Cursor extends VisibleObject {
             if (numOfSelect < 1) {
                 numOfSelect = count;
             }
+            AudioManager.playSound("sound/cursor.mp3");
         }
     }
 

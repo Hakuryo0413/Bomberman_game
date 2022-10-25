@@ -3,6 +3,7 @@ package com.g10.gameObject;
 import com.g10.constants.GlobalConstant;
 import com.g10.game.GameStatus;
 import com.g10.general.AnimationManager;
+import com.g10.general.AudioManager;
 import com.g10.general.Sandbox;
 import javafx.animation.Animation;
 import javafx.animation.KeyFrame;
@@ -123,6 +124,7 @@ public abstract class Enemy extends MovingObject {
                     }));
                     tl.setCycleCount(1);
                     tl.play();
+                    AudioManager.playSound("sound/enemy_dies.mp3");
                 }
                 else {
                     shield = true;

@@ -62,4 +62,25 @@ public class AudioManager {
         muteMusic = !muteMusic;
         mediaPlayer.setMute(muteMusic);
     }
+
+    public static void setSoundInfinitive(String path){
+        if (soundMap.get(path) == null) {
+            AudioClip audioClip = new AudioClip(Main.class.getResource("/com/g10/media/" + path).toExternalForm());
+            soundMap.put(path, audioClip);
+        }
+        soundMap.get(path).setCycleCount(AudioClip.INDEFINITE);
+    }
+
+    public static boolean isSoundPlaying(String path) {
+        if (soundMap.get(path) == null) {
+            return false;
+        }
+        return soundMap.get(path).isPlaying();
+    }
+
+    public static void pauseSound(String path) {
+        if (soundMap.get(path) != null) {
+            soundMap.get(path).stop();
+        }
+    }
 }

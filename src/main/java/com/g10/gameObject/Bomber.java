@@ -40,7 +40,7 @@ public class Bomber extends MovingObject {
         alive = true;
         bomb_can_place = GameStatus.getNumBombsCanPlace();
         bomb_length = GameStatus.getBomLength();
-
+        AudioManager.setSoundInfinitive("sound/walking.mp3");
     }
 
     public boolean isAlive() {
@@ -94,8 +94,12 @@ public class Bomber extends MovingObject {
         if (velX == 0 && velY == 0) {
             animation.pause();
             AnimationManager.removeAnimation(animation);
+            AudioManager.pauseSound("sound/walking.mp3");
         } else {
             AnimationManager.addPlayingAnimation(animation);
+            if(!AudioManager.isSoundPlaying("sound/walking.mp3")) {
+                AudioManager.playSound("sound/walking.mp3");
+            }
         }
         List<BaseObject> obstructingObjectList = new ArrayList<>();
         obstructingObjectList.addAll(wallList);
@@ -121,6 +125,7 @@ public class Bomber extends MovingObject {
             Input.getInput().remove("SPACE");
             bomList.add(new Bom(i * GlobalConstant.TILE_SIZE, j * GlobalConstant.TILE_SIZE, bomb_length, rootList, wallList, bomList, fireList));
 //            System.out.println("BOMB HAS BEEN PLANTED!");
+            AudioManager.playSound("sound/place_bomb.mp3");
         }
     }
 
@@ -168,6 +173,7 @@ public class Bomber extends MovingObject {
             animation.setCycleCount(1);
             animation.play();
             AnimationManager.addPlayingAnimation(animation);
+            AudioManager.pauseSound("sound/walking.mp3");
         }
     }
 
@@ -194,6 +200,7 @@ public class Bomber extends MovingObject {
                 }
 
                 itemList.remove(itemList.get(i));
+                AudioManager.playSound("sound/item_get.mp3");
             }
         }
 
@@ -203,8 +210,17 @@ public class Bomber extends MovingObject {
         if (enemyList.size() == 0 && BaseObject.checkCollision(this, portal)) {
             GameStatus.setVel(vel);
             GameStatus.setBomLength(bomb_length);
-            GameStatus.setStage(GameStatus.getStage() + 1);
-            ScreenManager.switchScreen(ScreenType.STAGE_SCREEN);
+            GameStatus.setNumBombsCanPlace(bomb_can_place);
+            if(GameStatus.getStage() == 5) {
+                AudioManager.pauseSound("sound/walking.mp3");
+                ScreenManager.switchScreen(ScreenType.SCORE_SCREEN);
+                //Màn hình chúc mừng
+            }
+            else {
+                GameStatus.setStage(GameStatus.getStage() + 1);
+                AudioManager.pauseSound("sound/walking.mp3");
+                ScreenManager.switchScreen(ScreenType.STAGE_SCREEN);
+            }
         }
     }
 }

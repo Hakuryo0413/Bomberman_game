@@ -31,7 +31,7 @@ public class Bom extends UpdatableObject {
             explode(rootList, wallList, bomList, fireList);
             TimelineManager.removeTimeline(explodeTimeline);
             AnimationManager.removeAnimation(animation);
-            AudioManager.playSound("bomb_explodes.mp3");
+            AudioManager.playSound("/sound/bomb_explodes.mp3");
         }));
         explodeTimeline.setCycleCount(1);
         explodeTimeline.play();
