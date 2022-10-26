@@ -7,15 +7,15 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class ImageManager {
-    private static final Map<String, Image> map = new HashMap<String, Image>();
+    private static final Map<String, Image> map  = new HashMap<String, Image>();
 
     public static Image getImage(String path) {
-        if (map.get(path) != null) {
-            return map.get(path);
+        if (map.get(path) == null) {
+            Image image = loadImage(path);
+            map.put(path, image);
+            return image;
         }
-        Image image = loadImage(path);
-        map.put(path, image);
-        return image;
+        return map.get(path);
     }
 
     private static Image loadImage(String path) {

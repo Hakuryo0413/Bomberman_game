@@ -72,10 +72,10 @@ public class AudioManager {
     }
 
     public static boolean isSoundPlaying(String path) {
-        if (soundMap.get(path) == null) {
-            return false;
+        if (soundMap.get(path) != null) {
+            return soundMap.get(path).isPlaying();
         }
-        return soundMap.get(path).isPlaying();
+        return false;
     }
 
     public static void pauseSound(String path) {
