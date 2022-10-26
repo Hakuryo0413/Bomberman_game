@@ -37,7 +37,7 @@ public class Map extends VisibleObject {
 
     @Override
     public int getWidth() {
-        return width;
+        return this.width;
     }
 
     @Override
@@ -47,7 +47,7 @@ public class Map extends VisibleObject {
 
     @Override
     public int getHeight() {
-        return height;
+        return this.height;
     }
 
     @Override
@@ -182,29 +182,6 @@ public class Map extends VisibleObject {
                 t--;
             }
         }
-        /*
-        Collections.shuffle(rootLocation);
-        itemList.add(new Item(ItemType.BOM_UP, rootLocation.get(0).getValue() * GlobalConstant.TILE_SIZE, rootLocation.get(0).getKey() * GlobalConstant.TILE_SIZE));
-        a[rootLocation.get(0).getKey()][rootLocation.get(0).getValue()] = 1;
-        rootLocation.remove(rootLocation.get(0));
-
-
-        Collections.shuffle(rootLocation);
-        itemList.add(new Item(ItemType.FIRE_UP, rootLocation.get(0).getValue() * GlobalConstant.TILE_SIZE, rootLocation.get(0).getKey() * GlobalConstant.TILE_SIZE));
-        a[rootLocation.get(0).getKey()][rootLocation.get(0).getValue()] = 1;
-        rootLocation.remove(rootLocation.get(0));
-
-        Collections.shuffle(rootLocation);
-        itemList.add(new Item(ItemType.SPEED_UP, rootLocation.get(0).getValue() * GlobalConstant.TILE_SIZE, rootLocation.get(0).getKey() * GlobalConstant.TILE_SIZE));
-        a[rootLocation.get(0).getKey()][rootLocation.get(0).getValue()] = 1;
-        rootLocation.remove(rootLocation.get(0));
-
-        Collections.shuffle(rootLocation);
-        itemList.add(new Item(ItemType.LIVES_UP, rootLocation.get(0).getValue() * GlobalConstant.TILE_SIZE, rootLocation.get(0).getKey() * GlobalConstant.TILE_SIZE));
-        a[rootLocation.get(0).getKey()][rootLocation.get(0).getValue()] = 1;
-        rootLocation.remove(rootLocation.get(0));
-        */
-
         return itemList;
     }
 
@@ -228,29 +205,29 @@ public class Map extends VisibleObject {
 
         switch(GameStatus.getStage()) {
             case 1: // instruction - easy
-                numOfPuropen = 3;
                 numOfMetalPuropen = 1;
+                numOfPuropen = 3;
                 break;
             case 2: // medium
+                numOfDenkyun = 2;
                 numOfPuropen = 1;
                 numOfMetalPuropen = 1;
-                numOfDenkyun = 2;
                 break;
             case 3: // đòi hỏi player đặt nhiều bom và timing chính xác
-                numOfMetalPuropen = 2;
                 numOfDenkyun = 1;
+                numOfMetalPuropen = 2;
                 numOfPakupa = 2;
                 break;
             case 4: // đòi hỏi player di chuyển nhanh nhạy khi gặp enemy mạnh
-                numOfPuropen = 1;
                 numOfMetalPuropen = 1;
+                numOfPuropen = 1;
                 numOfNutsStar = 1;
                 numOfDenkyun = 2;
                 break;
             case 5: // final
+                numOfNutsStar = 2;
                 numOfMetalPuropen = 1;
                 numOfPakupa = 1;
-                numOfNutsStar = 2;
                 numOfCuppen = 1;
                 break;
 
@@ -275,19 +252,20 @@ public class Map extends VisibleObject {
                 break;
         }
 
-        for (int t = 0; t < numOfNutsStar; t++) {
+        for (int t = 0; t < numOfPakupa; t++) {
             Collections.shuffle(grassLocation);
             if (grassLocation.get(0).getValue() > 3 && grassLocation.get(0).getKey() > 3) {
-                enemyList.add(new NutsStar(grassLocation.get(0).getValue() * GlobalConstant.TILE_SIZE, grassLocation.get(0).getKey() * GlobalConstant.TILE_SIZE));
+                enemyList.add(new Pakupa(grassLocation.get(0).getValue() * GlobalConstant.TILE_SIZE, grassLocation.get(0).getKey() * GlobalConstant.TILE_SIZE));
                 grassLocation.remove(grassLocation.get(0));
             } else {
                 t--;
             }
         }
-        for (int t = 0; t < numOfPakupa; t++) {
+
+        for (int t = 0; t < numOfNutsStar; t++) {
             Collections.shuffle(grassLocation);
             if (grassLocation.get(0).getValue() > 3 && grassLocation.get(0).getKey() > 3) {
-                enemyList.add(new Pakupa(grassLocation.get(0).getValue() * GlobalConstant.TILE_SIZE, grassLocation.get(0).getKey() * GlobalConstant.TILE_SIZE));
+                enemyList.add(new NutsStar(grassLocation.get(0).getValue() * GlobalConstant.TILE_SIZE, grassLocation.get(0).getKey() * GlobalConstant.TILE_SIZE));
                 grassLocation.remove(grassLocation.get(0));
             } else {
                 t--;
@@ -314,6 +292,16 @@ public class Map extends VisibleObject {
             }
         }
 
+        for (int t = 0; t < numOfDenkyun; t++) {
+            Collections.shuffle(grassLocation);
+            if (grassLocation.get(0).getValue() > 3 && grassLocation.get(0).getKey() > 3) {
+                enemyList.add(new Denkyun(grassLocation.get(0).getValue() * GlobalConstant.TILE_SIZE, grassLocation.get(0).getKey() * GlobalConstant.TILE_SIZE));
+                grassLocation.remove(grassLocation.get(0));
+            } else {
+                t--;
+            }
+        }
+
         for (int t = 0; t < numOfCuppen; t++) {
             Collections.shuffle(grassLocation);
             if (grassLocation.get(0).getValue() > 3 && grassLocation.get(0).getKey() > 3) {
@@ -324,20 +312,11 @@ public class Map extends VisibleObject {
             }
         }
 
-        for (int t = 0; t < numOfDenkyun; t++) {
-            Collections.shuffle(grassLocation);
-            if (grassLocation.get(0).getValue() > 3 && grassLocation.get(0).getKey() > 3) {
-                enemyList.add(new Denkyun(grassLocation.get(0).getValue() * GlobalConstant.TILE_SIZE, grassLocation.get(0).getKey() * GlobalConstant.TILE_SIZE));
-                grassLocation.remove(grassLocation.get(0));
-            } else {
-                t--;
-            }
-        }
         return enemyList;
     }
 
     @Override
     public void render() {
-        Sandbox.getGc().drawImage(image, x, y + GlobalConstant.MENU_TOP_HEIGHT, width * GlobalConstant.TILE_SIZE, height * GlobalConstant.TILE_SIZE);
+        Sandbox.getGc().drawImage(image, x, GlobalConstant.MENU_TOP_HEIGHT + y, width * GlobalConstant.TILE_SIZE, height * GlobalConstant.TILE_SIZE);
     }
 }
