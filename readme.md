@@ -44,7 +44,7 @@ mvn clean javafx:run
 
 Các *Item* cũng được giấu phía sau Root và chỉ hiện ra khi Root bị phá hủy. Bomber có thể sử dụng Item bằng cách di chuyển vào vị trí của Item. Thông tin về chức năng của các Item được liệt kê như dưới đây:
 - ![](src/main/resources/com/g10/asset/item/speed_up1.png)  *SpeedItem* Khi sử dụng Item này, Bomber sẽ được tăng vận tốc di chuyển thêm một giá trị thích hợp
-- ![](src/main/resources/com/g10/asset/item/fire_up1.png) *FlameItem* Item này giúp tăng phạm vi ảnh hưởng của Bomb khi nổ (độ dài các Flame lớn hơn)
+- ![](src/main/resources/com/g10/asset/item/fire_up1.png) *FireItem* Item này giúp tăng phạm vi ảnh hưởng của Bomb khi nổ (độ dài các Fire lớn hơn)
 - ![](src/main/resources/com/g10/asset/item/bom_up1.png) *BombItem* Thông thường, nếu không có đối tượng Bomb nào đang trong trạng thái kích hoạt, Bomber sẽ được đặt và kích hoạt duy nhất một đối tượng Bomb. Item này giúp tăng số lượng Bomb có thể đặt thêm một.
 - ![](src/main/resources/com/g10/asset/item/lives_up1.png) *LivesItem* Khi sử dụng Item này, Bomber sẽ được tăng thêm 1 mạng sống.
 
