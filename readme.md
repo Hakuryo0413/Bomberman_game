@@ -31,6 +31,15 @@ Các *Item* cũng được giấu phía sau Root và chỉ hiện ra khi Root b�
 - ![](src/main/resources/com/g10/asset/item/fire_up1.png) *FlameItem* Item này giúp tăng phạm vi ảnh hưởng của Bomb khi nổ (độ dài các Flame lớn hơn)
 - ![](src/main/resources/com/g10/asset/item/bom_up1.png) *BombItem* Thông thường, nếu không có đối tượng Bomb nào đang trong trạng thái kích hoạt, Bomber sẽ được đặt và kích hoạt duy nhất một đối tượng Bomb. Item này giúp tăng số lượng Bomb có thể đặt thêm một.
 - ![](src/main/resources/com/g10/asset/item/lives_up1.png) *LivesItem* Khi sử dụng Item này, Bomber sẽ được tăng thêm 1 mạng sống.
+
+Các loại enemy đã cài đặt:
+- ![](src/main/resources/com/g10/asset/enemy/puropen/puropen_down2.png) Puropen: enemy đơn giản nhất, di chuyển ngẫu nhiên với tốc độ cố định.
+- ![](src/main/resources/com/g10/asset/enemy/metal_puropen/metal_puropen_down3.png) Metal Puropen: enemy có hai mạng, di chuyển ngẫu nhiên với tốc độ cố định.
+- ![](src/main/resources/com/g10/asset/enemy/denkyun/denkyun5.png) Denkyun: enemy có khả năng thay đổi tốc độ đột ngột.
+- ![](src/main/resources/com/g10/asset/enemy/pakupa/pakupa_down6.png) Pakupa: enemy có khả năng ăn bom trước khi nổ.
+- ![](src/main/resources/com/g10/asset/enemy/nuts_star/nuts_star_down1.png) Nuts Star: enemy biết đuổi theo Bomber
+- ![](src/main/resources/com/g10/asset/enemy/cuppen/cuppen1.png) Cuppen: enemy có khả năng đi đè lên ![](src/main/resources/com/g10/asset/root/root.png) Root.
+
 ## Cây kế thừa
 ![](src/main/resources/com/g10/asset/preview/package.png)
 
