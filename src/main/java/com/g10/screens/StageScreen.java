@@ -40,7 +40,7 @@ public class StageScreen implements Screen {
         Sandbox.getGc().fillRect(0, 0, GlobalConstant.SCREEN_WIDTH, GlobalConstant.SCREEN_HEIGHT);
         Sandbox.getGc().setFont(font);
         Sandbox.getGc().setFill(Color.WHITE);
-        Sandbox.getGc().fillText("STAGE " + GameStatus.getStage(), 320, 330);
+        Sandbox.getGc().fillText("STAGE " + GameStatus.getStage(), 330, 350);
     }
 
     @Override
