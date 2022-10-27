@@ -1,10 +1,18 @@
 # Super Bomberman
 
-//mô tả chung về trò chơi + hình ảnh preview + table of contents
+
 
 ![](src/main/resources/com/g10/asset/preview/preview.png)
 
-## Cài đặt trò chơi
+## Mục lục:
+- [1. Cài đặt trò chơi](https://github.com/pbdanh/Bomberman#c%C3%A0i-%C4%91%E1%BA%B7t-tr%C3%B2-ch%C6%A1i)
+- [2. Cách chơi](https://github.com/pbdanh/Bomberman#c%C3%A1ch-ch%C6%A1i)
+- [3. Các đối tượng trong game](https://github.com/pbdanh/Bomberman#c%C3%A1c-%C4%91%E1%BB%91i-t%C6%B0%E1%BB%A3ng-trong-game)
+- [4. Cây kế thừa](https://github.com/pbdanh/Bomberman#c%C3%A2y-k%E1%BA%BF-th%E1%BB%ABa)
+- [5. Menu](https://github.com/pbdanh/Bomberman#menu)
+- [6. Nguồn](https://github.com/pbdanh/Bomberman#ngu%E1%BB%93n)
+
+## 1.Cài đặt trò chơi
 
 Sử dụng maven và plugins javafx để chạy trò chơi
 
@@ -12,11 +20,12 @@ Sử dụng maven và plugins javafx để chạy trò chơi
 mvn clean javafx:run
 ```
 
-## Cách chơi
+## 2.Cách chơi
 - Sử dụng các phím mũi tên để điều khiển Bomber, nhấn SPACE để đặt bom.
 - Sử dụng ENTER và các phím mũi tên để tuỳ chọn menu.
 - Nhấn ESC để thoát khỏi trò chơi và chương trình.
-## Các đối tượng trong game
+
+## 3.Các đối tượng trong game
 
 - ![](src/main/resources/com/g10/asset/bomber/bomber_white/bomber_white_down2.png) *Bomber* là nhân vật chính của trò chơi. Bomber có thể di chuyển theo 4 hướng trái/phải/lên/xuống theo sự điều khiển của người chơi.
 - ![](src/main/resources/com/g10/asset/enemy/nuts_star/nuts_star_down1.png) *Enemy* là các đối tượng mà Bomber phải tiêu diệt hết để có thể qua Level. Enemy có thể di chuyển ngẫu nhiên hoặc tự đuổi theo Bomber tùy theo loại Enemy. Các loại Enemy sẽ được mô tả cụ thể ở phần dưới.
@@ -31,6 +40,9 @@ Các *Item* cũng được giấu phía sau Root và chỉ hiện ra khi Root b�
 - ![](src/main/resources/com/g10/asset/item/fire_up1.png) *FlameItem* Item này giúp tăng phạm vi ảnh hưởng của Bomb khi nổ (độ dài các Flame lớn hơn)
 - ![](src/main/resources/com/g10/asset/item/bom_up1.png) *BombItem* Thông thường, nếu không có đối tượng Bomb nào đang trong trạng thái kích hoạt, Bomber sẽ được đặt và kích hoạt duy nhất một đối tượng Bomb. Item này giúp tăng số lượng Bomb có thể đặt thêm một.
 - ![](src/main/resources/com/g10/asset/item/lives_up1.png) *LivesItem* Khi sử dụng Item này, Bomber sẽ được tăng thêm 1 mạng sống.
+  <<<<<<< HEAD
+## 4.Cây kế thừa
+=======
 
 Các loại enemy đã cài đặt:
 - ![](src/main/resources/com/g10/asset/enemy/puropen/puropen_down2.png) Puropen: enemy đơn giản nhất, di chuyển ngẫu nhiên với tốc độ cố định.
@@ -41,17 +53,18 @@ Các loại enemy đã cài đặt:
 - ![](src/main/resources/com/g10/asset/enemy/cuppen/cuppen1.png) Cuppen: enemy có khả năng đi đè lên ![](src/main/resources/com/g10/asset/root/root.png) Root.
 
 ## Cây kế thừa
+
 ![](src/main/resources/com/g10/asset/preview/package.png)
 
 ![](src/main/resources/com/g10/asset/preview/package2.png)
-## Menu
+## 5.Menu
 - Home Menu: cổng vào khi bắt đầu chạy chương trình
-    + Normal Game: chế độ một người chơi
-    + PVP Game: chế độ hai người chơi
-    + Option Menu: tuỳ chọn mute/unmute nhạc nền và hiệu ứng âm thanh
+  + Normal Game: chế độ một người chơi
+  + PVP Game: chế độ hai người chơi
+  + Option Menu: tuỳ chọn mute/unmute nhạc nền và hiệu ứng âm thanh
 - Color Menu: tuỳ chọn màu cho Bomber ![](src/main/resources/com/g10/asset/bomber/bomber_white/bomber_white_down2.png) ![](src/main/resources/com/g10/asset/bomber/bomber_black/bomber_black_down2.png) ![](src/main/resources/com/g10/asset/bomber/bomber_blue/bomber_blue_down2.png) ![](src/main/resources/com/g10/asset/bomber/bomber_red/bomber_red_down2.png)
 - Game Menu: hiển thị bản đồ màn chơi, số mạng của Bomber, điểm số và thời gian
-## Nguồn
+## 6.Nguồn
 [Asset](https://www.spriters-resource.com/snes/sbomber/)
 
 [Sound](https://www.sounds-resource.com/snes/superbomberman/sound/35684/)
