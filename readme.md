@@ -13,7 +13,7 @@ mvn clean javafx:run
 ```
 
 ## Cách chơi
-- Sử dụng các phím mũi tên để điều khiển Bomberman, nhấn SPACE để đặt bom.
+- Sử dụng các phím mũi tên để điều khiển Bomber, nhấn SPACE để đặt bom.
 - Sử dụng ENTER và các phím mũi tên để tuỳ chọn menu.
 - Nhấn ESC để thoát khỏi trò chơi và chương trình.
 ## Các đối tượng trong game
@@ -37,9 +37,10 @@ Các *Item* cũng được giấu phía sau Brick và chỉ hiện ra khi Brick 
 ## Menu
 - Home Menu: cổng vào khi bắt đầu chạy chương trình
     + Normal Game: chế độ một người chơi
-    + PVP Game: chế độ hai người chơi (updating)
+    + PVP Game: chế độ hai người chơi
     + Option Menu: tuỳ chọn mute/unmute nhạc nền và hiệu ứng âm thanh
-- Color Menu: tuỳ chọn màu cho Bomberman
+- Color Menu: tuỳ chọn màu cho Bomber ![](src/main/resources/com/g10/asset/bomber/bomber_white/bomber_white_down2.png) ![](src/main/resources/com/g10/asset/bomber/bomber_black/bomber_black_down2.png) ![](src/main/resources/com/g10/asset/bomber/bomber_blue/bomber_blue_down2.png) ![](src/main/resources/com/g10/asset/bomber/bomber_red/bomber_red_down2.png)
+- Game Menu: hiển thị bản đồ màn chơi, số mạng của Bomber, điểm số và thời gian
 ## Nguồn
 [Asset](https://www.spriters-resource.com/snes/sbomber/)
 
