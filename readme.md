@@ -30,7 +30,7 @@ mvn clean javafx:run
 - Sử dụng các phím mũi tên để điều khiển Bomber, nhấn SPACE để đặt bom.
 - Sử dụng ENTER và các phím mũi tên để tuỳ chọn menu.
 - Nhấn ESC để thoát khỏi trò chơi và chương trình.
-### [Demo]()
+### [Demo](https://youtu.be/ioanaJ-9yTA)
 ## 3. Các đối tượng trong game
 
 - ![](src/main/resources/com/g10/asset/bomber/bomber_white/bomber_white_down2.png) *Bomber* là nhân vật chính của trò chơi. Bomber có thể di chuyển theo 4 hướng trái/phải/lên/xuống theo sự điều khiển của người chơi.
@@ -54,7 +54,7 @@ Các loại enemy đã cài đặt:
 - ![](src/main/resources/com/g10/asset/enemy/pakupa/pakupa_down6.png) *Pakupa*: enemy có khả năng ăn ![](src/main/resources/com/g10/asset/bom/bom1.png) trước khi nổ.
 - ![](src/main/resources/com/g10/asset/enemy/nuts_star/nuts_star_down1.png) *Nuts Star*: enemy biết đuổi theo Bomber
 - ![](src/main/resources/com/g10/asset/enemy/cuppen/cuppen1.png) *Cuppen*: enemy có khả năng đi đè lên ![](src/main/resources/com/g10/asset/root/root.png).
-### [Demo Enemy]()
+### [Demo Enemy](https://youtu.be/yh4yEGG3cdI)
 ## 4. Cây kế thừa
 
 ![](src/main/resources/com/g10/asset/preview/package.png)
