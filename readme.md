@@ -7,16 +7,17 @@
 - 21020287 Phạm Kim Chi
 
 Phiên bản Java mô phỏng lại trò chơi Bomberman kinh điển:
+
 ![](src/main/resources/com/g10/asset/preview/preview.png)
-Nhân vật Bomberman phải tìm cách vượt qua mê cung và đối diện với kẻ thù. Lối thoát khỏi mê cung nằm bên dưới những gốc cây. Bomberman sẽ đặt các quả bom để đốt cháy gốc cây và tấn công địch. Bomberman cần tiêu diệt hết kẻ địch và tìm đến cửa thoát để chinh phục các mê cung khó hơn và giành chiến thắng khi thoát khỏi tất cả các mê cung.
+Nhân vật Bomberman phải tìm cách vượt qua mê cung và đối diện với kẻ thù. Lối thoát khỏi mê cung nằm bên dưới những gốc cây. Bomberman sẽ đặt các quả bom để đốt cháy gốc cây và tấn công địch. Bomberman cần tiêu diệt hết kẻ địch, tìm đến cửa thoát để chinh phục các mê cung khó hơn và giành chiến thắng khi thoát khỏi tất cả các mê cung.
 
 ## Mục lục:
-- [1. Cài đặt trò chơi](https://github.com/pbdanh/Bomberman#1c%C3%A0i-%C4%91%E1%BA%B7t-tr%C3%B2-ch%C6%A1i)
-- [2. Cách chơi](https://github.com/pbdanh/Bomberman#2c%C3%A1ch-ch%C6%A1i)
-- [3. Các đối tượng trong game](https://github.com/pbdanh/Bomberman#3c%C3%A1c-%C4%91%E1%BB%91i-t%C6%B0%E1%BB%A3ng-trong-game)
-- [4. Cây kế thừa](https://github.com/pbdanh/Bomberman#4c%C3%A2y-k%E1%BA%BF-th%E1%BB%ABa)
-- [5. Menu](https://github.com/pbdanh/Bomberman#5menu)
-- [6. Nguồn](https://github.com/pbdanh/Bomberman#6ngu%E1%BB%93n)
+- [1. Cài đặt trò chơi](https://github.com/pbdanh/Bomberman#1-c%C3%A0i-%C4%91%E1%BA%B7t-tr%C3%B2-ch%C6%A1i)
+- [2. Cách chơi](https://github.com/pbdanh/Bomberman#2-c%C3%A1ch-ch%C6%A1i)
+- [3. Các đối tượng trong game](https://github.com/pbdanh/Bomberman#3-c%C3%A1c-%C4%91%E1%BB%91i-t%C6%B0%E1%BB%A3ng-trong-game)
+- [4. Cây kế thừa](https://github.com/pbdanh/Bomberman#4-c%C3%A2y-k%E1%BA%BF-th%E1%BB%ABa)
+- [5. Menu](https://github.com/pbdanh/Bomberman#5-menu)
+- [6. Nguồn](https://github.com/pbdanh/Bomberman#6-ngu%E1%BB%93n)
 
 ## 1. Cài đặt trò chơi
 
